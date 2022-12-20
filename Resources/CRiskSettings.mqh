@@ -1,3 +1,9 @@
+//+--------------------+
+//| Preprocessor Check |
+//+--------------------+
+#ifndef CRiskSettings_
+   #define CRiskSettings_
+
 //+------------------------------------------------------------------+
 //| Risk Settings Custom Class                                       |
 //+------------------------------------------------------------------+
@@ -37,3 +43,21 @@ public:
    void SetMaxExpCur (double value) {MaxExpCur = value;}
    void SetMaxPosVal (double value) {MaxPosVal = value;}
 };
+
+//+------------------------------------------------------------------+
+//| Risk Setting Custom Class - Constructor                          |
+//+------------------------------------------------------------------+
+CRiskSettings::CRiskSettings(void) {
+
+   //Max Values 
+   MaxTrades = -1.0;
+   MaxLots   = -1.0;
+   MaxExpPer = -1.0;
+   MaxExpCur = -1.0;
+   MaxPosVal = -1.0;
+}
+
+//+--------------------+
+//| Preprocessor Check |
+//+--------------------+
+#endif

@@ -1,3 +1,14 @@
+//+--------------------+
+//| Preprocessor Check |
+//+--------------------+
+#ifndef CWinControl_
+   #define CWinControl_
+
+//+------------------------------------------------------------------+
+//| Include MT4 Libraries & Resources                                |
+//+------------------------------------------------------------------+
+#include "PreExistingLibraries\MT4Libraries.mqh"
+
 //+------------------------------------------------------------------+
 //| Include MT4 Defined Libraries                                    |
 //+------------------------------------------------------------------+
@@ -10,14 +21,14 @@ class CWinControl {
 
 private:  
    
-   int MainWindowWidth;
-   int MainFont_S;      
-   int subFont_S;      
-   int PSC_Height;
-   int RE_Height;     
-   int PSC_CR_Shift;  
-   int RE_CR_Shift;   
-   
+   int    MainWindowWidth;
+   int    MainFont_S;      
+   int    subFont_S;      
+   int    PSC_Height;
+   int    RE_Height;     
+   int    PSC_CR_Shift;  
+   int    RE_CR_Shift;  
+   double SCALE; 
    double CopyScale;
    
    /*Currency or Account Button*/
@@ -56,6 +67,7 @@ public:
    string GetOBJ_CONTROL()     {return OBJ_CONTROL;}
    Window GetCopyFirstWindow() {return CopyFirstWindow;}
    double GetCopyScale()       {return CopyScale;}
+   double GetScale()           {return SCALE;}
     
    //------------------------------
    //'Set Value' Functions
@@ -77,15 +89,19 @@ public:
    void SetCopyFirstWindow (Window value) {CopyFirstWindow = value;}
    
    void SetCopyScale       (double value) {CopyScale = value;}
+   void SetScale           (double value) {SCALE = value;}
    
    //------------------------------   
    //Member Functions
    //------------------------------
    void ResetContructor();
-   void WindowMin();
-   bool IsMin();
+   void WindowMin(CLabel &copyRights,
+                  CButton &tabPSC,
+                  CButton &tabRisk,
+                  CAppDialog &mainWindow);
+   bool IsMin(CLabel &copyRights);
    void WindowMax();
-   int  Check_Tab();
+   int  Check_Tab(CLabel &riskPerTrade, CLabel &maxInt);
    int  ScaledFont(int i);
    int  ScaledPixel(int i);
    void Show_PSC();
@@ -93,3 +109,107 @@ public:
    void Show_RE();
    void Hide_RE();
 };
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Constructor                        |
+//+------------------------------------------------------------------+
+CWinControl::CWinControl(void) {
+
+   MainWindowWidth = ScaledPixel(383); //Main Window Width
+   MainFont_S      = ScaledFont(10);
+   subFont_S       = ScaledFont(8);
+   PSC_Height      = ScaledPixel(400);
+   RE_Height       = ScaledPixel(520);
+   PSC_CR_Shift    = ScaledPixel(-120); //Shifft
+   RE_CR_Shift     = ScaledPixel(120);
+   //CopyScale       = -1;
+   
+   /*Currency or Account Button*/
+   RS  = 1;
+   TE  = 1;
+   ITE = 1;
+
+   OPEN_TAB = 2;
+   CopyFirstWindow = -1;
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Manual Version of Constructor      |
+//+------------------------------------------------------------------+
+void CWinControl::ResetContructor(void) {
+
+   MainWindowWidth = ScaledPixel(383); //Main Window Width
+   MainFont_S      = ScaledFont(10);
+   subFont_S       = ScaledFont(8);
+   PSC_Height      = ScaledPixel(400);
+   RE_Height       = ScaledPixel(520);
+   PSC_CR_Shift    = ScaledPixel(-120); //Shifft
+   RE_CR_Shift     = ScaledPixel(120);
+   //CopyScale       = -1;
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Scaled Font                        |
+//+------------------------------------------------------------------+
+int CWinControl::ScaledFont(int i) {
+
+   int standard = 96;
+   int DPI = TerminalInfoInteger(TERMINAL_SCREEN_DPI);
+   return int((i*standard/DPI) * SCALE);
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Scaled Pixel                       |
+//+------------------------------------------------------------------+
+int CWinControl::ScaledPixel(int i) {
+   
+   return int(i*SCALE);
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Minimise                           |
+//+------------------------------------------------------------------+
+void CWinControl::WindowMin(CLabel &copyRights,
+                            CButton &tabPSC,
+                            CButton &tabRisk,
+                            CAppDialog &mainWindow) {
+
+   copyRights.Hide();
+   tabPSC.Hide();
+   tabRisk.Hide();
+   Hide_PSC();
+   Hide_RE();
+   mainWindow.Height(30);
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Is it Minimised                    |
+//+------------------------------------------------------------------+
+bool CWinControl::IsMin(CLabel &copyRights) {
+
+   if (copyRights.IsVisible() == false) return true;
+   return false; 
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Which Tab is open                  |
+//+------------------------------------------------------------------+
+int CWinControl::Check_Tab(CLabel &riskPerTrade, CLabel &maxInt) {
+
+   static int TAB;
+   
+   if (riskPerTrade.IsVisible() == true) {
+      TAB = 1;
+      return TAB;
+   }
+   if (maxInt.IsVisible() == true) {
+      TAB = 2;
+      return TAB;
+   }
+   return TAB;
+} 
+
+//+--------------------+
+//| Preprocessor Check |
+//+--------------------+
+#endif
