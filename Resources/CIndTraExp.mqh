@@ -78,23 +78,12 @@ void CIndTraExp::AddToCB_Singular_Trades(CComboBox &tradeExposure) {
          
          switch (OrderType()) {
          
-            case OP_BUY:       List[i] = "Long_" + OrderSymbol();
-               break;
-            
-            case OP_SELL:      List[i] = "Short_" + OrderSymbol();
-               break;
-            
-            case OP_BUYLIMIT:  List[i] = "Long Limit_" + OrderSymbol();
-               break;
-            
-            case OP_BUYSTOP:   List[i] = "Long Stop_" + OrderSymbol();
-               break;  
-            
-            case OP_SELLLIMIT: List[i] = "Short Limit_" + OrderSymbol();
-               break;    
-            
-            case OP_SELLSTOP:  List[i] = "Short Stop_" + OrderSymbol();
-               break;    
+            case OP_BUY:       List[i] = "Long_"        + OrderSymbol(); break;
+            case OP_SELL:      List[i] = "Short_"       + OrderSymbol(); break; 
+            case OP_BUYLIMIT:  List[i] = "Long Limit_"  + OrderSymbol(); break;     
+            case OP_BUYSTOP:   List[i] = "Long Stop_"   + OrderSymbol(); break;      
+            case OP_SELLLIMIT: List[i] = "Short Limit_" + OrderSymbol(); break;         
+            case OP_SELLSTOP:  List[i] = "Short Stop_"  + OrderSymbol(); break;    
          }                                                     
       }
       tradeExposure.AddItem(List[i]);
@@ -117,23 +106,12 @@ bool CIndTraExp::check_CB_TRADE(string x) {
          
          switch (Type) {
          
-            case OP_BUY:       List[i] = "Long_" + Asset;
-               break;
-            
-            case OP_SELL:      List[i] = "Short_" + Asset;
-               break;
-            
-            case OP_BUYLIMIT:  List[i] = "Long Limit_" + Asset;
-               break;
-            
-            case OP_BUYSTOP:   List[i] = "Long Stop_" + Asset;
-               break;  
-            
-            case OP_SELLLIMIT: List[i] = "Short Limit_" + Asset;
-               break;    
-            
-            case OP_SELLSTOP:  List[i] = "Short Stop_" + Asset;
-               break;    
+            case OP_BUY:       List[i] = "Long_"        + Asset; break;           
+            case OP_SELL:      List[i] = "Short_"       + Asset; break;      
+            case OP_BUYLIMIT:  List[i] = "Long Limit_"  + Asset; break;         
+            case OP_BUYSTOP:   List[i] = "Long Stop_"   + Asset; break;     
+            case OP_SELLLIMIT: List[i] = "Short Limit_" + Asset; break;          
+            case OP_SELLSTOP:  List[i] = "Short Stop_"  + Asset; break;    
          }                                                     
       }
       if(x==List[i]) return true;
