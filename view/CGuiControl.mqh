@@ -7,7 +7,9 @@
 //+------------------------------------------------------------------+
 //| Include MT4 Libraries & Resources                                |
 //+------------------------------------------------------------------+
-#include "app_tabs\Pre_existing_libraries\MT4Libraries.mqh"
+#include "\window_tabs\main_window\SMainWindow.mqh"
+#include "\window_tabs\position_size_calculator\SPositionSizeCalculator.mqh"
+#include "\window_tabs\risk_exposure\SRiskExposure.mqh"
 
 //+------------------------------------------------------------------+
 //| Window State Enum                                                |
@@ -22,7 +24,13 @@ enum Window {PositionSizeCalculator,
 class CGuiControl {
 
 private:  
+
+   // ApplicationTabs
+   SMainWindow             mainWindow;
+   SPositionSizeCalculator positionSizeCalculator;
+   SRiskExposure           riskExposure;
    
+   // Fields
    int    MainWindowWidth;
    int    MainFont_S;      
    int    subFont_S;      
@@ -174,14 +182,14 @@ int CGuiControl::ScaledPixel(int i) {
 void CGuiControl::WindowMin(CLabel &copyRights,
                             CButton &tabPSC,
                             CButton &tabRisk,
-                            CAppDialog &mainWindow) {
+                            CAppDialog &mainWindows) {
 
    copyRights.Hide();
    tabPSC.Hide();
    tabRisk.Hide();
    Hide_PSC();
    Hide_RE();
-   mainWindow.Height(30);
+   mainWindows.Height(30);
 }
 
 //+------------------------------------------------------------------+
