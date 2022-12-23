@@ -10,9 +10,11 @@
 #include "PreExistingLibraries\MT4Libraries.mqh"
 
 //+------------------------------------------------------------------+
-//| Include MT4 Defined Libraries                                    |
+//| Window State Enum                                                |
 //+------------------------------------------------------------------+
-#include "WINDOW_ENUM.mqh"
+enum Window {PositionSizeCalculator, 
+             RiskExposure, 
+             Minimised}; 
 
 //+------------------------------------------------------------------+
 //| Window Control Custom Class                                      |

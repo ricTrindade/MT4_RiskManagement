@@ -20,6 +20,12 @@ public:
 //+------------------------------------------------------------------+
 //| licenceValidation Method Defenition                              |
 //+------------------------------------------------------------------+
+
+/*
+This method is responsible for check the licenceKey 
+that the user has entered
+*/
+
 bool COnInit::licenceValidation(string licenceKey) {
    
    string Pass;

@@ -7,7 +7,10 @@
 //+------------------------------------------------------------------+
 //| Include MT4 Libraries & Resources                                |
 //+------------------------------------------------------------------+
-#include "PreExistingLibraries\MT4Libraries.mqh"
+
+//view\PreExistingLibraries\MT4Libraries.mqh
+#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\PreExistingLibraries\MT4Libraries.mqh"
+
 
 //+------------------------------------------------------------------+
 //| Individual Trade Exposure Custom Class                           |
