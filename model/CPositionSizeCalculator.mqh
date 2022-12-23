@@ -9,7 +9,7 @@
 //+------------------------------------------------------------------+
 
 //view\PreExistingLibraries\MT4Libraries.mqh
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\PreExistingLibraries\MT4Libraries.mqh"
+#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\app_tabs\Pre_existing_libraries\MT4Libraries.mqh"
 
 
 //+------------------------------------------------------------------+

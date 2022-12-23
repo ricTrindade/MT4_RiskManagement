@@ -7,7 +7,7 @@
 //+------------------------------------------------------------------+
 //| Include MT4 Libraries & Resources                                |
 //+------------------------------------------------------------------+
-#include "PreExistingLibraries\MT4Libraries.mqh"
+#include "app_tabs\Pre_existing_libraries\MT4Libraries.mqh"
 
 //+------------------------------------------------------------------+
 //| Window State Enum                                                |
