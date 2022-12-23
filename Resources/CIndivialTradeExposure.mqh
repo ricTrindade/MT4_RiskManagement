@@ -1,8 +1,8 @@
 //+--------------------+
 //| Preprocessor Check |
 //+--------------------+
-#ifndef CIndTraExp_
-   #define CIndTraExp_
+#ifndef CIndivialTradeExposure_
+   #define CIndivialTradeExposure_
    
 //+------------------------------------------------------------------+
 //| Include MT4 Libraries & Resources                                |
@@ -12,7 +12,7 @@
 //+------------------------------------------------------------------+
 //| Individual Trade Exposure Custom Class                           |
 //+------------------------------------------------------------------+
-class CIndTraExp {
+class CIndivialTradeExposure {
 
 private:      
 
@@ -26,7 +26,7 @@ public:
    //------------------------------
    //Constructor and Destructor
    //------------------------------
-   CIndTraExp();
+   CIndivialTradeExposure();
    
    //------------------------------
    //Accessor Functions
@@ -58,7 +58,7 @@ public:
 //+------------------------------------------------------------------+
 //| Individual Trade Exposure Custom Class - Constructor             |
 //+------------------------------------------------------------------+
-CIndTraExp::CIndTraExp(void) {
+CIndivialTradeExposure::CIndivialTradeExposure(void) {
 
    SingularExp_Per = 0.0;
    SingularExp_Cur = 0.0;
@@ -68,7 +68,7 @@ CIndTraExp::CIndTraExp(void) {
 //+------------------------------------------------------------------+
 //| Individual Trade Exposure Custom Class - Add Trades to Combo Box |
 //+------------------------------------------------------------------+
-void CIndTraExp::AddToCB_Singular_Trades(CComboBox &tradeExposure) {
+void CIndivialTradeExposure::AddToCB_Singular_Trades(CComboBox &tradeExposure) {
 
    string List[100];
       
@@ -93,7 +93,7 @@ void CIndTraExp::AddToCB_Singular_Trades(CComboBox &tradeExposure) {
 //+------------------------------------------------------------------+
 //| Individual Trade Exposure Custom Class - Check Combo Box Trade   |
 //+------------------------------------------------------------------+
-bool CIndTraExp::check_CB_TRADE(string x) {
+bool CIndivialTradeExposure::check_CB_TRADE(string x) {
 
    string List[100];
       
@@ -122,7 +122,7 @@ bool CIndTraExp::check_CB_TRADE(string x) {
 //+------------------------------------------------------------------+
 //| Individual Trade Exposure Custom Class - Check Short Trade With no SL
 //+------------------------------------------------------------------+
-void CIndTraExp::CheckTrade_withNoSL(string x) {
+void CIndivialTradeExposure::CheckTrade_withNoSL(string x) {
 
    string TRADES[2];
    StringSplit(x, '_', TRADES);

@@ -1,8 +1,8 @@
 //+--------------------+
 //| Preprocessor Check |
 //+--------------------+
-#ifndef CPosSizCal
-   #define CPosSizCal_
+#ifndef CPositionSizeCalculator
+   #define CPositionSizeCalculator_
 
 //+------------------------------------------------------------------+
 //| Include MT4 Libraries & Resources                                |
@@ -12,12 +12,12 @@
 //+------------------------------------------------------------------+
 //| Include Custom Libraries                                         |
 //+------------------------------------------------------------------+
-#include "CWinControl.mqh"
+#include "CGuiControl.mqh"
 
 //+------------------------------------------------------------------+
 //| Position Size Calculator Custom Class                            |
 //+------------------------------------------------------------------+
-class CPosSizCal {
+class CPositionSizeCalculator {
 
 private:   
    
@@ -32,7 +32,7 @@ public:
    //------------------------------
    //Constructor and Destructor
    //------------------------------
-   CPosSizCal();
+   CPositionSizeCalculator();
    
    //------------------------------
    //Accessor Functions
@@ -64,13 +64,13 @@ public:
                       CEdit &Total_Lots);
                       
    void Calculate_PosVal (CEdit &positionValue);
-   int  track_BidAsk     (CWinControl &windowControl);
+   int  track_BidAsk     (CGuiControl &windowControl);
 };
 
 //+------------------------------------------------------------------+
 //| Position Size Calculator Custom Class - Constructor              |
 //+------------------------------------------------------------------+
-CPosSizCal::CPosSizCal(void) {
+CPositionSizeCalculator::CPositionSizeCalculator(void) {
 
    RiskPoints  = 0.0;
    RiskCurr    = 0.0;
@@ -82,7 +82,7 @@ CPosSizCal::CPosSizCal(void) {
 //+------------------------------------------------------------------+
 //| Position Size Calculator Custom Class - Calculate Lot            |
 //+------------------------------------------------------------------+
-bool CPosSizCal::Calculate_Lot(CEdit &Entry,
+bool CPositionSizeCalculator::Calculate_Lot(CEdit &Entry,
                                CEdit &StopLoss,
                                CEdit &Risk_Per_Trade,
                                CEdit &Risk_in_Points,
@@ -178,7 +178,7 @@ bool CPosSizCal::Calculate_Lot(CEdit &Entry,
 //+------------------------------------------------------------------+
 //| Position Size Calculator Custom Class - Track Bid Ask Prices     |
 //+------------------------------------------------------------------+
-int CPosSizCal::track_BidAsk(CWinControl &windowControl) {
+int CPositionSizeCalculator::track_BidAsk(CGuiControl &windowControl) {
 
    static int check = 0;
    
@@ -193,7 +193,7 @@ int CPosSizCal::track_BidAsk(CWinControl &windowControl) {
 //+------------------------------------------------------------------+
 //| Position Size Calculator Custom Class - Calculate PosVal         |
 //+------------------------------------------------------------------+
-void CPosSizCal::Calculate_PosVal(CEdit &positionValue) {
+void CPositionSizeCalculator::Calculate_PosVal(CEdit &positionValue) {
 
    //Conversion
    string Base_         = SymbolInfoString(Symbol(), SYMBOL_CURRENCY_BASE);

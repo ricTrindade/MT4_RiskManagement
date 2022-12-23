@@ -1,8 +1,8 @@
 //+--------------------+
 //| Preprocessor Check |
 //+--------------------+
-#ifndef CWinControl_
-   #define CWinControl_
+#ifndef CGuiControl_
+   #define CGuiControl_
 
 //+------------------------------------------------------------------+
 //| Include MT4 Libraries & Resources                                |
@@ -17,7 +17,7 @@
 //+------------------------------------------------------------------+
 //| Window Control Custom Class                                      |
 //+------------------------------------------------------------------+
-class CWinControl {
+class CGuiControl {
 
 private:  
    
@@ -46,7 +46,7 @@ public:
    //------------------------------
    //Constructor and Destructor
    //------------------------------
-   CWinControl();
+   CGuiControl();
    
    //------------------------------
    //Accessor Functions
@@ -113,7 +113,7 @@ public:
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Constructor                        |
 //+------------------------------------------------------------------+
-CWinControl::CWinControl(void) {
+CGuiControl::CGuiControl(void) {
 
    MainWindowWidth = ScaledPixel(383); //Main Window Width
    MainFont_S      = ScaledFont(10);
@@ -136,7 +136,7 @@ CWinControl::CWinControl(void) {
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Manual Version of Constructor      |
 //+------------------------------------------------------------------+
-void CWinControl::ResetContructor(void) {
+void CGuiControl::ResetContructor(void) {
 
    MainWindowWidth = ScaledPixel(383); //Main Window Width
    MainFont_S      = ScaledFont(10);
@@ -151,7 +151,7 @@ void CWinControl::ResetContructor(void) {
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Scaled Font                        |
 //+------------------------------------------------------------------+
-int CWinControl::ScaledFont(int i) {
+int CGuiControl::ScaledFont(int i) {
 
    int standard = 96;
    int DPI = TerminalInfoInteger(TERMINAL_SCREEN_DPI);
@@ -161,7 +161,7 @@ int CWinControl::ScaledFont(int i) {
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Scaled Pixel                       |
 //+------------------------------------------------------------------+
-int CWinControl::ScaledPixel(int i) {
+int CGuiControl::ScaledPixel(int i) {
    
    return int(i*SCALE);
 }
@@ -169,7 +169,7 @@ int CWinControl::ScaledPixel(int i) {
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Minimise                           |
 //+------------------------------------------------------------------+
-void CWinControl::WindowMin(CLabel &copyRights,
+void CGuiControl::WindowMin(CLabel &copyRights,
                             CButton &tabPSC,
                             CButton &tabRisk,
                             CAppDialog &mainWindow) {
@@ -185,7 +185,7 @@ void CWinControl::WindowMin(CLabel &copyRights,
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Is it Minimised                    |
 //+------------------------------------------------------------------+
-bool CWinControl::IsMin(CLabel &copyRights) {
+bool CGuiControl::IsMin(CLabel &copyRights) {
 
    if (copyRights.IsVisible() == false) return true;
    return false; 
@@ -194,7 +194,7 @@ bool CWinControl::IsMin(CLabel &copyRights) {
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Which Tab is open                  |
 //+------------------------------------------------------------------+
-int CWinControl::Check_Tab(CLabel &riskPerTrade, CLabel &maxInt) {
+int CGuiControl::Check_Tab(CLabel &riskPerTrade, CLabel &maxInt) {
 
    static int TAB;
    

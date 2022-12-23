@@ -1,8 +1,8 @@
 //+--------------------+
 //| Preprocessor Check |
 //+--------------------+
-#ifndef CTotalExposure_
-   #define CTotalExposure_
+#ifndef CSumTradesExposure_
+   #define CSumTradesExposure_
 
 //+------------------------------------------------------------------+
 //| Include MT4 Libraries & Resources                                |
@@ -12,12 +12,12 @@
 //+------------------------------------------------------------------+
 //| Include Custom Libraries                                         |
 //+------------------------------------------------------------------+
-#include "CWinControl.mqh"
+#include "CGuiControl.mqh"
 
 //+------------------------------------------------------------------+
 //| Total Exposure Custom Class                                      |
 //+------------------------------------------------------------------+
-class CTotalExposure {
+class CSumTradesExposure {
 
 private:      
 
@@ -33,7 +33,7 @@ public:
    //------------------------------
    //Constructor and Destructor
    //------------------------------
-   CTotalExposure();
+   CSumTradesExposure();
    
    //------------------------------
    //Accessor Functions
@@ -56,7 +56,7 @@ public:
    //------------------------------
    //Member Functions
    //------------------------------
-   void TotalExpAccAndCurr(CWinControl &windowControl,
+   void TotalExpAccAndCurr(CGuiControl &windowControl,
                            CEdit &totalExposure);
    void CheckTrade_withNoSL();
    void Total_PosVal(CEdit &totalPositionValue);
@@ -66,7 +66,7 @@ public:
 //+------------------------------------------------------------------+
 //| Total Exposure Custom Class - Constructor                        |
 //+------------------------------------------------------------------+
-CTotalExposure::CTotalExposure(void) {
+CSumTradesExposure::CSumTradesExposure(void) {
 
    TotalTrades = 0.0;
    TotalLots   = 0.0;
@@ -78,7 +78,7 @@ CTotalExposure::CTotalExposure(void) {
 //+------------------------------------------------------------------+
 //| Total Exposure Custom Class - Check for short Trade with no SL   |
 //+------------------------------------------------------------------+
-void CTotalExposure::CheckTrade_withNoSL(void) {
+void CSumTradesExposure::CheckTrade_withNoSL(void) {
 
    for(int i=0; i < OrdersTotal(); i++) {
    
@@ -96,7 +96,7 @@ void CTotalExposure::CheckTrade_withNoSL(void) {
 //+------------------------------------------------------------------+
 //| Total Exposure Custom Class - Calculate Risk                     |
 //+------------------------------------------------------------------+
-void CTotalExposure::TotalExpAccAndCurr(CWinControl &windowControl,
+void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &windowControl,
                                         CEdit &totalExposure) {
 
    double Total_Currency_Exposure = 0.0;
@@ -205,7 +205,7 @@ void CTotalExposure::TotalExpAccAndCurr(CWinControl &windowControl,
 //+------------------------------------------------------------------+
 //| Total Exposure Custom Class - Total Value of Position Size       |
 //+------------------------------------------------------------------+
-void CTotalExposure::Total_PosVal(CEdit &totalPositionValue) {
+void CSumTradesExposure::Total_PosVal(CEdit &totalPositionValue) {
 
    double PosVal_= 0.0;
    double singularPosVal = 0.0;
@@ -271,7 +271,7 @@ void CTotalExposure::Total_PosVal(CEdit &totalPositionValue) {
 //+------------------------------------------------------------------+
 //| Total Exposure Custom Class - Is new Trade                       |
 //+------------------------------------------------------------------+
-bool CTotalExposure::IsNewTrade() {
+bool CSumTradesExposure::IsNewTrade() {
 
    static int TradesOpen = -1; 
    if (OrdersTotal() == TradesOpen) return false;
