@@ -24,11 +24,6 @@ enum Window {PositionSizeCalculator,
 class CGuiControl {
 
 private:  
-
-   // ApplicationTabs
-   SMainWindow             mainWindow;
-   SPositionSizeCalculator positionSizeCalculator;
-   SRiskExposure           riskExposure;
    
    // Fields
    int    MainWindowWidth;
@@ -52,6 +47,13 @@ private:
    Window CopyFirstWindow;
     
 public:
+
+   //------------------------------
+   // ApplicationTabs
+   //------------------------------
+   SMainWindow             mainWindow;
+   SPositionSizeCalculator positionSizeCalculator;
+   SRiskExposure           riskExposure;
 
    //------------------------------
    //Constructor and Destructor
@@ -218,6 +220,177 @@ int CGuiControl::Check_Tab(CLabel &riskPerTrade, CLabel &maxInt) {
    }
    return TAB;
 } 
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Maximise                           |
+//+------------------------------------------------------------------+
+void CGuiControl::WindowMax(void) {
+
+   if(OPEN_TAB == 1) {
+      mainWindow.windowDialog.Height(PSC_Height);
+      Show_PSC();
+      mainWindow.copyRightsLabel.Show(); 
+      positionSizeCalculator.button.tabPSC.Show();
+      riskExposure.button.tabRiskExposure.Show();
+   }
+   
+   if(OPEN_TAB == 2) {
+      mainWindow.windowDialog.Height(RE_Height);
+      Show_RE();
+      mainWindow.copyRightsLabel.Show();
+      mainWindow.copyRightsLabel.Show(); 
+      positionSizeCalculator.button.tabPSC.Show();
+      riskExposure.button.tabRiskExposure.Show();
+   }
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Hide RE                            |
+//+------------------------------------------------------------------+
+void CGuiControl::Hide_RE(void) {
+
+   riskExposure.label.maxInt.Hide();
+   riskExposure.label.maxTrades.Hide();
+   riskExposure.edit.maxTrades.Hide();
+   riskExposure.bmpButton.maxTrades.Hide();
+   riskExposure.label.maxLots.Hide();
+   riskExposure.edit.maxLots.Hide();
+   riskExposure.bmpButton.maxLots.Hide();
+   riskExposure.label.maxExposure.Hide();
+   riskExposure.edit.maxExposure.Hide();
+   riskExposure.bmpButton.maxExposure.Hide();
+   riskExposure.label.maxPositionValue.Hide();
+   riskExposure.edit.maxPositionValue.Hide();
+   riskExposure.bmpButton.maxPositionValue.Hide();
+   riskExposure.label.totalExposure_int.Hide();
+   riskExposure.button.currencyRiskSettings.Hide();
+   riskExposure.button.percentageRiskSettings.Hide();
+   
+   riskExposure.label.totalTrades.Hide();
+   riskExposure.edit.totalTrades.Hide();
+   riskExposure.label.totalLots.Hide();
+   riskExposure.edit.totalLots.Hide();
+   riskExposure.label.totalExposure.Hide();
+   riskExposure.edit.totalExposure.Hide();
+   riskExposure.label.totalPositionValue.Hide();
+   riskExposure.edit.totalPositionValue.Hide();
+   riskExposure.button.currencyTotalExposure.Hide();
+   riskExposure.button.percentageTotalExposure.Hide();
+   
+   riskExposure.label.tradeSelect.Hide();
+   riskExposure.comboBox.tradeExposure.Hide();
+   riskExposure.label.tradeExposure.Hide();
+   riskExposure.label.tradeSelect_int.Hide();
+   riskExposure.edit.tradeExposure.Hide();
+   riskExposure.label.tradePositionValue.Hide();
+   riskExposure.edit.tradePositionValue.Hide();
+   riskExposure.button.currencyIndivualTradeExposure.Hide();
+   riskExposure.button.percentageIndivualTradeExposure.Hide();
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Show RE                            |
+//+------------------------------------------------------------------+
+void CGuiControl::Show_RE(void) {
+
+   riskExposure.label.maxInt.Show();
+   riskExposure.label.maxTrades.Show();
+   riskExposure.edit.maxTrades.Show();
+   riskExposure.bmpButton.maxTrades.Show();
+   riskExposure.label.maxLots.Show();
+   riskExposure.edit.maxLots.Show();
+   riskExposure.bmpButton.maxLots.Show();
+   riskExposure.label.maxExposure.Show();
+   riskExposure.edit.maxExposure.Show();
+   riskExposure.bmpButton.maxExposure.Show();
+   riskExposure.label.maxPositionValue.Show();
+   riskExposure.edit.maxPositionValue.Show();
+   riskExposure.bmpButton.maxPositionValue.Show();
+   riskExposure.label.totalExposure_int.Show();
+   riskExposure.button.currencyRiskSettings.Show();
+   riskExposure.button.percentageRiskSettings.Show();
+   
+   riskExposure.label.totalTrades.Show();
+   riskExposure.edit.totalTrades.Show();
+   riskExposure.label.totalLots.Show();
+   riskExposure.edit.totalLots.Show();
+   riskExposure.label.totalExposure.Show();
+   riskExposure.edit.totalExposure.Show();
+   riskExposure.label.totalPositionValue.Show();
+   riskExposure.edit.totalPositionValue.Show();
+   riskExposure.button.currencyTotalExposure.Show();
+   riskExposure.button.percentageTotalExposure.Show();
+   
+   riskExposure.label.tradeSelect.Show();
+   riskExposure.comboBox.tradeExposure.Show();
+   riskExposure.label.tradeExposure.Show();
+   riskExposure.label.tradeSelect_int.Show();
+   riskExposure.edit.tradeExposure.Show();
+   riskExposure.label.tradePositionValue.Show();
+   riskExposure.edit.tradePositionValue.Show();
+   riskExposure.button.currencyIndivualTradeExposure.Show();
+   riskExposure.button.percentageIndivualTradeExposure.Show();
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Hide positionSizeCalculator        |
+//+------------------------------------------------------------------+
+void CGuiControl::Hide_PSC(void) {
+
+   positionSizeCalculator.label.riskPerTrade.Hide();
+   positionSizeCalculator.edit.riskPerTrade.Hide();
+   positionSizeCalculator.label.entryPrice.Hide();
+   positionSizeCalculator.edit.entryPrice.Hide();
+   positionSizeCalculator.button.priceCustom.Hide();
+   positionSizeCalculator.button.priceBid.Hide();
+   positionSizeCalculator.button.priceAsk.Hide();
+   positionSizeCalculator.label.stopLoss.Hide();
+   positionSizeCalculator.edit.stopLoss.Hide();
+   positionSizeCalculator.button.calculate.Hide();
+   positionSizeCalculator.label.riskInPoints.Hide();
+   positionSizeCalculator.edit.riskInPoints.Hide();
+   positionSizeCalculator.label.riskInCurrency.Hide();
+   positionSizeCalculator.edit.riskInCurrency.Hide();
+   positionSizeCalculator.label.contractSize.Hide();
+   positionSizeCalculator.edit.contractSize.Hide();
+   positionSizeCalculator.label.totalUnits.Hide();
+   positionSizeCalculator.edit.totalLots.Hide();
+   positionSizeCalculator.label.totalLots.Hide();
+   positionSizeCalculator.edit.totalLots.Hide();
+   positionSizeCalculator.label.positionValue.Hide();
+   positionSizeCalculator.edit.positionValue.Hide();
+}
+
+//+------------------------------------------------------------------+
+//| Window Control Custom Class - Show positionSizeCalculator        |
+//+------------------------------------------------------------------+
+void CGuiControl::Show_PSC(void) {
+
+   positionSizeCalculator.label.riskPerTrade.Show();
+   positionSizeCalculator.edit.riskPerTrade.Show();
+   positionSizeCalculator.label.entryPrice.Show();
+   positionSizeCalculator.edit.entryPrice.Show();
+   positionSizeCalculator.button.priceCustom.Show();
+   positionSizeCalculator.button.priceBid.Show();
+   positionSizeCalculator.button.priceAsk.Show();
+   positionSizeCalculator.label.stopLoss.Show();
+   positionSizeCalculator.edit.stopLoss.Show();
+   positionSizeCalculator.button.calculate.Show();
+   positionSizeCalculator.label.riskInPoints.Show();
+   positionSizeCalculator.edit.riskInPoints.Show();
+   positionSizeCalculator.label.riskInCurrency.Show();
+   positionSizeCalculator.edit.riskInCurrency.Show();
+   positionSizeCalculator.label.contractSize.Show();
+   positionSizeCalculator.edit.contractSize.Show();
+   positionSizeCalculator.label.totalUnits.Show();
+   positionSizeCalculator.edit.totalLots.Show();
+   positionSizeCalculator.label.totalLots.Show();
+   positionSizeCalculator.edit.totalLots.Show();
+   positionSizeCalculator.label.positionValue.Show();
+   positionSizeCalculator.edit.positionValue.Show();
+}
+
+
 
 //+--------------------+
 //| Preprocessor Check |

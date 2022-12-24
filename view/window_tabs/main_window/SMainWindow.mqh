@@ -9,7 +9,7 @@
 //+------------------------------------------------------------------+
 struct SMainWindow {
 
-   CAppDialog MainWindow;
-   CLabel     CopyRights;
-   CBmpButton Min_Max;
+   CAppDialog windowDialog;
+   CLabel     copyRightsLabel;
+   CBmpButton minMaxBmpButton;
 };
