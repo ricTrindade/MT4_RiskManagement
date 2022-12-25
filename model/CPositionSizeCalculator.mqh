@@ -5,18 +5,9 @@
    #define CPositionSizeCalculator_
 
 //+------------------------------------------------------------------+
-//| Include MT4 Libraries & Resources                                |
+//| Include Resources                                                |
 //+------------------------------------------------------------------+
-
-//view\PreExistingLibraries\MT4Libraries.mqh
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\Pre_existing_libraries\MT4Libraries.mqh"
-
-
-//+------------------------------------------------------------------+
-//| Include Custom Libraries                                         |
-//+------------------------------------------------------------------+
-
-//view\CGuiControl
+//CGuiControl.mqh
 #include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh"
 
 
@@ -61,16 +52,9 @@ public:
    //------------------------------
    //Member Functions
    //------------------------------
-   bool Calculate_Lot(CEdit &Entry,
-                      CEdit &SL,
-                      CEdit &Risk_Per_Trade,
-                      CEdit &Risk_in_Points,
-                      CEdit &Risk_in_Currency,
-                      CEdit &Total_Units,
-                      CEdit &Total_Lots);
-                      
-   void Calculate_PosVal (CEdit &positionValue);
-   int  track_BidAsk     (CGuiControl &windowControl);
+   bool Calculate_Lot    (CGuiControl &gui);      
+   void Calculate_PosVal (CGuiControl &gui);
+   int  track_BidAsk     (CGuiControl &gui);
 };
 
 //+------------------------------------------------------------------+
@@ -88,18 +72,12 @@ CPositionSizeCalculator::CPositionSizeCalculator(void) {
 //+------------------------------------------------------------------+
 //| Position Size Calculator Custom Class - Calculate Lot            |
 //+------------------------------------------------------------------+
-bool CPositionSizeCalculator::Calculate_Lot(CEdit &Entry,
-                               CEdit &StopLoss,
-                               CEdit &Risk_Per_Trade,
-                               CEdit &Risk_in_Points,
-                               CEdit &Risk_in_Currency,
-                               CEdit &Total_Units,
-                               CEdit &Total_Lots) {
+bool CPositionSizeCalculator::Calculate_Lot(CGuiControl &gui) {
 
    // General Variables
-   double EntryPrice = StrToDouble(Entry.Text());
-   double ExitPrice  = StrToDouble(StopLoss.Text());
-   double Risk       = StrToDouble(Risk_Per_Trade.Text());
+   double EntryPrice = StrToDouble(gui.positionSizeCalculator.edit.entryPrice.Text()); 
+   double ExitPrice  = StrToDouble(gui.positionSizeCalculator.edit.stopLoss.Text());
+   double Risk       = StrToDouble(gui.positionSizeCalculator.edit.riskPerTrade.Text());
    
    if (EntryPrice <= 0 ||
        ExitPrice  <= 0 ||  
@@ -170,10 +148,10 @@ bool CPositionSizeCalculator::Calculate_Lot(CEdit &Entry,
       Print("PSC.Lotsize - Conversion Pair: "+AccountCurr + Profit_+" at "+DoubleToStr(ConversitionRate,Digits));
       
       //Populate Edit Boxes
-      Risk_in_Points.Text(DoubleToStr(RiskPoints,0));
-      Risk_in_Currency.Text(DoubleToStr(RiskCurr,2)+" "+AccountCurrency());
-      Total_Units.Text(DoubleToStr(TotalUnits,2));
-      Total_Lots.Text(DoubleToStr(TotalLots,2));
+      gui.positionSizeCalculator.edit.riskInPoints.Text(DoubleToStr(RiskPoints,0));
+      gui.positionSizeCalculator.edit.riskInCurrency.Text(DoubleToStr(RiskCurr,2)+" "+AccountCurrency());
+      gui.positionSizeCalculator.edit.totalUnits.Text(DoubleToStr(TotalUnits,2));
+      gui.positionSizeCalculator.edit.totalLots.Text(DoubleToStr(TotalLots,2));
       
       return true;
    }   
@@ -184,14 +162,14 @@ bool CPositionSizeCalculator::Calculate_Lot(CEdit &Entry,
 //+------------------------------------------------------------------+
 //| Position Size Calculator Custom Class - Track Bid Ask Prices     |
 //+------------------------------------------------------------------+
-int CPositionSizeCalculator::track_BidAsk(CGuiControl &windowControl) {
+int CPositionSizeCalculator::track_BidAsk(CGuiControl &gui) {
 
    static int check = 0;
    
-   if(windowControl.GetOBJ_CONTROL() == "Custom")    check = 1;
-   if(windowControl.GetOBJ_CONTROL() == "Bid")       check = 2;
-   if(windowControl.GetOBJ_CONTROL() == "Ask")       check = 3;
-   if(windowControl.GetOBJ_CONTROL() == "Calculate") check = 4;
+   if(gui.GetOBJ_CONTROL() == "Custom")    check = 1;
+   if(gui.GetOBJ_CONTROL() == "Bid")       check = 2;
+   if(gui.GetOBJ_CONTROL() == "Ask")       check = 3;
+   if(gui.GetOBJ_CONTROL() == "Calculate") check = 4;
    
    return check;
 }
@@ -199,7 +177,7 @@ int CPositionSizeCalculator::track_BidAsk(CGuiControl &windowControl) {
 //+------------------------------------------------------------------+
 //| Position Size Calculator Custom Class - Calculate PosVal         |
 //+------------------------------------------------------------------+
-void CPositionSizeCalculator::Calculate_PosVal(CEdit &positionValue) {
+void CPositionSizeCalculator::Calculate_PosVal(CGuiControl &gui) {
 
    //Conversion
    string Base_         = SymbolInfoString(Symbol(), SYMBOL_CURRENCY_BASE);
@@ -248,7 +226,7 @@ void CPositionSizeCalculator::Calculate_PosVal(CEdit &positionValue) {
    Print("PSC.Exposure - Conversion Pair: "+Base_ + AccountCurrency()+" at "+DoubleToStr(ConversitionRate_,Digits));
    
    //Populate Edit Box
-   positionValue.Text(DoubleToStr(TotalPosVal,2)+" "+AccountCurrency());
+   gui.positionSizeCalculator.edit.positionValue.Text(DoubleToStr(TotalPosVal,2)+" "+AccountCurrency());
 }
 
 //+--------------------+

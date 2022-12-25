@@ -107,13 +107,10 @@ public:
    //Member Functions
    //------------------------------
    void ResetContructor();
-   void WindowMin(CLabel &copyRights,
-                  CButton &tabPSC,
-                  CButton &tabRisk,
-                  CAppDialog &mainWindow);
-   bool IsMin(CLabel &copyRights);
+   void WindowMin();
+   bool IsMin();
    void WindowMax();
-   int  Check_Tab(CLabel &riskPerTrade, CLabel &maxInt);
+   int  Check_Tab();
    int  ScaledFont(int i);
    int  ScaledPixel(int i);
    void Show_PSC();
@@ -181,40 +178,37 @@ int CGuiControl::ScaledPixel(int i) {
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Minimise                           |
 //+------------------------------------------------------------------+
-void CGuiControl::WindowMin(CLabel &copyRights,
-                            CButton &tabPSC,
-                            CButton &tabRisk,
-                            CAppDialog &mainWindows) {
+void CGuiControl::WindowMin(void) {
 
-   copyRights.Hide();
-   tabPSC.Hide();
-   tabRisk.Hide();
+   mainWindow.copyRightsLabel.Hide();
+   positionSizeCalculator.button.tabPSC.Hide();
+   riskExposure.button.tabRiskExposure.Hide();
    Hide_PSC();
    Hide_RE();
-   mainWindows.Height(30);
+   mainWindow.windowDialog.Height(30);
 }
 
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Is it Minimised                    |
 //+------------------------------------------------------------------+
-bool CGuiControl::IsMin(CLabel &copyRights) {
+bool CGuiControl::IsMin(void) {
 
-   if (copyRights.IsVisible() == false) return true;
+   if (mainWindow.copyRightsLabel.IsVisible() == false) return true;
    return false; 
 }
 
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Which Tab is open                  |
 //+------------------------------------------------------------------+
-int CGuiControl::Check_Tab(CLabel &riskPerTrade, CLabel &maxInt) {
+int CGuiControl::Check_Tab(void) {
 
    static int TAB;
    
-   if (riskPerTrade.IsVisible() == true) {
+   if (positionSizeCalculator.label.riskPerTrade.IsVisible() == true) {
       TAB = 1;
       return TAB;
    }
-   if (maxInt.IsVisible() == true) {
+   if (riskExposure.label.maxInt.IsVisible() == true) {
       TAB = 2;
       return TAB;
    }

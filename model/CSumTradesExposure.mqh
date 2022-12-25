@@ -5,18 +5,9 @@
    #define CSumTradesExposure_
 
 //+------------------------------------------------------------------+
-//| Include MT4 Libraries & Resources                                |
+//| Include Resources                                                |
 //+------------------------------------------------------------------+
-
-//view\PreExistingLibraries\MT4Libraries.mqh
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\pre_existing_libraries\MT4Libraries.mqh"
-
-
-//+------------------------------------------------------------------+
-//| Include Custom Libraries                                         |
-//+------------------------------------------------------------------+
-
-//view\CGuiControl
+//CGuiControl.mqh
 #include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh"
 
 
@@ -62,10 +53,9 @@ public:
    //------------------------------
    //Member Functions
    //------------------------------
-   void TotalExpAccAndCurr(CGuiControl &windowControl,
-                           CEdit &totalExposure);
+   void TotalExpAccAndCurr(CGuiControl &gui);
    void CheckTrade_withNoSL();
-   void Total_PosVal(CEdit &totalPositionValue);
+   void Total_PosVal(CGuiControl &gui);
    bool IsNewTrade();
 };
 
@@ -102,8 +92,7 @@ void CSumTradesExposure::CheckTrade_withNoSL(void) {
 //+------------------------------------------------------------------+
 //| Total Exposure Custom Class - Calculate Risk                     |
 //+------------------------------------------------------------------+
-void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &windowControl,
-                                        CEdit &totalExposure) {
+void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &gui) {
 
    double Total_Currency_Exposure = 0.0;
    
@@ -190,28 +179,28 @@ void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &windowControl,
    //Display Resulst
    if(TotalExpAcc == -10 || TotalExpCur == -10) {
    
-      if(windowControl.GetTE() == 1) {
-         totalExposure.FontSize(windowControl.GetsubFont_S());
-         totalExposure.Text("Use SL in All Trades!");
+      if(gui.GetTE() == 1) {
+         gui.riskExposure.edit.totalExposure.FontSize(gui.GetsubFont_S());
+         gui.riskExposure.edit.totalExposure.Text("Use SL in All Trades!");
       }
       
-      if(windowControl.GetTE() == 2) {
-         totalExposure.FontSize(windowControl.GetsubFont_S());
-         totalExposure.Text("Use SL in All Trades!");
+      if(gui.GetTE() == 2) {
+         gui.riskExposure.edit.totalExposure.FontSize(gui.GetsubFont_S());
+         gui.riskExposure.edit.totalExposure.Text("Use SL in All Trades!");
       }
    }
    
    else {
-      totalExposure.FontSize(windowControl.GetMainFont_S());
-      if(windowControl.GetTE() == 1) totalExposure.Text(DoubleToStr(TotalExpAcc,2)+" %");
-      if(windowControl.GetTE() == 2) totalExposure.Text(DoubleToStr(TotalExpCur,2)+" " +AccountCurrency());
+      gui.riskExposure.edit.totalExposure.FontSize(gui.GetMainFont_S());
+      if(gui.GetTE() == 1) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpAcc,2)+" %");
+      if(gui.GetTE() == 2) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpCur,2)+" " +AccountCurrency());
    }   
 }
 
 //+------------------------------------------------------------------+
 //| Total Exposure Custom Class - Total Value of Position Size       |
 //+------------------------------------------------------------------+
-void CSumTradesExposure::Total_PosVal(CEdit &totalPositionValue) {
+void CSumTradesExposure::Total_PosVal(CGuiControl &gui) {
 
    double PosVal_= 0.0;
    double singularPosVal = 0.0;
@@ -271,7 +260,7 @@ void CSumTradesExposure::Total_PosVal(CEdit &totalPositionValue) {
       PosVal_+=singularPosVal;
    }
    TotalPosVal = PosVal_;
-   totalPositionValue.Text(DoubleToStr(TotalPosVal,2) +" "+AccountCurrency());
+   gui.riskExposure.edit.totalPositionValue.Text(DoubleToStr(TotalPosVal,2) +" "+AccountCurrency());
 }
 
 //+------------------------------------------------------------------+
