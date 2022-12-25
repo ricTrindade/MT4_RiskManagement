@@ -14,9 +14,12 @@
 //+------------------------------------------------------------------+
 //| Window State Enum                                                |
 //+------------------------------------------------------------------+
-enum Window {PositionSizeCalculator, 
-             RiskExposure, 
-             Minimised}; 
+enum Window {
+
+   PositionSizeCalculator, 
+   RiskExposure, 
+   Minimised
+}; 
 
 //+------------------------------------------------------------------+
 //| Window Control Custom Class                                      |
