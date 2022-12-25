@@ -5,11 +5,20 @@
 #include <Controls/Label.mqh>
 
 //+------------------------------------------------------------------+
-//| Main Window tab Structure                                        |
+//| Main Window tab Class                                            |
 //+------------------------------------------------------------------+
-struct SMainWindow {
+class CMainWindow {
 
-   CAppDialog windowDialog;
-   CLabel     copyRightsLabel;
-   CBmpButton minMaxBmpButton;
+public:
+
+   CAppDialog *windowDialog;
+   CLabel     *copyRightsLabel;
+   CBmpButton *minMaxBmpButton;
+   
+   CMainWindow() {
+      
+      windowDialog    = new CAppDialog();
+      copyRightsLabel = new CLabel();
+      minMaxBmpButton = new CBmpButton();
+   }
 };

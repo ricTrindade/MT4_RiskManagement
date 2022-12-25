@@ -1,17 +1,19 @@
 //+------------------------------------------------------------------+
 //| Component Files                                                  |
 //+------------------------------------------------------------------+
-#include <Controls/Button.mqh> 
+#include <Controls/ComboBox.mqh>  
 
 //+------------------------------------------------------------------+
-//| Position Size Calculator Buttons Structure                       |
+//| Risk Exposure ComboBox Class                                 |
 //+------------------------------------------------------------------+
-struct SButtonPSC {
+class CComboBoxRE {
 
-   CButton tabPSC;
-   CButton calculate;
-   CButton priceCustom;
-   CButton priceBid;
-   CButton priceAsk;
+public :
+
+   CComboBox *tradeExposure;
+   
+   CComboBoxRE() {
+   
+      tradeExposure = new CComboBox();
+   }
 };
-
