@@ -1,16 +1,16 @@
 //+------------------------------------------------------------------+
 //| Component Files                                                  |
 //+------------------------------------------------------------------+
-#include "components\SButtonPSC.mqh"
-#include "components\SEditPSC.mqh"
-#include "components\SLabelPSC.mqh"
+#include "components\CButtonPSC.mqh"
+#include "components\CEditPSC.mqh"
+#include "components\CLabelPSC.mqh"
 
 //+------------------------------------------------------------------+
 //| Position Size Calculator tab Structure                           |
 //+------------------------------------------------------------------+
 struct SPositionSizeCalculator {
 
-   SButtonPSC button;
-   SLabelPSC  label;
-   SEditPSC   edit;
+   CButtonPSC button;
+   CLabelPSC  label;
+   CEditPSC   edit;
 };
