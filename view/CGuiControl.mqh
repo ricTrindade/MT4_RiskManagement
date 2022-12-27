@@ -7,16 +7,19 @@
 //+------------------------------------------------------------------+
 //| Include MT4 Libraries & Resources                                |
 //+------------------------------------------------------------------+
-#include "\window_tabs\main_window\SMainWindow.mqh"
+#include "\window_tabs\main_window\CMainWindow.mqh"
 #include "\window_tabs\position_size_calculator\SPositionSizeCalculator.mqh"
 #include "\window_tabs\risk_exposure\SRiskExposure.mqh"
 
 //+------------------------------------------------------------------+
 //| Window State Enum                                                |
 //+------------------------------------------------------------------+
-enum Window {PositionSizeCalculator, 
-             RiskExposure, 
-             Minimised}; 
+enum Window {
+
+   PositionSizeCalculator, 
+   RiskExposure, 
+   Minimised
+}; 
 
 //+------------------------------------------------------------------+
 //| Window Control Custom Class                                      |
@@ -51,7 +54,7 @@ public:
    //------------------------------
    // ApplicationTabs
    //------------------------------
-   SMainWindow             mainWindow;
+   CMainWindow             mainWindow;
    SPositionSizeCalculator positionSizeCalculator;
    SRiskExposure           riskExposure;
 
