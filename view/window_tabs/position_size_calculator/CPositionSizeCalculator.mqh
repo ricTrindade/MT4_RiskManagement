@@ -1,35 +1,37 @@
 //+------------------------------------------------------------------+
 //| Component Files                                                  |
 //+------------------------------------------------------------------+
-#include <Controls/Button.mqh> 
+#include "components\CButtonPSC.mqh"
+#include "components\CEditPSC.mqh"
+#include "components\CLabelPSC.mqh"
 
 //+------------------------------------------------------------------+
-//| Position Size Calculator Buttons class                           |
+//| Position Size Calculator tab class                               |
 //+------------------------------------------------------------------+
-class CButtonPSC {
+class CPositionSizeCalculatorTab {
+
+   int height;
+   int crShift;
 
 public:
 
-   // Components 
-   CButton *tabPSC;
-   CButton *calculate;
-   CButton *priceCustom;
-   CButton *priceBid;
-   CButton *priceAsk;
+   // Components
+   CButtonPSC *button;
+   CLabelPSC  *label;
+   CEditPSC   *edit;
    
    // Constructor
-   CButtonPSC();
+   CPositionSizeCalculatorTab();
 };
 
 //+------------------------------------------------------------------+
 //| Constructor                                                      |
 //+------------------------------------------------------------------+
-CButtonPSC::CButtonPSC() {
-   
-   tabPSC      = new CButton();
-   calculate   = new CButton();
-   priceCustom = new CButton();
-   priceBid    = new CButton();
-   priceAsk    = new CButton();
+CPositionSizeCalculatorTab::CPositionSizeCalculatorTab() {
+
+   button = new CButtonPSC();
+   label  = new CLabelPSC();
+   edit   = new CEditPSC();
 }
+
 

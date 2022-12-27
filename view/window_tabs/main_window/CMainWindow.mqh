@@ -9,16 +9,28 @@
 //+------------------------------------------------------------------+
 class CMainWindow {
 
+   int    width;
+   int    mainFont_S;      
+   int    subFont_S;
+   
 public:
 
+   // Components 
    CAppDialog *windowDialog;
    CLabel     *copyRightsLabel;
    CBmpButton *minMaxBmpButton;
    
-   CMainWindow() {
-      
-      windowDialog    = new CAppDialog();
-      copyRightsLabel = new CLabel();
-      minMaxBmpButton = new CBmpButton();
-   }
+   // Constructor
+   CMainWindow();
 };
+
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CMainWindow::CMainWindow() {
+
+   windowDialog    = new CAppDialog();
+   copyRightsLabel = new CLabel();
+   minMaxBmpButton = new CBmpButton();
+}
+

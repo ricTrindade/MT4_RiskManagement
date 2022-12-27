@@ -8,8 +8,8 @@
 //| Include MT4 Libraries & Resources                                |
 //+------------------------------------------------------------------+
 #include "\window_tabs\main_window\CMainWindow.mqh"
-#include "\window_tabs\position_size_calculator\SPositionSizeCalculator.mqh"
-#include "\window_tabs\risk_exposure\SRiskExposure.mqh"
+#include "\window_tabs\position_size_calculator\CPositionSizeCalculator.mqh"
+#include "\window_tabs\risk_exposure\CRiskExposure.mqh"
 
 //+------------------------------------------------------------------+
 //| Window State Enum                                                |
@@ -28,25 +28,10 @@ class CGuiControl {
 
 private:  
    
-   // Fields
-   int    MainWindowWidth;
-   int    MainFont_S;      
-   int    subFont_S;      
-   int    PSC_Height;
-   int    RE_Height;     
-   int    PSC_CR_Shift;  
-   int    RE_CR_Shift;  
    double SCALE; 
    double CopyScale;
-   
-   /*Currency or Account Button*/
-   int RS;
-   int TE;
-   int ITE;
-   
    string OBJ_CONTROL;
    int    OPEN_TAB;
-   
    Window CopyFirstWindow;
     
 public:
@@ -54,9 +39,9 @@ public:
    //------------------------------
    // ApplicationTabs
    //------------------------------
-   CMainWindow             mainWindow;
-   SPositionSizeCalculator positionSizeCalculator;
-   SRiskExposure           riskExposure;
+   CMainWindow                mainWindow;
+   CPositionSizeCalculatorTab positionSizeCalculator;
+   CRiskExposure              riskExposure;
 
    //------------------------------
    //Constructor and Destructor
