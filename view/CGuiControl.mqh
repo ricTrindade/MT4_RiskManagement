@@ -41,9 +41,9 @@ public:
    //------------------------------
    // ApplicationTabs
    //------------------------------
-   CMainWindow                mainWindow;
-   CPositionSizeCalculatorTab positionSizeCalculator;
-   CRiskExposure              riskExposure;
+   CMainWindow                *mainWindow;
+   CPositionSizeCalculatorTab *positionSizeCalculator;
+   CRiskExposure              *riskExposure;
 
    //------------------------------
    //Constructor and Destructor
@@ -55,7 +55,7 @@ public:
    //------------------------------
    int    GetMainFont_S()      {return mainFont_S;}
    int    GetsubFont_S()       {return subFont_S;}
-   int    GetOPEN_TAB()        {return OPEN_TAB;}
+   Window GetOPEN_TAB()        {return OPEN_TAB;}
    string GetOBJ_CONTROL()     {return OBJ_CONTROL;}
    Window GetCopyFirstWindow() {return CopyFirstWindow;}
    double GetCopyScale()       {return CopyScale;}
@@ -105,6 +105,10 @@ CGuiControl::CGuiControl(void) {
 
    OPEN_TAB = 2;
    CopyFirstWindow = -1;
+   
+   mainWindow             = new CMainWindow();
+   positionSizeCalculator = new CPositionSizeCalculatorTab();
+   riskExposure           = new CRiskExposure();
 }
 
 //+------------------------------------------------------------------+
