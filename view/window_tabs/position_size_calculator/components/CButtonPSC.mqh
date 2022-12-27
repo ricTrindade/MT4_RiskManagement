@@ -24,7 +24,7 @@ public:
 //+------------------------------------------------------------------+
 //| Constructor                                                      |
 //+------------------------------------------------------------------+
-CButtonPSC::CButtonPSC() {
+CButtonPSC::CButtonPSC(void) {
    
    tabPSC      = new CButton();
    calculate   = new CButton();

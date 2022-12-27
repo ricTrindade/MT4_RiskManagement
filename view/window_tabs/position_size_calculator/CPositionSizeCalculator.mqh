@@ -10,10 +10,10 @@
 //+------------------------------------------------------------------+
 class CPositionSizeCalculatorTab {
 
+public:
+
    int height;
    int crShift;
-
-public:
 
    // Components
    CButtonPSC *button;
@@ -22,6 +22,10 @@ public:
    
    // Constructor
    CPositionSizeCalculatorTab();
+   
+   // Member Functions
+   void show();
+   void hide();
 };
 
 //+------------------------------------------------------------------+
@@ -34,4 +38,61 @@ CPositionSizeCalculatorTab::CPositionSizeCalculatorTab() {
    edit   = new CEditPSC();
 }
 
+//+------------------------------------------------------------------+
+//| Show_PSC                                                         |
+//+------------------------------------------------------------------+
+void CPositionSizeCalculatorTab::show(void) {
+
+   label.riskPerTrade.Show();
+   edit.riskPerTrade.Show();
+   label.entryPrice.Show();
+   edit.entryPrice.Show();
+   button.priceCustom.Show();
+   button.priceBid.Show();
+   button.priceAsk.Show();
+   label.stopLoss.Show();
+   edit.stopLoss.Show();
+   button.calculate.Show();
+   label.riskInPoints.Show();
+   edit.riskInPoints.Show();
+   label.riskInCurrency.Show();
+   edit.riskInCurrency.Show();
+   label.contractSize.Show();
+   edit.contractSize.Show();
+   label.totalUnits.Show();
+   edit.totalLots.Show();
+   label.totalLots.Show();
+   edit.totalLots.Show();
+   label.positionValue.Show();
+   edit.positionValue.Show();
+}
+
+//+------------------------------------------------------------------+
+//| Hide_PSC                                                         |
+//+------------------------------------------------------------------+
+void CPositionSizeCalculatorTab::hide(void) {
+
+   label.riskPerTrade.Hide();
+   edit.riskPerTrade.Hide();
+   label.entryPrice.Hide();
+   edit.entryPrice.Hide();
+   button.priceCustom.Hide();
+   button.priceBid.Hide();
+   button.priceAsk.Hide();
+   label.stopLoss.Hide();
+   edit.stopLoss.Hide();
+   button.calculate.Hide();
+   label.riskInPoints.Hide();
+   edit.riskInPoints.Hide();
+   label.riskInCurrency.Hide();
+   edit.riskInCurrency.Hide();
+   label.contractSize.Hide();
+   edit.contractSize.Hide();
+   label.totalUnits.Hide();
+   edit.totalLots.Hide();
+   label.totalLots.Hide();
+   edit.totalLots.Hide();
+   label.positionValue.Hide();
+   edit.positionValue.Hide();
+}
 

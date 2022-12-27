@@ -9,11 +9,10 @@
 //+------------------------------------------------------------------+
 class CMainWindow {
 
-   int    width;
-   int    mainFont_S;      
-   int    subFont_S;
-   
 public:
+
+   // Tab Settings
+   int width;
 
    // Components 
    CAppDialog *windowDialog;
@@ -27,7 +26,7 @@ public:
 //+------------------------------------------------------------------+
 //| Constructor                                                      |
 //+------------------------------------------------------------------+
-CMainWindow::CMainWindow() {
+CMainWindow::CMainWindow(void) {
 
    windowDialog    = new CAppDialog();
    copyRightsLabel = new CLabel();

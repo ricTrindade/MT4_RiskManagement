@@ -179,12 +179,12 @@ void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &gui) {
    //Display Resulst
    if(TotalExpAcc == -10 || TotalExpCur == -10) {
    
-      if(gui.GetTE() == 1) {
+      if(gui.riskExposure.TE == 1) {
          gui.riskExposure.edit.totalExposure.FontSize(gui.GetsubFont_S());
          gui.riskExposure.edit.totalExposure.Text("Use SL in All Trades!");
       }
       
-      if(gui.GetTE() == 2) {
+      if(gui.riskExposure.TE == 2) {
          gui.riskExposure.edit.totalExposure.FontSize(gui.GetsubFont_S());
          gui.riskExposure.edit.totalExposure.Text("Use SL in All Trades!");
       }
@@ -192,8 +192,8 @@ void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &gui) {
    
    else {
       gui.riskExposure.edit.totalExposure.FontSize(gui.GetMainFont_S());
-      if(gui.GetTE() == 1) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpAcc,2)+" %");
-      if(gui.GetTE() == 2) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpCur,2)+" " +AccountCurrency());
+      if(gui.riskExposure.TE == 1) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpAcc,2)+" %");
+      if(gui.riskExposure.TE == 2) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpCur,2)+" " +AccountCurrency());
    }   
 }
 
