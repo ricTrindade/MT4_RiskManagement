@@ -41,9 +41,9 @@ public:
    //------------------------------
    // ApplicationTabs
    //------------------------------
-   CMainWindow                *mainWindow;
-   CPositionSizeCalculatorTab *positionSizeCalculator;
-   CRiskExposure              *riskExposure;
+   CMainWindow                mainWindow;
+   CPositionSizeCalculatorTab positionSizeCalculator;
+   CRiskExposure              riskExposure;
 
    //------------------------------
    //Constructor and Destructor
@@ -105,10 +105,6 @@ CGuiControl::CGuiControl(void) {
 
    OPEN_TAB = 2;
    CopyFirstWindow = -1;
-   
-   mainWindow             = new CMainWindow();
-   positionSizeCalculator = new CPositionSizeCalculatorTab();
-   riskExposure           = new CRiskExposure();
 }
 
 //+------------------------------------------------------------------+

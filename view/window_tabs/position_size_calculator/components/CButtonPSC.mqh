@@ -2,7 +2,6 @@
 //| Component Files                                                  |
 //+------------------------------------------------------------------+
 #include <Controls/Button.mqh> 
-#include <Controls/DialogMyVersion.mqh>
 
 //+------------------------------------------------------------------+
 //| Position Size Calculator Buttons class                           |
