@@ -4,7 +4,7 @@
 #include <Controls/Label.mqh> 
 
 //+------------------------------------------------------------------+
-//| Risk Exposure Labels Class                                   |
+//| Risk Exposure Labels Class                                       |
 //+------------------------------------------------------------------+
 class CLabelRE {
 
