@@ -4,12 +4,13 @@
 #include <Controls/Label.mqh> 
 
 //+------------------------------------------------------------------+
-//| Risk Exposure Labels Class                                   |
+//| Risk Exposure Labels Class                                       |
 //+------------------------------------------------------------------+
 class CLabelRE {
 
 public:
 
+   // Components
    CLabel *maxInt;
    CLabel *maxTrades;
    CLabel *maxLots;
@@ -25,21 +26,27 @@ public:
    CLabel *tradeExposure;
    CLabel *tradePositionValue;
    
-   CLabelRE() {
-   
-      maxInt             = new CLabel();
-      maxTrades          = new CLabel();
-      maxLots            = new CLabel();
-      maxExposure        = new CLabel();
-      maxPositionValue   = new CLabel();
-      totalExposure_int  = new CLabel();
-      totalTrades        = new CLabel();
-      totalLots          = new CLabel();
-      totalExposure      = new CLabel();
-      totalPositionValue = new CLabel();
-      tradeSelect_int    = new CLabel();
-      tradeSelect        = new CLabel();
-      tradeExposure      = new CLabel();
-      tradePositionValue = new CLabel();  
-   }
+   // Constructor
+   CLabelRE();
 };
+
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CLabelRE::CLabelRE(void) {
+   
+   maxInt             = new CLabel();
+   maxTrades          = new CLabel();
+   maxLots            = new CLabel();
+   maxExposure        = new CLabel();
+   maxPositionValue   = new CLabel();
+   totalExposure_int  = new CLabel();
+   totalTrades        = new CLabel();
+   totalLots          = new CLabel();
+   totalExposure      = new CLabel();
+   totalPositionValue = new CLabel();
+   tradeSelect_int    = new CLabel();
+   tradeSelect        = new CLabel();
+   tradeExposure      = new CLabel();
+   tradePositionValue = new CLabel();  
+}

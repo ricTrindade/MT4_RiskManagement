@@ -252,19 +252,19 @@ bool CIndivialTradeExposure::GetSingularTradesValues_Risk (CGuiControl &gui) {
                
                if (SingularExp_Per == -10 || SingularExp_Cur == -10){
                   
-                  if(gui.GetITE() == 2) {
+                  if(gui.riskExposure.ITE == 2) { 
                      gui.riskExposure.edit.tradeExposure.FontSize(gui.GetsubFont_S()); 
                      gui.riskExposure.edit.tradeExposure.Text("Trade with No SL!");
                   }
-                  if(gui.GetITE() == 1) {
+                  if(gui.riskExposure.ITE == 1) {
                      gui.riskExposure.edit.tradeExposure.FontSize(gui.GetsubFont_S());
                      gui.riskExposure.edit.tradeExposure.Text("Trade with No SL!");
                   }
                }
                else {
                   gui.riskExposure.edit.tradeExposure.FontSize(gui.GetMainFont_S());
-                  if(gui.GetITE() == 2) gui.riskExposure.edit.tradeExposure.Text(DoubleToStr(SingularExp_Cur,2)+" " +AccountCurrency()); 
-                  if(gui.GetITE() == 1) gui.riskExposure.edit.tradeExposure.Text(DoubleToStr(SingularExp_Per,2)+" %");
+                  if(gui.riskExposure.ITE == 2) gui.riskExposure.edit.tradeExposure.Text(DoubleToStr(SingularExp_Cur,2)+" " +AccountCurrency()); 
+                  if(gui.riskExposure.ITE == 1) gui.riskExposure.edit.tradeExposure.Text(DoubleToStr(SingularExp_Per,2)+" %");
                }                
             }
    }

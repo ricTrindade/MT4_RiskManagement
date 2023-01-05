@@ -10,19 +10,25 @@ class CButtonPSC {
 
 public:
 
+   // Components 
    CButton *tabPSC;
    CButton *calculate;
    CButton *priceCustom;
    CButton *priceBid;
    CButton *priceAsk;
    
-   CButtonPSC() {
-   
-      tabPSC      = new CButton();
-      calculate   = new CButton();
-      priceCustom = new CButton();
-      priceBid    = new CButton();
-      priceAsk    = new CButton();
-   }
+   // Constructor
+   CButtonPSC();
 };
 
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CButtonPSC::CButtonPSC(void) {
+   
+   tabPSC      = new CButton();
+   calculate   = new CButton();
+   priceCustom = new CButton();
+   priceBid    = new CButton();
+   priceAsk    = new CButton();
+}

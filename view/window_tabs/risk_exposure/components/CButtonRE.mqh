@@ -10,6 +10,7 @@ class CButtonRE {
 
 public:
 
+   // Components
    CButton *tabRiskExposure;
    CButton *currencyRiskSettings;
    CButton *percentageRiskSettings;
@@ -18,14 +19,20 @@ public:
    CButton *currencyIndivualTradeExposure;
    CButton *percentageIndivualTradeExposure;
    
-   CButtonRE() {
-   
-      tabRiskExposure                 = new CButton;
-      currencyRiskSettings            = new CButton;
-      percentageRiskSettings          = new CButton;
-      currencyTotalExposure           = new CButton;
-      percentageTotalExposure         = new CButton;
-      currencyIndivualTradeExposure   = new CButton;
-      percentageIndivualTradeExposure = new CButton;
-   }
+   // Constructor
+   CButtonRE();
 };
+
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CButtonRE::CButtonRE(void) {
+   
+   tabRiskExposure                 = new CButton;
+   currencyRiskSettings            = new CButton;
+   percentageRiskSettings          = new CButton;
+   currencyTotalExposure           = new CButton;
+   percentageTotalExposure         = new CButton;
+   currencyIndivualTradeExposure   = new CButton;
+   percentageIndivualTradeExposure = new CButton;
+}
