@@ -50,33 +50,37 @@ void CPositionSizeCalculatorInitializer::create(CGuiControl &gui, double contrac
    //Entry Price
    //-------------------------
    //Label
-   gui.positionSizeCalculator.label.entryPrice.Create(0,"gui.positionSizeCalculator.label.entryPrice",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));                   
-   window.Add(gui.positionSizeCalculator.label.entryPrice);
-   gui.positionSizeCalculator.label.entryPrice.Text("Entry Price");
-   gui.positionSizeCalculator.label.entryPrice.Shift(gui.ScaledPixel(5), gui.ScaledPixel(75));                  
-   gui.positionSizeCalculator.label.entryPrice.FontSize(gui.GetMainFont_S());
+   CLabel *entryPriceLabel = gui.positionSizeCalculator.label.entryPrice;
+   entryPriceLabel.Create(0,"entryPriceLabel",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));                   
+   window.Add(entryPriceLabel);
+   entryPriceLabel.Text("Entry Price");
+   entryPriceLabel.Shift(gui.ScaledPixel(5), gui.ScaledPixel(75));                  
+   entryPriceLabel.FontSize(gui.GetMainFont_S());
    
    //Edit box
-   gui.positionSizeCalculator.edit.entryPrice.Create(0,"gui.positionSizeCalculator.edit.entryPrice",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   window.Add(gui.positionSizeCalculator.edit.entryPrice);
-   gui.positionSizeCalculator.edit.entryPrice.Shift(gui.ScaledPixel(255),gui.ScaledPixel(75));
-   gui.positionSizeCalculator.edit.entryPrice.ReadOnly(true);
-   gui.positionSizeCalculator.edit.entryPrice.ColorBackground(clrWhiteSmoke);
-   gui.positionSizeCalculator.edit.entryPrice.FontSize(gui.GetMainFont_S());
+   CEdit *entryPriceEdit = gui.positionSizeCalculator.edit.entryPrice;
+   entryPriceEdit.Create(0,"entryPriceEdit",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(entryPriceEdit);
+   entryPriceEdit.Shift(gui.ScaledPixel(255),gui.ScaledPixel(75));
+   entryPriceEdit.ReadOnly(true);
+   entryPriceEdit.ColorBackground(clrWhiteSmoke);
+   entryPriceEdit.FontSize(gui.GetMainFont_S());
    
    //Button - Custom 
-   gui.positionSizeCalculator.button.priceCustom.Create(0,"gui.positionSizeCalculator.button.priceCustom",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));        
-   window.Add(gui.positionSizeCalculator.button.priceCustom);
-   gui.positionSizeCalculator.button.priceCustom.Shift(gui.ScaledPixel(80),gui.ScaledPixel(77));
-   gui.positionSizeCalculator.button.priceCustom.Text("Custom");
-   gui.positionSizeCalculator.button.priceCustom.FontSize(gui.GetsubFont_S());
-   gui.positionSizeCalculator.button.priceCustom.ColorBackground(clrLightBlue);
+   CButton *priceCustom = gui.positionSizeCalculator.button.priceCustom;
+   priceCustom.Create(0,"priceCustom",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));        
+   window.Add(priceCustom);
+   priceCustom.Shift(gui.ScaledPixel(80),gui.ScaledPixel(77));
+   priceCustom.Text("Custom");
+   priceCustom.FontSize(gui.GetsubFont_S());
+   priceCustom.ColorBackground(clrLightBlue);
    
    //Button - Bid 
-   gui.positionSizeCalculator.button.priceBid.Create(0,"gui.positionSizeCalculator.button.priceBid",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
-   window.Add(gui.positionSizeCalculator.button.priceBid);
-   gui.positionSizeCalculator.button.priceBid.Shift(gui.ScaledPixel(135),gui.ScaledPixel(77));
-   gui.positionSizeCalculator.button.priceBid.Text("Bid");
+   CButton *priceBid = gui.positionSizeCalculator.button.priceBid;
+   priceBid.Create(0,"priceBid",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
+   window.Add(priceBid);
+   priceBid.Shift(gui.ScaledPixel(135),gui.ScaledPixel(77));
+   priceBid.Text("Bid");
    gui.positionSizeCalculator.button.priceBid.FontSize(gui.GetsubFont_S());
    gui.positionSizeCalculator.button.priceBid.ColorBackground(clrTomato);
    
