@@ -28,11 +28,11 @@ public:
 //+------------------------------------------------------------------+
 CButtonRE::CButtonRE(void) {
    
-   tabRiskExposure                 = new CButton;
-   currencyRiskSettings            = new CButton;
-   percentageRiskSettings          = new CButton;
-   currencyTotalExposure           = new CButton;
-   percentageTotalExposure         = new CButton;
-   currencyIndivualTradeExposure   = new CButton;
-   percentageIndivualTradeExposure = new CButton;
+   tabRiskExposure                 = new CButton();
+   currencyRiskSettings            = new CButton();
+   percentageRiskSettings          = new CButton();
+   currencyTotalExposure           = new CButton();
+   percentageTotalExposure         = new CButton();
+   currencyIndivualTradeExposure   = new CButton();
+   percentageIndivualTradeExposure = new CButton();
 }

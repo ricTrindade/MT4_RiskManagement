@@ -25,8 +25,8 @@ public:
 //+------------------------------------------------------------------+
 CBMPbuttonRE::CBMPbuttonRE(void) {
    
-   maxTrades        = new CBmpButton;
-   maxLots          = new CBmpButton;
-   maxExposure      = new CBmpButton;
-   maxPositionValue = new CBmpButton;
+   maxTrades        = new CBmpButton();
+   maxLots          = new CBmpButton();
+   maxExposure      = new CBmpButton();
+   maxPositionValue = new CBmpButton();
 }

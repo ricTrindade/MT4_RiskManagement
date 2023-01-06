@@ -41,9 +41,9 @@ public:
    //------------------------------
    // ApplicationTabs
    //------------------------------
-   CMainWindow                mainWindow;
-   CPositionSizeCalculatorTab positionSizeCalculator;
-   CRiskExposure              riskExposure;
+   CMainWindow                *mainWindow;
+   CPositionSizeCalculatorTab *positionSizeCalculator;
+   CRiskExposure              *riskExposure;
 
    //------------------------------
    //Constructor and Destructor
@@ -88,6 +88,11 @@ public:
 //| Window Control Custom Class - Constructor                        |
 //+------------------------------------------------------------------+
 CGuiControl::CGuiControl(void) {
+
+   mainWindow             = new CMainWindow();
+   positionSizeCalculator = new CPositionSizeCalculatorTab();
+   riskExposure           = new CRiskExposure();
+
 
    mainWindow.width               = ScaledPixel(383); //Main Window Width
    mainFont_S                     = ScaledFont(10);

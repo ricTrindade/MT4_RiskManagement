@@ -32,17 +32,19 @@ void CPositionSizeCalculatorInitializer::create(CGuiControl &gui, double contrac
    //Risk per trade
    //-------------------------
    //Label
-   gui.positionSizeCalculator.label.riskPerTrade.Create(0,"gui.positionSizeCalculator.label.riskPerTrade",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));                         
-   window.Add(gui.positionSizeCalculator.label.riskPerTrade);
-   gui.positionSizeCalculator.label.riskPerTrade.Text("Risk On Trade (% of Account Balance)");
-   gui.positionSizeCalculator.label.riskPerTrade.Shift(gui.ScaledPixel(5),gui.ScaledPixel(45));
-   gui.positionSizeCalculator.label.riskPerTrade.FontSize(gui.GetMainFont_S());
+   CLabel *riskPerTradeLabel = gui.positionSizeCalculator.label.riskPerTrade;
+   riskPerTradeLabel.Create(0,"riskPerTradeLabel",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));                         
+   window.Add(riskPerTradeLabel);
+   riskPerTradeLabel.Text("Risk On Trade (% of Account Balance)");
+   riskPerTradeLabel.Shift(gui.ScaledPixel(5),gui.ScaledPixel(45));
+   riskPerTradeLabel.FontSize(gui.GetMainFont_S());
    
    //Edit box
-   gui.positionSizeCalculator.edit.riskPerTrade.Create(0,"gui.positionSizeCalculator.edit.riskPerTrade",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));                
-   window.Add(gui.positionSizeCalculator.edit.riskPerTrade);
-   gui.positionSizeCalculator.edit.riskPerTrade.Shift(gui.ScaledPixel(255),gui.ScaledPixel(45));
-   gui.positionSizeCalculator.edit.riskPerTrade.FontSize(gui.GetMainFont_S());
+   CEdit *riskPerTradeEdit = gui.positionSizeCalculator.edit.riskPerTrade;
+   riskPerTradeEdit.Create(0,"riskPerTradeEdit",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));                
+   window.Add(riskPerTradeEdit);
+   riskPerTradeEdit.Shift(gui.ScaledPixel(255),gui.ScaledPixel(45));
+   riskPerTradeEdit.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Entry Price
