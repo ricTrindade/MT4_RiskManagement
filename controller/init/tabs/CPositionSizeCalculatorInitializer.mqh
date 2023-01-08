@@ -1,7 +1,7 @@
 //+------------------------------------------------------------------+
 //| Include GUI Components                                           |
 //+------------------------------------------------------------------+
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh" 
+#include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh" 
 
 //+------------------------------------------------------------------+
 //| Position Size Calculator Initialiser class                       |
