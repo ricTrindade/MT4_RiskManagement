@@ -1,14 +1,14 @@
 //+------------------------------------------------------------------+
 //| Include GUI Components                                           |
 //+------------------------------------------------------------------+
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh" 
+#include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh" 
 
 //+------------------------------------------------------------------+
 //| Include Some Components                                          |
 //+------------------------------------------------------------------+
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\model\CRiskSettings.mqh" 
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\model\CSumTradesExposure.mqh" 
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\model\CIndivialTradeExposure.mqh"
+#include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\model\CRiskSettings.mqh" 
+#include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\model\CSumTradesExposure.mqh" 
+#include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\model\CIndivialTradeExposure.mqh"
 
 //+------------------------------------------------------------------+
 //| Risk Exposure Initialiser class                                  |
