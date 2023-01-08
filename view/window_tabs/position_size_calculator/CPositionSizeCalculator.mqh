@@ -23,6 +23,9 @@ public:
    // Constructor
    CPositionSizeCalculatorTab();
    
+   // Destructor
+   ~CPositionSizeCalculatorTab();
+   
    // Member Functions
    void show();
    void hide();
@@ -36,6 +39,16 @@ CPositionSizeCalculatorTab::CPositionSizeCalculatorTab() {
    button = new CButtonPSC();
    label  = new CLabelPSC();
    edit   = new CEditPSC();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CPositionSizeCalculatorTab::~CPositionSizeCalculatorTab() {
+
+   delete button;
+   delete label;
+   delete edit;
 }
 
 //+------------------------------------------------------------------+

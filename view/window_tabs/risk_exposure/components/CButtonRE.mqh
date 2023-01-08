@@ -21,6 +21,9 @@ public:
    
    // Constructor
    CButtonRE();
+   
+   // Destructor
+   ~CButtonRE();
 };
 
 //+------------------------------------------------------------------+
@@ -35,4 +38,18 @@ CButtonRE::CButtonRE(void) {
    percentageTotalExposure         = new CButton();
    currencyIndivualTradeExposure   = new CButton();
    percentageIndivualTradeExposure = new CButton();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CButtonRE::~CButtonRE(void) {
+   
+   delete tabRiskExposure;
+   delete currencyRiskSettings;
+   delete percentageRiskSettings;
+   delete currencyTotalExposure;
+   delete percentageTotalExposure;
+   delete currencyIndivualTradeExposure;
+   delete percentageIndivualTradeExposure;
 }

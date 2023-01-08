@@ -24,6 +24,9 @@ public:
    
    // Constructor
    CEditRE();
+   
+   // Destructor
+   ~CEditRE();
 };
 
 //+------------------------------------------------------------------+
@@ -41,4 +44,21 @@ CEditRE::CEditRE(void) {
    totalPositionValue = new CEdit();
    tradeExposure      = new CEdit();
    tradePositionValue = new CEdit();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CEditRE::~CEditRE(void) {
+   
+   delete maxTrades;
+   delete maxLots;
+   delete maxExposure;
+   delete maxPositionValue;
+   delete totalTrades;
+   delete totalLots;
+   delete totalExposure;
+   delete totalPositionValue;
+   delete tradeExposure;
+   delete tradePositionValue;
 }

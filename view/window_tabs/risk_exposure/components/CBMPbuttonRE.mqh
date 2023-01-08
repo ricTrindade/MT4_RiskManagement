@@ -18,6 +18,9 @@ public:
    
    // Constructor
    CBMPbuttonRE();
+   
+   // Destructor
+   ~CBMPbuttonRE();
 };
 
 //+------------------------------------------------------------------+
@@ -29,4 +32,15 @@ CBMPbuttonRE::CBMPbuttonRE(void) {
    maxLots          = new CBmpButton();
    maxExposure      = new CBmpButton();
    maxPositionValue = new CBmpButton();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CBMPbuttonRE::~CBMPbuttonRE(void) {
+   
+   delete maxTrades;
+   delete maxLots;
+   delete maxExposure;
+   delete maxPositionValue;
 }

@@ -49,6 +49,7 @@ public:
    //Constructor and Destructor
    //------------------------------
    CGuiControl();
+   ~CGuiControl();
    
    //------------------------------
    //Accessor Functions
@@ -110,6 +111,16 @@ CGuiControl::CGuiControl(void) {
 
    OPEN_TAB = 2;
    CopyFirstWindow = -1;
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CGuiControl::~CGuiControl(void) {
+
+   delete mainWindow;
+   delete positionSizeCalculator;
+   delete riskExposure;
 }
 
 //+------------------------------------------------------------------+

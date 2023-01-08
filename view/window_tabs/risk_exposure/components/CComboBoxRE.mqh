@@ -15,6 +15,9 @@ public :
    
    // Constructor
    CComboBoxRE();
+   
+   // Destructor
+   ~CComboBoxRE();
 };
 
 //+------------------------------------------------------------------+
@@ -23,4 +26,12 @@ public :
 CComboBoxRE::CComboBoxRE(void) {
    
    tradeExposure = new CComboBox();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CComboBoxRE::~CComboBoxRE(void) {
+   
+   delete tradeExposure;
 }

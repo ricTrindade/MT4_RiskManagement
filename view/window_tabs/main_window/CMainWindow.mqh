@@ -21,6 +21,9 @@ public:
    
    // Constructor
    CMainWindow();
+   
+   // Destructor
+   ~CMainWindow();
 };
 
 //+------------------------------------------------------------------+
@@ -31,5 +34,15 @@ CMainWindow::CMainWindow(void) {
    windowDialog    = new CAppDialog();
    copyRightsLabel = new CLabel();
    minMaxBmpButton = new CBmpButton();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CMainWindow::~CMainWindow(void) {
+
+   delete windowDialog;
+   delete copyRightsLabel;
+   delete minMaxBmpButton;
 }
 
