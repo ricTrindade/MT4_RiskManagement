@@ -194,14 +194,14 @@ void CPositionSizeCalculatorInitializer::create(CGuiControl &gui, double contrac
    //Total_Lots
    //-------------------------
    //Label
-   gui.positionSizeCalculator.label.totalLots.Create(0,"totalLotsLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   gui.positionSizeCalculator.label.totalLots.Create(0,"totalLots_LABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
    window.Add(gui.positionSizeCalculator.label.totalLots);
    gui.positionSizeCalculator.label.totalLots.Text("Total Lots");
    gui.positionSizeCalculator.label.totalLots.Shift(gui.ScaledPixel(5),gui.ScaledPixel(290));
    gui.positionSizeCalculator.label.totalLots.FontSize(gui.GetMainFont_S());
    
    //Edit 
-   gui.positionSizeCalculator.edit.totalLots.Create(0,"totalLotsEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   gui.positionSizeCalculator.edit.totalLots.Create(0,"totalLots_EDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
    window.Add(gui.positionSizeCalculator.edit.totalLots);
    gui.positionSizeCalculator.edit.totalLots.Shift(gui.ScaledPixel(255),gui.ScaledPixel(290));
    gui.positionSizeCalculator.edit.totalLots.ReadOnly(true);

@@ -72,6 +72,7 @@ void CPositionSizeCalculatorTab::show(void) {
    edit.riskInCurrency.Show();
    label.contractSize.Show();
    edit.contractSize.Show();
+   edit.totalUnits.Show();
    label.totalUnits.Show();
    edit.totalLots.Show();
    label.totalLots.Show();
@@ -102,6 +103,7 @@ void CPositionSizeCalculatorTab::hide(void) {
    label.contractSize.Hide();
    edit.contractSize.Hide();
    label.totalUnits.Hide();
+   edit.totalUnits.Hide();
    edit.totalLots.Hide();
    label.totalLots.Hide();
    edit.totalLots.Hide();
