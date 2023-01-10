@@ -85,147 +85,162 @@ void CPositionSizeCalculatorInitializer::create(CGuiControl &gui, double contrac
    gui.positionSizeCalculator.button.priceBid.ColorBackground(clrTomato);
    
    //Button - Ask
-   gui.positionSizeCalculator.button.priceAsk.Create(0,"priceAsk",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));  
-   window.Add(gui.positionSizeCalculator.button.priceAsk);
-   gui.positionSizeCalculator.button.priceAsk.Shift(gui.ScaledPixel(190),gui.ScaledPixel(77));
-   gui.positionSizeCalculator.button.priceAsk.Text("Ask");
-   gui.positionSizeCalculator.button.priceAsk.FontSize(gui.GetsubFont_S());
-   gui.positionSizeCalculator.button.priceAsk.ColorBackground(clrMediumSeaGreen);
+   CButton *priceAsk = gui.positionSizeCalculator.button.priceAsk;
+   priceAsk.Create(0,"priceAsk",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));  
+   window.Add(priceAsk);
+   priceAsk.Shift(gui.ScaledPixel(190),gui.ScaledPixel(77));
+   priceAsk.Text("Ask");
+   priceAsk.FontSize(gui.GetsubFont_S());
+   priceAsk.ColorBackground(clrMediumSeaGreen);
    
    //-------------------------
    //Stop Loss
    //-------------------------
    //Label
-   gui.positionSizeCalculator.label.stopLoss.Create(0,"stopLossLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));  
-   window.Add(gui.positionSizeCalculator.label.stopLoss);
-   gui.positionSizeCalculator.label.stopLoss.Text("Stop Loss Price");
-   gui.positionSizeCalculator.label.stopLoss.Shift(gui.ScaledPixel(5),gui.ScaledPixel(105));
-   gui.positionSizeCalculator.label.stopLoss.FontSize(gui.GetMainFont_S());
+   CLabel *stopLossLABEL = gui.positionSizeCalculator.label.stopLoss;
+   stopLossLABEL.Create(0,"stopLossLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));  
+   window.Add(stopLossLABEL);
+   stopLossLABEL.Text("Stop Loss Price");
+   stopLossLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(105));
+   stopLossLABEL.FontSize(gui.GetMainFont_S());
    
    //Edit box
-   gui.positionSizeCalculator.edit.stopLoss.Create(0,"stopLossEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   window.Add(gui.positionSizeCalculator.edit.stopLoss);
-   gui.positionSizeCalculator.edit.stopLoss.Shift(gui.ScaledPixel(255),gui.ScaledPixel(105));
-   gui.positionSizeCalculator.edit.stopLoss.FontSize(gui.GetMainFont_S());
+   CEdit *stopLossEDIT = gui.positionSizeCalculator.edit.stopLoss;
+   stopLossEDIT.Create(0,"stopLossEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(stopLossEDIT);
+   stopLossEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(105));
+   stopLossEDIT.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Button - gui.positionSizeCalculator.button.calculate 
    //-------------------------
-   gui.positionSizeCalculator.button.calculate.Create(0,"calculateBUTTON",0,0,0,gui.ScaledPixel(75),gui.ScaledPixel(25));
-   window.Add(gui.positionSizeCalculator.button.calculate);
-   gui.positionSizeCalculator.button.calculate.Shift(gui.ScaledPixel(150),gui.ScaledPixel(135));
-   gui.positionSizeCalculator.button.calculate.Text("Calculate");
-   gui.positionSizeCalculator.button.calculate.FontSize(gui.GetMainFont_S());
+   CButton *calculateBUTTON = gui.positionSizeCalculator.button.calculate;
+   calculateBUTTON.Create(0,"calculateBUTTON",0,0,0,gui.ScaledPixel(75),gui.ScaledPixel(25));
+   window.Add(calculateBUTTON);
+   calculateBUTTON.Shift(gui.ScaledPixel(150),gui.ScaledPixel(135));
+   calculateBUTTON.Text("Calculate");
+   calculateBUTTON.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Risk_in_Points
    //-------------------------
    //Label 
-   gui.positionSizeCalculator.label.riskInPoints.Create(0,"riskInPointsLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   window.Add(gui.positionSizeCalculator.label.riskInPoints);
-   gui.positionSizeCalculator.label.riskInPoints.Text("Risk in Points");
-   gui.positionSizeCalculator.label.riskInPoints.Shift(gui.ScaledPixel(5),gui.ScaledPixel(170));
-   gui.positionSizeCalculator.label.riskInPoints.FontSize(gui.GetMainFont_S());
+   CLabel *riskInPointsLABEL = gui.positionSizeCalculator.label.riskInPoints;
+   riskInPointsLABEL.Create(0,"riskInPointsLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(riskInPointsLABEL);
+   riskInPointsLABEL.Text("Risk in Points");
+   riskInPointsLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(170));
+   riskInPointsLABEL.FontSize(gui.GetMainFont_S());
    
    //Edit box
-   gui.positionSizeCalculator.edit.riskInPoints.Create(0,"riskInPointsEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   window.Add(gui.positionSizeCalculator.edit.riskInPoints);
-   gui.positionSizeCalculator.edit.riskInPoints.Shift(gui.ScaledPixel(255),gui.ScaledPixel(170));
-   gui.positionSizeCalculator.edit.riskInPoints.ReadOnly(true);
-   gui.positionSizeCalculator.edit.riskInPoints.ColorBackground(clrWhiteSmoke);
-   gui.positionSizeCalculator.edit.riskInPoints.FontSize(gui.GetMainFont_S());
+   CEdit *riskInPointsEDIT = gui.positionSizeCalculator.edit.riskInPoints;
+   riskInPointsEDIT.Create(0,"riskInPointsEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(riskInPointsEDIT);
+   riskInPointsEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(170));
+   riskInPointsEDIT.ReadOnly(true);
+   riskInPointsEDIT.ColorBackground(clrWhiteSmoke);
+   riskInPointsEDIT.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Risk_in_Currency
    //-------------------------
    //Label 
-   gui.positionSizeCalculator.label.riskInCurrency.Create(0,"riskInCurrencyLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   window.Add(gui.positionSizeCalculator.label.riskInCurrency);
-   gui.positionSizeCalculator.label.riskInCurrency.Text("Risk in " + AccountCurrency());
-   gui.positionSizeCalculator.label.riskInCurrency.Shift(gui.ScaledPixel(5),gui.ScaledPixel(200));
-   gui.positionSizeCalculator.label.riskInCurrency.FontSize(gui.GetMainFont_S());
+   CLabel *riskInCurrencyLABEL = gui.positionSizeCalculator.label.riskInCurrency;
+   riskInCurrencyLABEL.Create(0,"riskInCurrencyLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(riskInCurrencyLABEL);
+   riskInCurrencyLABEL.Text("Risk in " + AccountCurrency());
+   riskInCurrencyLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(200));
+   riskInCurrencyLABEL.FontSize(gui.GetMainFont_S());
    
    //Edit box
-   gui.positionSizeCalculator.edit.riskInCurrency.Create(0,"riskInCurrencyEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   window.Add(gui.positionSizeCalculator.edit.riskInCurrency);
-   gui.positionSizeCalculator.edit.riskInCurrency.Shift(gui.ScaledPixel(255),gui.ScaledPixel(200));
-   gui.positionSizeCalculator.edit.riskInCurrency.ReadOnly(true);
-   gui.positionSizeCalculator.edit.riskInCurrency.ColorBackground(clrWhiteSmoke);
-   gui.positionSizeCalculator.edit.riskInCurrency.FontSize(gui.GetMainFont_S());
+   CEdit *riskInCurrencyEDIT = gui.positionSizeCalculator.edit.riskInCurrency;
+   riskInCurrencyEDIT.Create(0,"riskInCurrencyEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(riskInCurrencyEDIT);
+   riskInCurrencyEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(200));
+   riskInCurrencyEDIT.ReadOnly(true);
+   riskInCurrencyEDIT.ColorBackground(clrWhiteSmoke);
+   riskInCurrencyEDIT.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Contract_Size
    //-------------------------
    //Label
-   gui.positionSizeCalculator.label.contractSize.Create(0,"contractSizeLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   window.Add(gui.positionSizeCalculator.label.contractSize);
-   gui.positionSizeCalculator.label.contractSize.Text("Contract Size");
-   gui.positionSizeCalculator.label.contractSize.Shift(gui.ScaledPixel(5),gui.ScaledPixel(230));
-   gui.positionSizeCalculator.label.contractSize.FontSize(gui.GetMainFont_S());
+   CLabel *contractSizeLABEL = gui.positionSizeCalculator.label.contractSize;
+   contractSizeLABEL.Create(0,"contractSizeLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(contractSizeLABEL);
+   contractSizeLABEL.Text("Contract Size");
+   contractSizeLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(230));
+   contractSizeLABEL.FontSize(gui.GetMainFont_S());
    
    //Edit 
-   gui.positionSizeCalculator.edit.contractSize.Create(0,"contractSizeEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));       
-   window.Add(gui.positionSizeCalculator.edit.contractSize);
-   gui.positionSizeCalculator.edit.contractSize.Shift(gui.ScaledPixel(255),gui.ScaledPixel(230));
-   gui.positionSizeCalculator.edit.contractSize.ReadOnly(true);
-   gui.positionSizeCalculator.edit.contractSize.ColorBackground(clrGainsboro);
-   gui.positionSizeCalculator.edit.contractSize.Text((string)contractSize);
-   gui.positionSizeCalculator.edit.contractSize.FontSize(gui.GetMainFont_S());
+   CEdit *contractSizeEDIT = gui.positionSizeCalculator.edit.contractSize;
+   contractSizeEDIT.Create(0,"contractSizeEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));       
+   window.Add(contractSizeEDIT);
+   contractSizeEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(230));
+   contractSizeEDIT.ReadOnly(true);
+   contractSizeEDIT.ColorBackground(clrGainsboro);
+   contractSizeEDIT.Text((string)contractSize);
+   contractSizeEDIT.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Total_Units
    //-------------------------
    //Label
-   gui.positionSizeCalculator.label.totalUnits.Create(0,"totalUnitsLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   window.Add(gui.positionSizeCalculator.label.totalUnits);
-   gui.positionSizeCalculator.label.totalUnits.Text("Total Units");
-   gui.positionSizeCalculator.label.totalUnits.Shift(gui.ScaledPixel(5),gui.ScaledPixel(260));
-   gui.positionSizeCalculator.label.totalUnits.FontSize(gui.GetMainFont_S());
+   CLabel *totalUnitsLABEL = gui.positionSizeCalculator.label.totalUnits;
+   totalUnitsLABEL.Create(0,"totalUnitsLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(totalUnitsLABEL);
+   totalUnitsLABEL.Text("Total Units");
+   totalUnitsLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(260));
+   totalUnitsLABEL.FontSize(gui.GetMainFont_S());
    
    //Edit 
-   gui.positionSizeCalculator.edit.totalUnits.Create(0,"totalUnitsEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   window.Add(gui.positionSizeCalculator.edit.totalUnits);
-   gui.positionSizeCalculator.edit.totalUnits.Shift(gui.ScaledPixel(255),gui.ScaledPixel(260));
-   gui.positionSizeCalculator.edit.totalUnits.ReadOnly(true);
-   gui.positionSizeCalculator.edit.totalUnits.ColorBackground(clrWhiteSmoke);
-   gui.positionSizeCalculator.edit.totalUnits.FontSize(gui.GetMainFont_S());
+   CEdit *totalUnitsEDIT = gui.positionSizeCalculator.edit.totalUnits;
+   totalUnitsEDIT.Create(0,"totalUnitsEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(totalUnitsEDIT);
+   totalUnitsEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(260));
+   totalUnitsEDIT.ReadOnly(true);
+   totalUnitsEDIT.ColorBackground(clrWhiteSmoke);
+   totalUnitsEDIT.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Total_Lots
    //-------------------------
    //Label
-   gui.positionSizeCalculator.label.totalLots.Create(0,"totalLots_LABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   window.Add(gui.positionSizeCalculator.label.totalLots);
-   gui.positionSizeCalculator.label.totalLots.Text("Total Lots");
-   gui.positionSizeCalculator.label.totalLots.Shift(gui.ScaledPixel(5),gui.ScaledPixel(290));
-   gui.positionSizeCalculator.label.totalLots.FontSize(gui.GetMainFont_S());
+   CLabel *totalLots_LABEL = gui.positionSizeCalculator.label.totalLots;
+   totalLots_LABEL.Create(0,"totalLots_LABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(totalLots_LABEL);
+   totalLots_LABEL.Text("Total Lots");
+   totalLots_LABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(290));
+   totalLots_LABEL.FontSize(gui.GetMainFont_S());
    
    //Edit 
-   gui.positionSizeCalculator.edit.totalLots.Create(0,"totalLots_EDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   window.Add(gui.positionSizeCalculator.edit.totalLots);
-   gui.positionSizeCalculator.edit.totalLots.Shift(gui.ScaledPixel(255),gui.ScaledPixel(290));
-   gui.positionSizeCalculator.edit.totalLots.ReadOnly(true);
-   gui.positionSizeCalculator.edit.totalLots.ColorBackground(clrGold);
-   gui.positionSizeCalculator.edit.totalLots.FontSize(gui.GetMainFont_S());
+   CEdit *totalLots_EDIT = gui.positionSizeCalculator.edit.totalLots;
+   totalLots_EDIT.Create(0,"totalLots_EDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(totalLots_EDIT);
+   totalLots_EDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(290));
+   totalLots_EDIT.ReadOnly(true);
+   totalLots_EDIT.ColorBackground(clrGold);
+   totalLots_EDIT.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Total PositionValue 
    //-------------------------
    //label
-   gui.positionSizeCalculator.label.positionValue.Create(0,"positionValueLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   window.Add(gui.positionSizeCalculator.label.positionValue);
-   gui.positionSizeCalculator.label.positionValue.Text(AccountCurrency()+" Exposure");
-   gui.positionSizeCalculator.label.positionValue.Shift(gui.ScaledPixel(5),gui.ScaledPixel(320));
-   gui.positionSizeCalculator.label.positionValue.FontSize(gui.GetMainFont_S());
+   CLabel *positionValueLABEL = gui.positionSizeCalculator.label.positionValue;
+   positionValueLABEL.Create(0,"positionValueLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(positionValueLABEL);
+   positionValueLABEL.Text(AccountCurrency()+" Exposure");
+   positionValueLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(320));
+   positionValueLABEL.FontSize(gui.GetMainFont_S());
    
    //edit
-   gui.positionSizeCalculator.edit.positionValue.Create(0,"positionValueEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   window.Add(gui.positionSizeCalculator.edit.positionValue);
-   gui.positionSizeCalculator.edit.positionValue.Shift(gui.ScaledPixel(255),gui.ScaledPixel(320));
-   gui.positionSizeCalculator.edit.positionValue.ReadOnly(true);
-   gui.positionSizeCalculator.edit.positionValue.ColorBackground(clrWhiteSmoke);
-   gui.positionSizeCalculator.edit.positionValue.FontSize(gui.GetMainFont_S());
-   
+   CEdit *positionValueEDIT = gui.positionSizeCalculator.edit.positionValue;
+   positionValueEDIT.Create(0,"positionValueEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(positionValueEDIT);
+   positionValueEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(320));
+   positionValueEDIT.ReadOnly(true);
+   positionValueEDIT.ColorBackground(clrWhiteSmoke);
+   positionValueEDIT.FontSize(gui.GetMainFont_S()); 
 }
 
 
