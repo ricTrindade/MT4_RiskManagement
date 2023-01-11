@@ -5,7 +5,7 @@
    #define CPositionSizeCalculatorEvent_
 
 //+------------------------------------------------------------------+
-//| Include GUI Components                                           |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh" 
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\model\CPositionSizeCalculator.mqh"
@@ -17,8 +17,6 @@ class CPositionSizeCalculatorEvent {
 
 public:
 
-   void displayTab(CGuiControl &gui);
-
    // 'PriceButton' Methods
    void trackPriceCustom (CGuiControl &gui);
    void trackPriceBid    (CGuiControl &gui);
@@ -26,10 +24,11 @@ public:
 
    // Calculate Method
    void trackCalculateBUTTON(CGuiControl &gui, CPositionSizeCalculator &psc);
+   void displayTab(CGuiControl &gui);
 };
 
 //+------------------------------------------------------------------+
-//| displayTab                                                       |
+//| displayTab - Method's Body                                       |
 //+------------------------------------------------------------------+
 void CPositionSizeCalculatorEvent::displayTab(CGuiControl &gui) {
 
@@ -49,7 +48,7 @@ void CPositionSizeCalculatorEvent::displayTab(CGuiControl &gui) {
 }
 
 //+------------------------------------------------------------------+
-//| trackPriceCustom                                                 |
+//| trackPriceCustom - Method's Body                                 |
 //+------------------------------------------------------------------+
 void CPositionSizeCalculatorEvent::trackPriceCustom(CGuiControl &gui) {
 
@@ -80,7 +79,7 @@ void CPositionSizeCalculatorEvent::trackPriceCustom(CGuiControl &gui) {
 }
 
 //+------------------------------------------------------------------+
-//| trackPriceBid                                                    |
+//| trackPriceBid - Method's Body                                    |
 //+------------------------------------------------------------------+
 void CPositionSizeCalculatorEvent::trackPriceBid(CGuiControl &gui) {
 
@@ -98,7 +97,7 @@ void CPositionSizeCalculatorEvent::trackPriceBid(CGuiControl &gui) {
 }
 
 //+------------------------------------------------------------------+
-//| trackPriceAsk                                                    |
+//| trackPriceAsk - Method's Body                                    |
 //+------------------------------------------------------------------+
 void CPositionSizeCalculatorEvent::trackPriceAsk(CGuiControl &gui) {
 
@@ -116,7 +115,7 @@ void CPositionSizeCalculatorEvent::trackPriceAsk(CGuiControl &gui) {
 }
 
 //+------------------------------------------------------------------+
-//| trackCalculateBUTTON                                             |
+//| trackCalculateBUTTON - Method's Body                             |
 //+------------------------------------------------------------------+
 void CPositionSizeCalculatorEvent::trackCalculateBUTTON(CGuiControl &gui, CPositionSizeCalculator &psc) {
 

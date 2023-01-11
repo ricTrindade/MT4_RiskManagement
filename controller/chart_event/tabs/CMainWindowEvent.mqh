@@ -5,7 +5,7 @@
    #define CMainWindowEvent_
 
 //+------------------------------------------------------------------+
-//| Include GUI Components                                           |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh" 
 
@@ -27,7 +27,7 @@ public:
 };
 
 //+------------------------------------------------------------------+
-//| activate                                                         |
+//| activate - Method's Body                                         |
 //+------------------------------------------------------------------+
 void CMainWindowEvent::activate(CGuiControl  &gui,
                                 const int    id,
@@ -39,7 +39,7 @@ void CMainWindowEvent::activate(CGuiControl  &gui,
 }
 
 //+------------------------------------------------------------------+
-//| minMax                                                           |
+//| minMax - Method's Body                                            |
 //+------------------------------------------------------------------+
 void CMainWindowEvent::minMax(CGuiControl  &gui) {
 
