@@ -19,7 +19,6 @@ enum Window {
    PositionSizeCalculator, 
    RiskExposure, 
    Minimised,
-   o
 }; 
 
 //+------------------------------------------------------------------+
@@ -47,7 +46,7 @@ public:
    //------------------------------
    //Constructor and Destructor
    //------------------------------
-   CGuiControl();
+   CGuiControl(double scale);
    ~CGuiControl();
    
    //------------------------------
@@ -57,7 +56,7 @@ public:
    int    GetsubFont_S()       {return subFont_S;}
    Window GetOPEN_TAB()        {return OPEN_TAB;}
    string GetOBJ_CONTROL()     {return OBJ_CONTROL;}
-   double GetScale()           {return SCALE;}
+   //double GetScale()           {return SCALE;}
     
    //------------------------------
    //'Set Value' Functions
@@ -66,7 +65,7 @@ public:
    void SetsubFont_S       (int    value) {subFont_S       = value;}
    void SetOPEN_TAB        (Window value) {OPEN_TAB        = value;}
    void SetOBJ_CONTROL     (string value) {OBJ_CONTROL     = value;}
-   void SetScale           (double value) {SCALE           = value;}
+   //void SetScale           (double value) {SCALE           = value;}
    
    //------------------------------   
    //Member Functions
@@ -83,13 +82,13 @@ public:
 //+------------------------------------------------------------------+
 //| Window Control Custom Class - Constructor                        |
 //+------------------------------------------------------------------+
-CGuiControl::CGuiControl(void) {
+CGuiControl::CGuiControl(double scale) {
 
    mainWindow             = new CMainWindow();
    positionSizeCalculator = new CPositionSizeCalculatorTab();
    riskExposure           = new CRiskExposure();
 
-
+   SCALE                          = scale;
    mainWindow.width               = ScaledPixel(383); //Main Window Width
    mainFont_S                     = ScaledFont(10);
    subFont_S                      = ScaledFont(8);
@@ -102,8 +101,6 @@ CGuiControl::CGuiControl(void) {
    riskExposure.RS  = 1;
    riskExposure.TE  = 1;
    riskExposure.ITE = 1;
-
-   OPEN_TAB = o;
 }
 
 //+------------------------------------------------------------------+
@@ -114,20 +111,6 @@ CGuiControl::~CGuiControl(void) {
    delete mainWindow;
    delete positionSizeCalculator;
    delete riskExposure;
-}
-
-//+------------------------------------------------------------------+
-//| Window Control Custom Class - Manual Version of Constructor      |
-//+------------------------------------------------------------------+
-void CGuiControl::ResetContructor(void) {
-
-   mainWindow.width               = ScaledPixel(383); //Main Window Width
-   mainFont_S                     = ScaledFont(10);
-   subFont_S                      = ScaledFont(8);
-   positionSizeCalculator.height  = ScaledPixel(400);
-   riskExposure.height            = ScaledPixel(520);
-   positionSizeCalculator.crShift = ScaledPixel(-120); //Shift
-   riskExposure.crShift           = ScaledPixel(120);
 }
 
 //+------------------------------------------------------------------+
