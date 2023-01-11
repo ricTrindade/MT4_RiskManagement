@@ -18,7 +18,8 @@ enum Window {
 
    PositionSizeCalculator, 
    RiskExposure, 
-   Minimised
+   Minimised,
+   o
 }; 
 
 //+------------------------------------------------------------------+
@@ -31,10 +32,8 @@ private:
    int    mainFont_S;      
    int    subFont_S;   
    double SCALE; 
-   double CopyScale;
    string OBJ_CONTROL;
    Window OPEN_TAB;
-   Window CopyFirstWindow;
     
 public:
 
@@ -58,8 +57,6 @@ public:
    int    GetsubFont_S()       {return subFont_S;}
    Window GetOPEN_TAB()        {return OPEN_TAB;}
    string GetOBJ_CONTROL()     {return OBJ_CONTROL;}
-   Window GetCopyFirstWindow() {return CopyFirstWindow;}
-   double GetCopyScale()       {return CopyScale;}
    double GetScale()           {return SCALE;}
     
    //------------------------------
@@ -69,8 +66,6 @@ public:
    void SetsubFont_S       (int    value) {subFont_S       = value;}
    void SetOPEN_TAB        (Window value) {OPEN_TAB        = value;}
    void SetOBJ_CONTROL     (string value) {OBJ_CONTROL     = value;}
-   void SetCopyFirstWindow (Window value) {CopyFirstWindow = value;}
-   void SetCopyScale       (double value) {CopyScale       = value;}
    void SetScale           (double value) {SCALE           = value;}
    
    //------------------------------   
@@ -102,15 +97,13 @@ CGuiControl::CGuiControl(void) {
    riskExposure.height            = ScaledPixel(520);
    positionSizeCalculator.crShift = ScaledPixel(-120); //Shift
    riskExposure.crShift           = ScaledPixel(120);
-   //CopyScale       = -1;
    
    /*Currency or Account Button*/
    riskExposure.RS  = 1;
    riskExposure.TE  = 1;
    riskExposure.ITE = 1;
 
-   OPEN_TAB = 2;
-   CopyFirstWindow = -1;
+   OPEN_TAB = o;
 }
 
 //+------------------------------------------------------------------+
@@ -135,7 +128,6 @@ void CGuiControl::ResetContructor(void) {
    riskExposure.height            = ScaledPixel(520);
    positionSizeCalculator.crShift = ScaledPixel(-120); //Shift
    riskExposure.crShift           = ScaledPixel(120);
-   //CopyScale       = -1;
 }
 
 //+------------------------------------------------------------------+
