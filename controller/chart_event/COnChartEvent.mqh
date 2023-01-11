@@ -5,20 +5,20 @@
    #define COnChartEvent_
 
 //+------------------------------------------------------------------+
-//| Include 'Tabs' Classes                                           |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
 #include "tabs\CMainWindowEvent.mqh" 
 #include "tabs\CPositionSizeCalculatorEvent.mqh" 
 #include "tabs\CRiskExposureEvent.mqh" 
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class                           |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
 class COnChartEvent {
 
 public:
 
-   // Tabs
+   // Application Tabs
    CMainWindowEvent             *mainWindow;
    CPositionSizeCalculatorEvent *positionSizeCalculator;
    CRiskExposureEvent           *riskExposure;
@@ -34,7 +34,7 @@ public:
 };
 
 //+------------------------------------------------------------------+
-//| Constructor                                                      |
+//| Constructor's Body                                               |
 //+------------------------------------------------------------------+
 COnChartEvent::COnChartEvent() {
 
@@ -44,7 +44,7 @@ COnChartEvent::COnChartEvent() {
 }
 
 //+------------------------------------------------------------------+
-//| Destructor                                                       |
+//| Destructor's Body                                                |
 //+------------------------------------------------------------------+
 COnChartEvent::~COnChartEvent() {
 
@@ -54,7 +54,7 @@ COnChartEvent::~COnChartEvent() {
 }
 
 //+------------------------------------------------------------------+
-//| trackOBJ                                                         |
+//| trackOBJ - Method's Body                                         |
 //+------------------------------------------------------------------+
 void COnChartEvent::trackOBJ(CGuiControl &gui, const string &sparam) {
 

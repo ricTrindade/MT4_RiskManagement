@@ -5,24 +5,24 @@
    #define COnTick_
 
 //+------------------------------------------------------------------+
-//| Include GUI Components                                           |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh" 
-
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\model\CPositionSizeCalculator.mqh"
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class                           |
+//| Expert tick Class                                                |
 //+------------------------------------------------------------------+
 class COnTick {
 
 public:
 
+   // Methods 
    void trackPriceButtonsOnPSC(CGuiControl &gui, CPositionSizeCalculator &psc);   
 };
 
 //+------------------------------------------------------------------+
-//| trackPriceButtonsOnPSC                                           |
+//| trackPriceButtonsOnPSC - Method's Body                           |
 //+------------------------------------------------------------------+
 void COnTick::trackPriceButtonsOnPSC(CGuiControl &gui, CPositionSizeCalculator &psc) {
 

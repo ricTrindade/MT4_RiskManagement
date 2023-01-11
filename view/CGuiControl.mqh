@@ -5,7 +5,7 @@
    #define CGuiControl_
 
 //+------------------------------------------------------------------+
-//| Include MT4 Libraries & Resources                                |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
 #include "\window_tabs\main_window\CMainWindow.mqh"
 #include "\window_tabs\position_size_calculator\CPositionSizeCalculator.mqh"
@@ -22,12 +22,13 @@ enum Window {
 }; 
 
 //+------------------------------------------------------------------+
-//| Window Control Custom Class                                      |
+//| Window Control Class                                             |
 //+------------------------------------------------------------------+
 class CGuiControl {
 
 private:  
 
+   // Fields 
    int    mainFont_S;      
    int    subFont_S;   
    double SCALE; 
@@ -36,40 +37,30 @@ private:
     
 public:
 
-   //------------------------------
-   // ApplicationTabs
-   //------------------------------
+   // Application Tabs
    CMainWindow                *mainWindow;
    CPositionSizeCalculatorTab *positionSizeCalculator;
    CRiskExposure              *riskExposure;
 
-   //------------------------------
-   //Constructor and Destructor
-   //------------------------------
+   // Constructor
    CGuiControl(double scale);
+   
+   // Destructor
    ~CGuiControl();
    
-   //------------------------------
-   //Accessor Functions
-   //------------------------------
-   int    GetMainFont_S()      {return mainFont_S;}
-   int    GetsubFont_S()       {return subFont_S;}
-   Window GetOPEN_TAB()        {return OPEN_TAB;}
-   string GetOBJ_CONTROL()     {return OBJ_CONTROL;}
-   //double GetScale()           {return SCALE;}
+   // Getters
+   int    GetMainFont_S()  {return mainFont_S;}
+   int    GetsubFont_S()   {return subFont_S;}
+   Window GetOPEN_TAB()    {return OPEN_TAB;}
+   string GetOBJ_CONTROL() {return OBJ_CONTROL;}
     
-   //------------------------------
-   //'Set Value' Functions
-   //------------------------------
-   void SetMainFont_S      (int    value) {mainFont_S      = value;}
-   void SetsubFont_S       (int    value) {subFont_S       = value;}
-   void SetOPEN_TAB        (Window value) {OPEN_TAB        = value;}
-   void SetOBJ_CONTROL     (string value) {OBJ_CONTROL     = value;}
-   //void SetScale           (double value) {SCALE           = value;}
+   // Setters
+   void SetMainFont_S  (int    value) {mainFont_S      = value;}
+   void SetsubFont_S   (int    value) {subFont_S       = value;}
+   void SetOPEN_TAB    (Window value) {OPEN_TAB        = value;}
+   void SetOBJ_CONTROL (string value) {OBJ_CONTROL     = value;}
    
-   //------------------------------   
-   //Member Functions
-   //------------------------------
+   // Methods
    void   ResetContructor();
    void   WindowMin();
    bool   IsMin();
@@ -80,7 +71,7 @@ public:
 };
 
 //+------------------------------------------------------------------+
-//| Window Control Custom Class - Constructor                        |
+//| Constructor's Body                                               |
 //+------------------------------------------------------------------+
 CGuiControl::CGuiControl(double scale) {
 
@@ -104,7 +95,7 @@ CGuiControl::CGuiControl(double scale) {
 }
 
 //+------------------------------------------------------------------+
-//| Destructor                                                       |
+//| Destructor's Body                                                |
 //+------------------------------------------------------------------+
 CGuiControl::~CGuiControl(void) {
 
@@ -114,7 +105,7 @@ CGuiControl::~CGuiControl(void) {
 }
 
 //+------------------------------------------------------------------+
-//| Window Control Custom Class - Scaled Font                        |
+//| Scaled Font - Method's Body                                      |
 //+------------------------------------------------------------------+
 int CGuiControl::ScaledFont(int i) {
 
@@ -124,7 +115,7 @@ int CGuiControl::ScaledFont(int i) {
 }
 
 //+------------------------------------------------------------------+
-//| Window Control Custom Class - Scaled Pixel                       |
+//| Scaled Pixel - Method's Body                                     |
 //+------------------------------------------------------------------+
 int CGuiControl::ScaledPixel(int i) {
    
@@ -132,7 +123,7 @@ int CGuiControl::ScaledPixel(int i) {
 }
 
 //+------------------------------------------------------------------+
-//| Window Control Custom Class - Minimise                           |
+//| Minimise - Method's Body                                         |
 //+------------------------------------------------------------------+
 void CGuiControl::WindowMin(void) {
 
@@ -145,7 +136,7 @@ void CGuiControl::WindowMin(void) {
 }
 
 //+------------------------------------------------------------------+
-//| Window Control Custom Class - Is it Minimised                    |
+//| Is it Minimised - Method's Body                                  |
 //+------------------------------------------------------------------+
 bool CGuiControl::IsMin(void) {
 
@@ -154,7 +145,7 @@ bool CGuiControl::IsMin(void) {
 }
 
 //+------------------------------------------------------------------+
-//| Window Control Custom Class - Which Tab is open                  |
+//| Which Tab is open - Method's Body                                |
 //+------------------------------------------------------------------+
 Window CGuiControl::Check_Tab(void) {
 
@@ -172,7 +163,7 @@ Window CGuiControl::Check_Tab(void) {
 } 
 
 //+------------------------------------------------------------------+
-//| Window Control Custom Class - Maximise                           |
+//| Maximise - Method's Body                                         |
 //+------------------------------------------------------------------+
 void CGuiControl::WindowMax(void) {
 

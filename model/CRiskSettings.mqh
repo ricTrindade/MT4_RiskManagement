@@ -5,13 +5,13 @@
    #define CRiskSettings_
 
 //+------------------------------------------------------------------+
-//| Risk Settings Custom Class                                       |
+//| Risk Settings Class                                              |
 //+------------------------------------------------------------------+
 class CRiskSettings {
 
 private:   
 
-   //Max Values 
+   // Fields 
    double MaxTrades;
    double MaxLots;
    double MaxExpPer;
@@ -20,23 +20,17 @@ private:
     
 public:
    
-   //------------------------------
-   //Constructor and Destructor
-   //------------------------------
+   // Constructor
    CRiskSettings();
    
-   //------------------------------
-   //Accessor Functions
-   //------------------------------
+   // Getters
    double GetMaxTrades() {return MaxTrades;}
    double GetMaxLots()   {return MaxLots;}
    double GetMaxExpPer() {return MaxExpPer;}
    double GetMaxExpCur() {return MaxExpCur;}
    double GetMaxPosVal() {return MaxPosVal;}
    
-   //------------------------------
-   //'Set Value' Functions
-   //------------------------------
+   // Setters
    void SetMaxTrades (double value) {MaxTrades = value;}
    void SetMaxLots   (double value) {MaxLots   = value;}
    void SetMaxExpPer (double value) {MaxExpPer = value;}
@@ -45,7 +39,7 @@ public:
 };
 
 //+------------------------------------------------------------------+
-//| Risk Setting Custom Class - Constructor                          |
+//| Constructor's Body                                               |
 //+------------------------------------------------------------------+
 CRiskSettings::CRiskSettings(void) {
 

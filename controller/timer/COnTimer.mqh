@@ -5,21 +5,21 @@
    #define COnTimer_
 
 //+------------------------------------------------------------------+
-//| Include GUI Components                                           |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh"
-
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\model\CRiskSettings.mqh"
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\model\CSumTradesExposure.mqh"
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\model\CIndivialTradeExposure.mqh"
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class                           |
+//| Expert Timer Class                                               |
 //+------------------------------------------------------------------+
 class COnTimer {
 
 public:
 
+   // Methods
    void trackInputByUserOnRiskExposure(CGuiControl &gui, CRiskSettings &risk_settings, CSumTradesExposure &sumTrades);
    void calculateTotalTrades(CGuiControl &gui, CSumTradesExposure &sumTrades);
    void calculateTotals(CGuiControl &gui, CSumTradesExposure &sumTrades);
@@ -27,13 +27,9 @@ public:
 };
 
 //+------------------------------------------------------------------+
-//| trackInputByUserOnRiskExposure                                   |
+//| trackInputByUserOnRiskExposure - Method's Body                   |
 //+------------------------------------------------------------------+
 void COnTimer::trackInputByUserOnRiskExposure(CGuiControl &gui, CRiskSettings &risk_settings, CSumTradesExposure &sumTrades){
-   
-   //..................................................
-   //Track Inputs set by the user On Risk and Exposure
-   //..................................................
    
    //Number of Trades   
    if (sumTrades.GetTotalTrades() > risk_settings.GetMaxTrades() && 
@@ -76,25 +72,20 @@ void COnTimer::trackInputByUserOnRiskExposure(CGuiControl &gui, CRiskSettings &r
 }
 
 //+------------------------------------------------------------------+
-//| calculateTotalTrades                                             |
+//| calculateTotalTrades - Method's Body                             |
 //+------------------------------------------------------------------+
 void COnTimer::calculateTotalTrades(CGuiControl &gui, CSumTradesExposure &sumTrades) {
 
-   //..................................................
-   //Calculate total trades 
-   //..................................................
    sumTrades.SetTotalTrades(OrdersTotal());
    gui.riskExposure.edit.totalTrades.Text((string)sumTrades.GetTotalTrades());
 }
 
 //+------------------------------------------------------------------+
-//| calculateTotalLots                                               |
+//| calculateTotalLots - Method's Body                               |
 //+------------------------------------------------------------------+
 void COnTimer::calculateTotals(CGuiControl &gui, CSumTradesExposure &sumTrades) {
 
-   //..................................................
    //Calculate total Lots 
-   //..................................................
    double Total_lots = 0.0;
    
    //Get Total Lots
@@ -107,25 +98,18 @@ void COnTimer::calculateTotals(CGuiControl &gui, CSumTradesExposure &sumTrades) 
    sumTrades.SetTotalLots(Total_lots);
    gui.riskExposure.edit.totalLots.Text(DoubleToStr(sumTrades.GetTotalLots(),2));
    
-   //..................................................
    //Calculate Risk in Currency or Account Percentage 
-   //..................................................
    sumTrades.TotalExpAccAndCurr(gui);
    
-   //..................................................
    //Calculate Position Size value  
-   //..................................................
    sumTrades.Total_PosVal(gui);
 }
 
 //+------------------------------------------------------------------+
-//| addTradesToComboBox                                              |
+//| addTradesToComboBox - Method's Body                              |
 //+------------------------------------------------------------------+
 void COnTimer::addTradesToComboBox(CGuiControl &gui, CSumTradesExposure &sumTrades, CIndivialTradeExposure &indivialTrade) {
 
-   //..................................................
-   //Add Trades To combo Box  
-   //..................................................
    if(sumTrades.IsNewTrade()) { 
          
       gui.riskExposure.comboBox.tradeExposure.ItemsClear();

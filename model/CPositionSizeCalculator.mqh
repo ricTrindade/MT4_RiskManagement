@@ -5,19 +5,19 @@
    #define CPositionSizeCalculator_
 
 //+------------------------------------------------------------------+
-//| Include Resources                                                |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
-//CGuiControl.mqh
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh"
 
 
 //+------------------------------------------------------------------+
-//| Position Size Calculator Custom Class                            |
+//| Position Size Calculator Class                                   |
 //+------------------------------------------------------------------+
 class CPositionSizeCalculator {
 
 private:   
    
+   // Fields
    double RiskPoints;
    double RiskCurr;
    double TotalUnits;
@@ -26,39 +26,31 @@ private:
 
 public:
 
-   //------------------------------
-   //Constructor and Destructor
-   //------------------------------
+   // Constructor
    CPositionSizeCalculator();
    
-   //------------------------------
-   //Accessor Functions
-   //------------------------------
+   // Getters
    double GetRiskPoints()  {return RiskPoints;}
    double GetRiskCurr()    {return RiskCurr;}
    double GetTotalUnits()  {return TotalUnits;}
    double GetTotalLots()   {return TotalLots;}
    double GetTotalPosVal() {return TotalPosVal;}
    
-   //------------------------------
-   //'Set Value' Functions
-   //------------------------------
+   // Setters
    void SetRiskPoints  (double value) {RiskPoints  = value;}
    void SetRiskCurr    (double value) {RiskCurr    = value;}
    void SetTotalUnits  (double value) {TotalUnits  = value;}
    void SetTotalLots   (double value) {TotalLots   = value;}
    void SetTotalPosVal (double value) {TotalPosVal = value;}
    
-   //------------------------------
-   //Member Functions
-   //------------------------------
+   // Methods
    bool Calculate_Lot    (CGuiControl &gui);      
    void Calculate_PosVal (CGuiControl &gui);
    int  track_BidAsk     (CGuiControl &gui);
 };
 
 //+------------------------------------------------------------------+
-//| Position Size Calculator Custom Class - Constructor              |
+//| Constructor's Body                                               |
 //+------------------------------------------------------------------+
 CPositionSizeCalculator::CPositionSizeCalculator(void) {
 
@@ -70,7 +62,7 @@ CPositionSizeCalculator::CPositionSizeCalculator(void) {
 }
 
 //+------------------------------------------------------------------+
-//| Position Size Calculator Custom Class - Calculate Lot            |
+//| Calculate Lot Size - Method's Body                               |
 //+------------------------------------------------------------------+
 bool CPositionSizeCalculator::Calculate_Lot(CGuiControl &gui) {
 
@@ -160,7 +152,7 @@ bool CPositionSizeCalculator::Calculate_Lot(CGuiControl &gui) {
 }  
 
 //+------------------------------------------------------------------+
-//| Position Size Calculator Custom Class - Track Bid Ask Prices     |
+//|  Track Bid Ask Prices - Method's Body                            |
 //+------------------------------------------------------------------+
 int CPositionSizeCalculator::track_BidAsk(CGuiControl &gui) {
 
@@ -175,7 +167,7 @@ int CPositionSizeCalculator::track_BidAsk(CGuiControl &gui) {
 }
 
 //+------------------------------------------------------------------+
-//| Position Size Calculator Custom Class - Calculate PosVal         |
+//| Calculate Position Value - Method's Body                         |
 //+------------------------------------------------------------------+
 void CPositionSizeCalculator::Calculate_PosVal(CGuiControl &gui) {
 
