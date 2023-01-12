@@ -112,7 +112,7 @@ void CPositionSizeCalculatorInitializer::create(CGuiControl &gui, double contrac
    stopLossEDIT.FontSize(gui.GetMainFont_S());
    
    //-------------------------
-   //Button - gui.positionSizeCalculator.button.calculate 
+   //Button - calculate 
    //-------------------------
    CButton *calculateBUTTON = gui.positionSizeCalculator.button.calculate;
    calculateBUTTON.Create(0,"calculateBUTTON",0,0,0,gui.ScaledPixel(75),gui.ScaledPixel(25));
