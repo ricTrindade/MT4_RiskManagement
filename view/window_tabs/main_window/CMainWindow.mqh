@@ -11,14 +11,38 @@ class CMainWindow {
 
 public:
 
+   // Tab Settings
+   int width;
+
+   // Components 
    CAppDialog *windowDialog;
    CLabel     *copyRightsLabel;
    CBmpButton *minMaxBmpButton;
    
-   CMainWindow() {
-      
-      windowDialog    = new CAppDialog();
-      copyRightsLabel = new CLabel();
-      minMaxBmpButton = new CBmpButton();
-   }
+   // Constructor
+   CMainWindow();
+   
+   // Destructor
+   ~CMainWindow();
 };
+
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CMainWindow::CMainWindow(void) {
+
+   windowDialog    = new CAppDialog();
+   copyRightsLabel = new CLabel();
+   minMaxBmpButton = new CBmpButton();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CMainWindow::~CMainWindow(void) {
+
+   delete windowDialog;
+   delete copyRightsLabel;
+   delete minMaxBmpButton;
+}
+

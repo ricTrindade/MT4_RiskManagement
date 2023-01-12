@@ -10,6 +10,7 @@ class CEditPSC {
 
 public :
 
+   // Components 
    CEdit *riskPerTrade;
    CEdit *entryPrice;
    CEdit *stopLoss;
@@ -20,16 +21,41 @@ public :
    CEdit *totalLots;
    CEdit *positionValue;
    
-   CEditPSC() {
+   // Constructor
+   CEditPSC();
    
-      riskPerTrade   = new CEdit();
-      entryPrice     = new CEdit();
-      stopLoss       = new CEdit();
-      riskInPoints   = new CEdit();
-      riskInCurrency = new CEdit();
-      contractSize   = new CEdit();
-      totalUnits     = new CEdit();
-      totalLots      = new CEdit();
-      positionValue  = new CEdit();
-   }
+   // Destructor
+   ~CEditPSC();
 };
+
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CEditPSC::CEditPSC() {
+   
+   riskPerTrade   = new CEdit();
+   entryPrice     = new CEdit();
+   stopLoss       = new CEdit();
+   riskInPoints   = new CEdit();
+   riskInCurrency = new CEdit();
+   contractSize   = new CEdit();
+   totalUnits     = new CEdit();
+   totalLots      = new CEdit();
+   positionValue  = new CEdit();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CEditPSC::~CEditPSC() {
+   
+   delete riskPerTrade;
+   delete entryPrice;
+   delete stopLoss;
+   delete riskInPoints;
+   delete riskInCurrency;
+   delete contractSize;
+   delete totalUnits;
+   delete totalLots;
+   delete positionValue;
+}

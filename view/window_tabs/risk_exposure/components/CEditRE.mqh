@@ -10,6 +10,7 @@ class CEditRE {
 
 public:
 
+   // Components
    CEdit *maxTrades;
    CEdit *maxLots;
    CEdit *maxExposure;
@@ -21,17 +22,43 @@ public:
    CEdit *tradeExposure;
    CEdit *tradePositionValue;
    
-   CEditRE() {
+   // Constructor
+   CEditRE();
    
-      maxTrades          = new CEdit();
-      maxLots            = new CEdit();
-      maxExposure        = new CEdit();
-      maxPositionValue   = new CEdit();
-      totalTrades        = new CEdit();
-      totalLots          = new CEdit();
-      totalExposure      = new CEdit();
-      totalPositionValue = new CEdit();
-      tradeExposure      = new CEdit();
-      tradePositionValue = new CEdit();
-   }
+   // Destructor
+   ~CEditRE();
 };
+
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CEditRE::CEditRE(void) {
+   
+   maxTrades          = new CEdit();
+   maxLots            = new CEdit();
+   maxExposure        = new CEdit();
+   maxPositionValue   = new CEdit();
+   totalTrades        = new CEdit();
+   totalLots          = new CEdit();
+   totalExposure      = new CEdit();
+   totalPositionValue = new CEdit();
+   tradeExposure      = new CEdit();
+   tradePositionValue = new CEdit();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CEditRE::~CEditRE(void) {
+   
+   delete maxTrades;
+   delete maxLots;
+   delete maxExposure;
+   delete maxPositionValue;
+   delete totalTrades;
+   delete totalLots;
+   delete totalExposure;
+   delete totalPositionValue;
+   delete tradeExposure;
+   delete tradePositionValue;
+}

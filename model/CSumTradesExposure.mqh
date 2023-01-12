@@ -5,20 +5,18 @@
    #define CSumTradesExposure_
 
 //+------------------------------------------------------------------+
-//| Include Resources                                                |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
-//CGuiControl.mqh
-#include "C:\Program Files\OANDA - MetaTrader\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh"
-
+#include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh"
 
 //+------------------------------------------------------------------+
-//| Total Exposure Custom Class                                      |
+//| Total Exposure Class                                             |
 //+------------------------------------------------------------------+
 class CSumTradesExposure {
 
 private:      
 
-   //Current Total Values 
+   // Fields 
    double TotalTrades;
    double TotalLots;
    double TotalExpCur;
@@ -27,32 +25,24 @@ private:
     
 public:
 
-   //------------------------------
-   //Constructor and Destructor
-   //------------------------------
+   // Constructor 
    CSumTradesExposure();
    
-   //------------------------------
-   //Accessor Functions
-   //------------------------------
+   // Getters
    double GetTotalTrades()  {return TotalTrades;}
    double GetTotalLots()    {return TotalLots;}
    double GetTotalExpCur()  {return TotalExpCur;}
    double GetTotalExpAcc()  {return TotalExpAcc;}
    double GetTotalPosVal()  {return TotalPosVal;}
-   
-   //------------------------------
-   //'Set Value' Functions
-   //------------------------------
+
+   // Setters
    void SetTotalTrades (double value) {TotalTrades = value;}
    void SetTotalLots   (double value) {TotalLots   = value;}
    void SetTotalExpCur (double value) {TotalExpCur = value;}
    void SetTotalExpAcc (double value) {TotalExpAcc = value;}
    void SetTotalPosVal (double value) {TotalPosVal = value;}
    
-   //------------------------------
-   //Member Functions
-   //------------------------------
+   // Methods
    void TotalExpAccAndCurr(CGuiControl &gui);
    void CheckTrade_withNoSL();
    void Total_PosVal(CGuiControl &gui);
@@ -60,7 +50,7 @@ public:
 };
 
 //+------------------------------------------------------------------+
-//| Total Exposure Custom Class - Constructor                        |
+//| Constructor's Body                                               |
 //+------------------------------------------------------------------+
 CSumTradesExposure::CSumTradesExposure(void) {
 
@@ -72,7 +62,7 @@ CSumTradesExposure::CSumTradesExposure(void) {
 }
 
 //+------------------------------------------------------------------+
-//| Total Exposure Custom Class - Check for short Trade with no SL   |
+//| Check for Trade with no SL - Method's Body                       |
 //+------------------------------------------------------------------+
 void CSumTradesExposure::CheckTrade_withNoSL(void) {
 
@@ -90,7 +80,7 @@ void CSumTradesExposure::CheckTrade_withNoSL(void) {
 }
 
 //+------------------------------------------------------------------+
-//| Total Exposure Custom Class - Calculate Risk                     |
+//| Calculate Risk - Method's Body                                   |
 //+------------------------------------------------------------------+
 void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &gui) {
 
@@ -179,12 +169,12 @@ void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &gui) {
    //Display Resulst
    if(TotalExpAcc == -10 || TotalExpCur == -10) {
    
-      if(gui.GetTE() == 1) {
+      if(gui.riskExposure.TE == 1) {
          gui.riskExposure.edit.totalExposure.FontSize(gui.GetsubFont_S());
          gui.riskExposure.edit.totalExposure.Text("Use SL in All Trades!");
       }
       
-      if(gui.GetTE() == 2) {
+      if(gui.riskExposure.TE == 2) {
          gui.riskExposure.edit.totalExposure.FontSize(gui.GetsubFont_S());
          gui.riskExposure.edit.totalExposure.Text("Use SL in All Trades!");
       }
@@ -192,13 +182,13 @@ void CSumTradesExposure::TotalExpAccAndCurr(CGuiControl &gui) {
    
    else {
       gui.riskExposure.edit.totalExposure.FontSize(gui.GetMainFont_S());
-      if(gui.GetTE() == 1) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpAcc,2)+" %");
-      if(gui.GetTE() == 2) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpCur,2)+" " +AccountCurrency());
+      if(gui.riskExposure.TE == 1) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpAcc,2)+" %");
+      if(gui.riskExposure.TE == 2) gui.riskExposure.edit.totalExposure.Text(DoubleToStr(TotalExpCur,2)+" " +AccountCurrency());
    }   
 }
 
 //+------------------------------------------------------------------+
-//| Total Exposure Custom Class - Total Value of Position Size       |
+//| Total Value of Position Size - Method's Body                     |
 //+------------------------------------------------------------------+
 void CSumTradesExposure::Total_PosVal(CGuiControl &gui) {
 
@@ -264,7 +254,7 @@ void CSumTradesExposure::Total_PosVal(CGuiControl &gui) {
 }
 
 //+------------------------------------------------------------------+
-//| Total Exposure Custom Class - Is new Trade                       |
+//| Is new Trade - Method's Body                                     |
 //+------------------------------------------------------------------+
 bool CSumTradesExposure::IsNewTrade() {
 

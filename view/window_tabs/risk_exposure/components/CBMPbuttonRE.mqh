@@ -10,16 +10,37 @@ class CBMPbuttonRE {
 
 public:
 
+   // Components
    CBmpButton *maxTrades;
    CBmpButton *maxLots;
    CBmpButton *maxExposure;
    CBmpButton *maxPositionValue;
    
-   CBMPbuttonRE() {
+   // Constructor
+   CBMPbuttonRE();
    
-      maxTrades        = new CBmpButton;
-      maxLots          = new CBmpButton;
-      maxExposure      = new CBmpButton;
-      maxPositionValue = new CBmpButton;
-   }
+   // Destructor
+   ~CBMPbuttonRE();
 };
+
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CBMPbuttonRE::CBMPbuttonRE(void) {
+   
+   maxTrades        = new CBmpButton();
+   maxLots          = new CBmpButton();
+   maxExposure      = new CBmpButton();
+   maxPositionValue = new CBmpButton();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CBMPbuttonRE::~CBMPbuttonRE(void) {
+   
+   delete maxTrades;
+   delete maxLots;
+   delete maxExposure;
+   delete maxPositionValue;
+}

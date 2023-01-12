@@ -10,10 +10,28 @@ class CComboBoxRE {
 
 public :
 
+   // Components
    CComboBox *tradeExposure;
    
-   CComboBoxRE() {
+   // Constructor
+   CComboBoxRE();
    
-      tradeExposure = new CComboBox();
-   }
+   // Destructor
+   ~CComboBoxRE();
 };
+
+//+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CComboBoxRE::CComboBoxRE(void) {
+   
+   tradeExposure = new CComboBox();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CComboBoxRE::~CComboBoxRE(void) {
+   
+   delete tradeExposure;
+}
