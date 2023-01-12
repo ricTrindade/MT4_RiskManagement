@@ -66,8 +66,10 @@ CPositionSizeCalculator::CPositionSizeCalculator(void) {
 //+------------------------------------------------------------------+
 bool CPositionSizeCalculator::Calculate_Lot(CGuiControl &gui) {
 
+   // Pointer to Edit Elements
+   CEditPSC *edit = gui.positionSizeCalculator.edit;
    // General Variables
-   double EntryPrice = StrToDouble(gui.positionSizeCalculator.edit.entryPrice.Text()); 
+   double EntryPrice = StrToDouble(edit.entryPrice.Text()); 
    double ExitPrice  = StrToDouble(gui.positionSizeCalculator.edit.stopLoss.Text());
    double Risk       = StrToDouble(gui.positionSizeCalculator.edit.riskPerTrade.Text());
    
