@@ -19,6 +19,9 @@ public:
    
    // Constructor
    CButtonPSC();
+   
+   // Destructor
+   ~CButtonPSC();
 };
 
 //+------------------------------------------------------------------+
@@ -31,4 +34,16 @@ CButtonPSC::CButtonPSC(void) {
    priceCustom = new CButton();
    priceBid    = new CButton();
    priceAsk    = new CButton();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CButtonPSC::~CButtonPSC(void) {
+   
+   delete tabPSC;
+   delete calculate;
+   delete priceCustom;
+   delete priceBid;
+   delete priceAsk;
 }

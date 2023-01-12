@@ -28,6 +28,9 @@ public:
    
    // Constructor
    CLabelRE();
+   
+   // Destructor
+   ~CLabelRE();
 };
 
 //+------------------------------------------------------------------+
@@ -49,4 +52,25 @@ CLabelRE::CLabelRE(void) {
    tradeSelect        = new CLabel();
    tradeExposure      = new CLabel();
    tradePositionValue = new CLabel();  
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CLabelRE::~CLabelRE(void) {
+   
+   delete maxInt;
+   delete maxTrades;
+   delete maxLots;
+   delete maxExposure;
+   delete maxPositionValue;
+   delete totalExposure_int;
+   delete totalTrades;
+   delete totalLots;
+   delete totalExposure;
+   delete totalPositionValue;
+   delete tradeSelect_int;
+   delete tradeSelect;
+   delete tradeExposure;
+   delete tradePositionValue;  
 }

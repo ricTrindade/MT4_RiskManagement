@@ -23,6 +23,9 @@ public:
    
    // Constructor
    CLabelPSC();
+   
+   // Destructor
+   ~CLabelPSC();
 };
 
 //+------------------------------------------------------------------+
@@ -39,4 +42,20 @@ CLabelPSC::CLabelPSC() {
    totalUnits     = new CLabel();
    totalLots      = new CLabel();
    positionValue  = new CLabel();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CLabelPSC::~CLabelPSC() {
+
+   delete riskPerTrade;
+   delete entryPrice;
+   delete stopLoss;
+   delete riskInPoints;
+   delete riskInCurrency;
+   delete contractSize;
+   delete totalUnits;
+   delete totalLots;
+   delete positionValue;
 }

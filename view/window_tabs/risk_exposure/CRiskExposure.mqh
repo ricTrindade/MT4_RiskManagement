@@ -33,6 +33,9 @@ public:
    // Constructor
    CRiskExposure();
    
+   // Destructor
+   ~CRiskExposure();
+   
    // Member Functions
    void show();
    void hide();
@@ -49,6 +52,18 @@ CRiskExposure::CRiskExposure() {
    edit      = new CEditRE();
    comboBox  = new CComboBoxRE();
    bmpButton = new CBMPbuttonRE();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CRiskExposure::~CRiskExposure() {
+
+   delete button;
+   delete label;
+   delete edit;
+   delete comboBox;
+   delete bmpButton;
 }
 
 //+------------------------------------------------------------------+

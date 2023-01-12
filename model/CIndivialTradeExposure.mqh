@@ -5,60 +5,48 @@
    #define CIndivialTradeExposure_
    
 //+------------------------------------------------------------------+
-//| Include Resources                                                |
+//| Include External Resources                                       |
 //+------------------------------------------------------------------+
-//CGuiControl.mqh
 #include "C:\Program Files (x86)\MetaTrader 4\MQL4\Experts\MT4_RiskManagement\view\CGuiControl.mqh"
 
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class                           |
+//| Individual Trade Exposure Class                                  |
 //+------------------------------------------------------------------+
 class CIndivialTradeExposure {
 
 private:      
 
-   //Singular Trade Exp
+   // Fields
    double SingularExp_Per;
    double SingularExp_Cur;
    double SingularPosVal;
     
 public:
 
-   //------------------------------
-   //Constructor and Destructor
-   //------------------------------
+   // Constructor
    CIndivialTradeExposure();
    
-   //------------------------------
-   //Accessor Functions
-   //------------------------------
+   // Getters
    double GetSingularExp_Per() {return SingularExp_Per;}
    double GetSingularExp_Cur() {return SingularExp_Cur;}
    double GetSingularPosVal()  {return SingularPosVal;}
    
-   //------------------------------
-   //'Set Value' Functions
-   //------------------------------
+   // Setters
    void SetSingularExp_Per (double value) {SingularExp_Per = value;}
    void SetSingularExp_Cur (double value) {SingularExp_Cur = value;}
    void SetSingularPosVal  (double value) {SingularPosVal  = value;}
    
-   //------------------------------
-   //Member Functions
-   //------------------------------
-   bool   check_CB_TRADE(string x);
-   void   CheckTrade_withNoSL(string x);
-   void   AddToCB_Singular_Trades(CGuiControl &gui);
-   bool   GetSingularTradesValues_Risk(CGuiControl &gui);
-   void   GetSingularTradesValues_PosVal(CGuiControl &gui);
-   
-   //string check_CB_TRADE();
-   //void   GetSingularTradesValues(string x);
+   // Methods
+   bool check_CB_TRADE(string x);
+   void CheckTrade_withNoSL(string x);
+   void AddToCB_Singular_Trades(CGuiControl &gui);
+   bool GetSingularTradesValues_Risk(CGuiControl &gui);
+   void GetSingularTradesValues_PosVal(CGuiControl &gui);
 };
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class - Constructor             |
+//| Constructor' Body                                                |
 //+------------------------------------------------------------------+
 CIndivialTradeExposure::CIndivialTradeExposure(void) {
 
@@ -68,7 +56,7 @@ CIndivialTradeExposure::CIndivialTradeExposure(void) {
 }
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class - Add Trades to Combo Box |
+//| Add Trades to Combo Box - Method's Body                          |
 //+------------------------------------------------------------------+
 void CIndivialTradeExposure::AddToCB_Singular_Trades(CGuiControl &gui) {
 
@@ -93,7 +81,7 @@ void CIndivialTradeExposure::AddToCB_Singular_Trades(CGuiControl &gui) {
 }
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class - Check Combo Box Trade   |
+//| Check Combo Box Trade - Method's Body                            |
 //+------------------------------------------------------------------+
 bool CIndivialTradeExposure::check_CB_TRADE(string x) {
 
@@ -122,7 +110,7 @@ bool CIndivialTradeExposure::check_CB_TRADE(string x) {
 }
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class - Check Short Trade With no SL
+//| Check Short Trade With no SL - Method's Body                     |
 //+------------------------------------------------------------------+
 void CIndivialTradeExposure::CheckTrade_withNoSL(string x) {
 
@@ -153,7 +141,7 @@ void CIndivialTradeExposure::CheckTrade_withNoSL(string x) {
 }
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class - Get Singular Trades Risk|
+//| Get Singular Trades Risk - Method's Body                         |
 //+------------------------------------------------------------------+
 bool CIndivialTradeExposure::GetSingularTradesValues_Risk (CGuiControl &gui) {
 
@@ -272,7 +260,7 @@ bool CIndivialTradeExposure::GetSingularTradesValues_Risk (CGuiControl &gui) {
 }
 
 //+------------------------------------------------------------------+
-//| Individual Trade Exposure Custom Class - Get Singular Trades PosVal|
+//| Get Singular Trades Position Value - Method's Body               |
 //+------------------------------------------------------------------+
 void CIndivialTradeExposure::GetSingularTradesValues_PosVal(CGuiControl &gui) {
 
@@ -346,9 +334,6 @@ void CIndivialTradeExposure::GetSingularTradesValues_PosVal(CGuiControl &gui) {
             }
    }         
 }
-
-
-
 
 //+--------------------+
 //| Preprocessor Check |

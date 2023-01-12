@@ -24,3 +24,5 @@ hs_err_pid*
 
 *.ex4
 .vscode
+.idea/
+clear_lnk_files.sh

@@ -23,6 +23,9 @@ public :
    
    // Constructor
    CEditPSC();
+   
+   // Destructor
+   ~CEditPSC();
 };
 
 //+------------------------------------------------------------------+
@@ -39,4 +42,20 @@ CEditPSC::CEditPSC() {
    totalUnits     = new CEdit();
    totalLots      = new CEdit();
    positionValue  = new CEdit();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CEditPSC::~CEditPSC() {
+   
+   delete riskPerTrade;
+   delete entryPrice;
+   delete stopLoss;
+   delete riskInPoints;
+   delete riskInCurrency;
+   delete contractSize;
+   delete totalUnits;
+   delete totalLots;
+   delete positionValue;
 }

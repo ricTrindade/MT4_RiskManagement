@@ -31,14 +31,18 @@ void CRiskExposureInitializer::create(CGuiControl            &gui,
                                       CSumTradesExposure     &sumTrades, 
                                       CIndivialTradeExposure &individualTrade) {
 
+   // Pointer to main window
+   CAppDialog *window = gui.mainWindow.windowDialog;
+   
    //-------------------------
    //Button - gui.riskExposure.button.tabRiskExposure
    //-------------------------
-   gui.riskExposure.button.tabRiskExposure.Create(0,"gui.riskExposure.button.tabRiskExposure",0,0,0,gui.ScaledPixel(175),gui.ScaledPixel(25));
-   gui.riskExposure.button.tabRiskExposure.Text("Risk Exposure");
-   gui.riskExposure.button.tabRiskExposure.FontSize(gui.GetMainFont_S());
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.button.tabRiskExposure);
-   gui.riskExposure.button.tabRiskExposure.Shift(gui.ScaledPixel(195),gui.ScaledPixel(5));
+   CButton *tabRiskExposure = gui.riskExposure.button.tabRiskExposure;
+   tabRiskExposure.Create(0,"tabRiskExposure",0,0,0,gui.ScaledPixel(175),gui.ScaledPixel(25));
+   tabRiskExposure.Text("Risk Exposure");
+   tabRiskExposure.FontSize(gui.GetMainFont_S());
+   window.Add(tabRiskExposure);
+   tabRiskExposure.Shift(gui.ScaledPixel(195),gui.ScaledPixel(5));
    
    //--------------------------------------------------------
    // Risk Settings
@@ -47,64 +51,71 @@ void CRiskExposureInitializer::create(CGuiControl            &gui,
    //-------------------------
    //Introduction Label
    //-------------------------
-   gui.riskExposure.label.maxInt.Create(0,"gui.riskExposure.label.maxInt",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.maxInt);
-   gui.riskExposure.label.maxInt.Text("Risk Settings");
-   gui.riskExposure.label.maxInt.Shift(gui.ScaledPixel(145),gui.ScaledPixel(45));
-   gui.riskExposure.label.maxInt.Color(clrMediumBlue);
-   gui.riskExposure.label.maxInt.FontSize(gui.GetMainFont_S());
+   CLabel *maxIntLABEL = gui.riskExposure.label.maxInt;
+   maxIntLABEL.Create(0,"maxIntLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(maxIntLABEL);
+   maxIntLABEL.Text("Risk Settings");
+   maxIntLABEL.Shift(gui.ScaledPixel(145),gui.ScaledPixel(45));
+   maxIntLABEL.Color(clrMediumBlue);
+   maxIntLABEL.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //MAX Settings Trades
    //-------------------------
    //Label
-   gui.riskExposure.label.maxTrades.Create(0,"gui.riskExposure.label.maxTrades",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.maxTrades);
-   gui.riskExposure.label.maxTrades.Text("MAX # Trades");
-   gui.riskExposure.label.maxTrades.Shift(gui.ScaledPixel(5),gui.ScaledPixel(72));
-   gui.riskExposure.label.maxTrades.FontSize(gui.GetMainFont_S());
+   CLabel *maxTradesLABEL = gui.riskExposure.label.maxTrades;
+   maxTradesLABEL.Create(0,"maxTradesLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(maxTradesLABEL);
+   maxTradesLABEL.Text("MAX # Trades");
+   maxTradesLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(72));
+   maxTradesLABEL.FontSize(gui.GetMainFont_S());
    
    //edit
-   gui.riskExposure.edit.maxTrades.Create(0,"gui.riskExposure.edit.maxTrades",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.maxTrades);
-   gui.riskExposure.edit.maxTrades.Shift(gui.ScaledPixel(255),gui.ScaledPixel(70));
-   gui.riskExposure.edit.maxTrades.ReadOnly(true);
-   gui.riskExposure.edit.maxTrades.ColorBackground(clrWhiteSmoke);
-   gui.riskExposure.edit.maxTrades.FontSize(gui.GetMainFont_S());
-   if (riskOptions.GetMaxTrades() != -1) gui.riskExposure.edit.maxTrades.Text((string)riskOptions.GetMaxTrades());
+   CEdit *maxTradesEDIT = gui.riskExposure.edit.maxTrades;
+   maxTradesEDIT.Create(0,"maxTradesEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(maxTradesEDIT);
+   maxTradesEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(70));
+   maxTradesEDIT.ReadOnly(true);
+   maxTradesEDIT.ColorBackground(clrWhiteSmoke);
+   maxTradesEDIT.FontSize(gui.GetMainFont_S());
+   if (riskOptions.GetMaxTrades() != -1) maxTradesEDIT.Text((string)riskOptions.GetMaxTrades());
    
    //bmp
-   gui.riskExposure.bmpButton.maxTrades.Create(0,"gui.riskExposure.bmpButton.maxTrades",0,0,0,0,0);
-   gui.riskExposure.bmpButton.maxTrades.BmpNames("::Include\\Controls\\res\\CheckBoxOff.bmp",
+   CBmpButton *maxTradesBMP = gui.riskExposure.bmpButton.maxTrades;
+   maxTradesBMP.Create(0,"maxTradesBMP",0,0,0,0,0);
+   maxTradesBMP.BmpNames("::Include\\Controls\\res\\CheckBoxOff.bmp",
                               "::Include\\Controls\\res\\CheckBoxOn.bmp");
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.bmpButton.maxTrades); 
-   gui.riskExposure.bmpButton.maxTrades.Shift(gui.ScaledPixel(230),gui.ScaledPixel(75));
+   window.Add(maxTradesBMP); 
+   maxTradesBMP.Shift(gui.ScaledPixel(230),gui.ScaledPixel(75));
    
    //-------------------------
    //MAX Settings Lots
    //-------------------------
    //Label
-   gui.riskExposure.label.maxLots.Create(0,"gui.riskExposure.label.maxLots",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.maxLots);
-   gui.riskExposure.label.maxLots.Text("MAX Lots");
-   gui.riskExposure.label.maxLots.Shift(gui.ScaledPixel(5),gui.ScaledPixel(102));
-   gui.riskExposure.label.maxLots.FontSize(gui.GetMainFont_S());
+   CLabel *maxLotsLABEL = gui.riskExposure.label.maxLots;
+   maxLotsLABEL.Create(0,"maxLotsLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(maxLotsLABEL);
+   maxLotsLABEL.Text("MAX Lots");
+   maxLotsLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(102));
+   maxLotsLABEL.FontSize(gui.GetMainFont_S());
    
    //edit
-   gui.riskExposure.edit.maxLots.Create(0,"gui.riskExposure.edit.maxLots",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.maxLots);
-   gui.riskExposure.edit.maxLots.Shift(gui.ScaledPixel(255),gui.ScaledPixel(100));
-   gui.riskExposure.edit.maxLots.ReadOnly(true);
-   gui.riskExposure.edit.maxLots.ColorBackground(clrWhiteSmoke);
-   gui.riskExposure.edit.maxLots.FontSize(gui.GetMainFont_S());
-   if (riskOptions.GetMaxLots() != -1) gui.riskExposure.edit.maxLots.Text((string)riskOptions.GetMaxLots());
+   CEdit *maxLotsEDIT = gui.riskExposure.edit.maxLots;
+   maxLotsEDIT.Create(0,"maxLotsEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(maxLotsEDIT);
+   maxLotsEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(100));
+   maxLotsEDIT.ReadOnly(true);
+   maxLotsEDIT.ColorBackground(clrWhiteSmoke);
+   maxLotsEDIT.FontSize(gui.GetMainFont_S());
+   if (riskOptions.GetMaxLots() != -1) maxLotsEDIT.Text((string)riskOptions.GetMaxLots());
    
    //bmp
-   gui.riskExposure.bmpButton.maxLots.Create(0,"gui.riskExposure.bmpButton.maxLots",0,0,0,0,0);
-   gui.riskExposure.bmpButton.maxLots.BmpNames("::Include\\Controls\\res\\CheckBoxOff.bmp",
+   CBmpButton *maxLotsBMP = gui.riskExposure.bmpButton.maxLots;
+   maxLotsBMP.Create(0,"maxLotsBMP",0,0,0,0,0);
+   maxLotsBMP.BmpNames("::Include\\Controls\\res\\CheckBoxOff.bmp",
                             "::Include\\Controls\\res\\CheckBoxOn.bmp"); 
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.bmpButton.maxLots); 
-   gui.riskExposure.bmpButton.maxLots.Shift(gui.ScaledPixel(230),gui.ScaledPixel(105));
+   window.Add(maxLotsBMP); 
+   maxLotsBMP.Shift(gui.ScaledPixel(230),gui.ScaledPixel(105));
    
    //-------------------------
    //MAX Settings Currency or Account %
@@ -112,81 +123,90 @@ void CRiskExposureInitializer::create(CGuiControl            &gui,
    
    //Choose Currency or Account Percentage for Risk Settings
    //Account percentage
-   gui.riskExposure.button.percentageRiskSettings.Create(0,"gui.riskExposure.button.percentageRiskSettings",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.button.percentageRiskSettings);
-   gui.riskExposure.button.percentageRiskSettings.Shift(gui.ScaledPixel(125),gui.ScaledPixel(135));
-   gui.riskExposure.button.percentageRiskSettings.Text("Acc%");
-   gui.riskExposure.button.percentageRiskSettings.FontSize(gui.GetsubFont_S());
+   CButton *percentageRiskSettingsBUTTON = gui.riskExposure.button.percentageRiskSettings;
+   percentageRiskSettingsBUTTON.Create(0,"percentageRiskSettingsBUTTON",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
+   window.Add(percentageRiskSettingsBUTTON);
+   percentageRiskSettingsBUTTON.Shift(gui.ScaledPixel(125),gui.ScaledPixel(135));
+   percentageRiskSettingsBUTTON.Text("Acc%");
+   percentageRiskSettingsBUTTON.FontSize(gui.GetsubFont_S());
    //Currency 
-   gui.riskExposure.button.currencyRiskSettings.Create(0,"gui.riskExposure.button.currencyRiskSettings",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.button.currencyRiskSettings);
-   gui.riskExposure.button.currencyRiskSettings.Shift(gui.ScaledPixel(175),gui.ScaledPixel(135));
-   gui.riskExposure.button.currencyRiskSettings.Text(AccountCurrency());
-   gui.riskExposure.button.currencyRiskSettings.FontSize(gui.GetsubFont_S());
+   CButton *currencyRiskSettingsBUTTON = gui.riskExposure.button.currencyRiskSettings;
+   currencyRiskSettingsBUTTON.Create(0,"currencyRiskSettingsBUTTON",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
+   window.Add(currencyRiskSettingsBUTTON);
+   currencyRiskSettingsBUTTON.Shift(gui.ScaledPixel(175),gui.ScaledPixel(135));
+   currencyRiskSettingsBUTTON.Text(AccountCurrency());
+   currencyRiskSettingsBUTTON.FontSize(gui.GetsubFont_S());
    //Button Clr OnInit
    if(gui.riskExposure.RS ==1) {
-      gui.riskExposure.button.percentageRiskSettings.ColorBackground(clrLightBlue);
-      gui.riskExposure.button.currencyRiskSettings.ColorBackground(C'0xF0,0xF0,0xF0');
+      percentageRiskSettingsBUTTON.ColorBackground(clrLightBlue);
+      currencyRiskSettingsBUTTON.ColorBackground(C'0xF0,0xF0,0xF0');
    }
    if(gui.riskExposure.RS==2){
-      gui.riskExposure.button.percentageRiskSettings.ColorBackground(C'0xF0,0xF0,0xF0');
-      gui.riskExposure.button.currencyRiskSettings.ColorBackground(clrLightBlue);
+      percentageRiskSettingsBUTTON.ColorBackground(C'0xF0,0xF0,0xF0');
+      currencyRiskSettingsBUTTON.ColorBackground(clrLightBlue);
    }
    
    //Label
-   gui.riskExposure.label.maxExposure.Create(0,"gui.riskExposure.label.maxExposure",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.maxExposure);
-   gui.riskExposure.label.maxExposure.Text("MAX Risk");
-   gui.riskExposure.label.maxExposure.Shift(gui.ScaledPixel(5),gui.ScaledPixel(132));
-   gui.riskExposure.label.maxExposure.FontSize(gui.GetMainFont_S());
+   CLabel *maxExposureLABEL = gui.riskExposure.label.maxExposure;
+   maxExposureLABEL.Create(0,"maxExposureLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(maxExposureLABEL);
+   maxExposureLABEL.Text("MAX Risk");
+   maxExposureLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(132));
+   maxExposureLABEL.FontSize(gui.GetMainFont_S());
    
    //edit Currency
-   gui.riskExposure.edit.maxExposure.Create(0,"gui.riskExposure.edit.maxExposure",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.maxExposure);
-   gui.riskExposure.edit.maxExposure.Shift(gui.ScaledPixel(255),gui.ScaledPixel(130));
-   gui.riskExposure.edit.maxExposure.ReadOnly(true);
-   gui.riskExposure.edit.maxExposure.ColorBackground(clrWhiteSmoke);
+   CEdit *maxExposureEDIT = gui.riskExposure.edit.maxExposure;
+   maxExposureEDIT.Create(0,"maxExposureEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(maxExposureEDIT);
+   maxExposureEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(130));
+   maxExposureEDIT.ReadOnly(true);
+   maxExposureEDIT.ColorBackground(clrWhiteSmoke);
    if(gui.riskExposure.RS ==1) {
       if (riskOptions.GetMaxExpPer() != -1) 
-         gui.riskExposure.edit.maxExposure.Text(DoubleToString(riskOptions.GetMaxExpPer(),2) + " %");
+         maxExposureEDIT.Text(DoubleToString(riskOptions.GetMaxExpPer(),2) + " %");
    }   
    if(gui.riskExposure.RS==2){
       if (riskOptions.GetMaxExpCur() != -1) 
-         gui.riskExposure.edit.maxExposure.Text(DoubleToString(riskOptions.GetMaxExpCur(),2) + " "+AccountCurrency());
+         maxExposureEDIT.Text(DoubleToString(riskOptions.GetMaxExpCur(),2) + " "+AccountCurrency());
    }
-   gui.riskExposure.edit.maxExposure.FontSize(gui.GetMainFont_S());
+   maxExposureEDIT.FontSize(gui.GetMainFont_S());
+   
    //bmp
-   gui.riskExposure.bmpButton.maxExposure.Create(0,"gui.riskExposure.bmpButton.maxExposure",0,0,0,0,0);
-   gui.riskExposure.bmpButton.maxExposure.BmpNames("::Include\\Controls\\res\\CheckBoxOff.bmp",
+   CBmpButton *maxExposureBMP = gui.riskExposure.bmpButton.maxExposure;
+   maxExposureBMP.Create(0,"maxExposureBMP",0,0,0,0,0);
+   maxExposureBMP.BmpNames("::Include\\Controls\\res\\CheckBoxOff.bmp",
                                 "::Include\\Controls\\res\\CheckBoxOn.bmp"); 
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.bmpButton.maxExposure); 
-   gui.riskExposure.bmpButton.maxExposure.Shift(gui.ScaledPixel(230),gui.ScaledPixel(135));
+   window.Add(maxExposureBMP); 
+   maxExposureBMP.Shift(gui.ScaledPixel(230),gui.ScaledPixel(135));
    
    //-------------------------
    //Max Currency Value of PositionSize
    //-------------------------
    //Label
-   gui.riskExposure.label.maxPositionValue.Create(0,"gui.riskExposure.label.maxPositionValue",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.maxPositionValue);
-   gui.riskExposure.label.maxPositionValue.Text("MAX " + AccountCurrency() + " Exposure");
-   gui.riskExposure.label.maxPositionValue.Shift(gui.ScaledPixel(5),gui.ScaledPixel(162));
-   gui.riskExposure.label.maxPositionValue.FontSize(gui.GetMainFont_S());
+   CLabel *maxPositionValueLABEL = gui.riskExposure.label.maxPositionValue;
+   maxPositionValueLABEL.Create(0,"maxPositionValueLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(maxPositionValueLABEL);
+   maxPositionValueLABEL.Text("MAX " + AccountCurrency() + " Exposure");
+   maxPositionValueLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(162));
+   maxPositionValueLABEL.FontSize(gui.GetMainFont_S());
    
    //bmp
-   gui.riskExposure.bmpButton.maxPositionValue.Create(0,"gui.riskExposure.bmpButton.maxPositionValue",0,0,0,0,0);
-   gui.riskExposure.bmpButton.maxPositionValue.BmpNames("::Include\\Controls\\res\\CheckBoxOff.bmp",
-                                   "::Include\\Controls\\res\\CheckBoxOn.bmp"); 
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.bmpButton.maxPositionValue); 
-   gui.riskExposure.bmpButton.maxPositionValue.Shift(gui.ScaledPixel(230),gui.ScaledPixel(165));
+   CBmpButton *maxPositionValueBMP = gui.riskExposure.bmpButton.maxPositionValue;
+   maxPositionValueBMP.Create(0,"maxPositionValueBMP",0,0,0,0,0);
+   maxPositionValueBMP.BmpNames("::Include\\Controls\\res\\CheckBoxOff.bmp",
+                                "::Include\\Controls\\res\\CheckBoxOn.bmp"); 
+   window.Add(maxPositionValueBMP); 
+   maxPositionValueBMP.Shift(gui.ScaledPixel(230),gui.ScaledPixel(165));
    
    //edit
-   gui.riskExposure.edit.maxPositionValue.Create(0,"gui.riskExposure.edit.maxPositionValue",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.maxPositionValue);
-   gui.riskExposure.edit.maxPositionValue.Shift(gui.ScaledPixel(255),gui.ScaledPixel(160));
-   gui.riskExposure.edit.maxPositionValue.ReadOnly(true);
-   gui.riskExposure.edit.maxPositionValue.ColorBackground(clrWhiteSmoke);
-   gui.riskExposure.edit.maxPositionValue.FontSize(gui.GetMainFont_S());
-   if (riskOptions.GetMaxPosVal() != -1) gui.riskExposure.edit.maxPositionValue.Text((string)riskOptions.GetMaxPosVal() + " "+AccountCurrency());
+   CEdit *maxPositionValueEDIT = gui.riskExposure.edit.maxPositionValue;
+   maxPositionValueEDIT.Create(0,"maxPositionValueEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(maxPositionValueEDIT);
+   maxPositionValueEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(160));
+   maxPositionValueEDIT.ReadOnly(true);
+   maxPositionValueEDIT.ColorBackground(clrWhiteSmoke);
+   maxPositionValueEDIT.FontSize(gui.GetMainFont_S());
+   if (riskOptions.GetMaxPosVal() != -1) maxPositionValueEDIT.Text((string)riskOptions.GetMaxPosVal() + " "+AccountCurrency());
    
    //--------------------------------------------------------
    // Total Exposure
@@ -195,58 +215,63 @@ void CRiskExposureInitializer::create(CGuiControl            &gui,
    //-------------------------
    //Introduction Label
    //-------------------------
-   gui.riskExposure.label.totalExposure_int.Create(0,"gui.riskExposure.label.totalExposure_int",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.riskExposure.label.totalExposure_int.Text("Total Exposure");
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.totalExposure_int);
-   gui.riskExposure.label.totalExposure_int.Shift(gui.ScaledPixel(140),gui.ScaledPixel(188));
-   gui.riskExposure.label.totalExposure_int.Color(clrMediumBlue);
-   gui.riskExposure.label.totalExposure_int.FontSize(gui.GetMainFont_S());
+   CLabel *totalExposure_intLABEL = gui.riskExposure.label.totalExposure_int;
+   totalExposure_intLABEL.Create(0,"totalExposure_intLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   totalExposure_intLABEL.Text("Total Exposure");
+   window.Add(totalExposure_intLABEL);
+   totalExposure_intLABEL.Shift(gui.ScaledPixel(140),gui.ScaledPixel(188));
+   totalExposure_intLABEL.Color(clrMediumBlue);
+   totalExposure_intLABEL.FontSize(gui.GetMainFont_S());
    
    //-------------------------
    //Total_Trades
    //-------------------------
-   //Label - gui.riskExposure.label.totalTrades 
-   gui.riskExposure.label.totalTrades.Create(0,"gui.riskExposure.label.totalTrades",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.totalTrades);
-   gui.riskExposure.label.totalTrades.Text("Total Trades");
-   gui.riskExposure.label.totalTrades.Shift(gui.ScaledPixel(5),gui.ScaledPixel(212));
-   gui.riskExposure.label.totalTrades.FontSize(gui.GetMainFont_S());
+   //Label - totalTradesLABEL 
+   CLabel *totalTradesLABEL = gui.riskExposure.label.totalTrades;
+   totalTradesLABEL.Create(0,"totalTradesLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(totalTradesLABEL);
+   totalTradesLABEL.Text("Total Trades");
+   totalTradesLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(212));
+   totalTradesLABEL.FontSize(gui.GetMainFont_S());
    
-   //Edit - gui.riskExposure.edit.totalTrades 
-   gui.riskExposure.edit.totalTrades.Create(0,"gui.riskExposure.edit.totalTrades",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.totalTrades);
-   gui.riskExposure.edit.totalTrades.Shift(gui.ScaledPixel(255),gui.ScaledPixel(210));
-   gui.riskExposure.edit.totalTrades.ReadOnly(true);
-   gui.riskExposure.edit.totalTrades.FontSize(gui.GetMainFont_S());
+   //Edit - totalTradesEDIT 
+   CEdit *totalTradesEDIT = gui.riskExposure.edit.totalTrades;
+   totalTradesEDIT.Create(0,"totalTradesEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(totalTradesEDIT);
+   totalTradesEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(210));
+   totalTradesEDIT.ReadOnly(true);
+   totalTradesEDIT.FontSize(gui.GetMainFont_S());
    
    if (sumTrades.GetTotalTrades() > riskOptions.GetMaxTrades() && 
        riskOptions.GetMaxTrades() != -1) {
-      gui.riskExposure.edit.totalTrades.ColorBackground(clrTomato);
+      totalTradesEDIT.ColorBackground(clrTomato);
    }
-   else gui.riskExposure.edit.totalTrades.ColorBackground(clrWhiteSmoke);
+   else totalTradesEDIT.ColorBackground(clrWhiteSmoke);
    
    //-------------------------
    //Total_Lots
    //-------------------------
-   //Label - gui.riskExposure.label.totalLots 
-   gui.riskExposure.label.totalLots.Create(0,"gui.riskExposure.label.totalLots",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.totalLots);
-   gui.riskExposure.label.totalLots.Text("Total Lots");
-   gui.riskExposure.label.totalLots.Shift(gui.ScaledPixel(5),gui.ScaledPixel(242));
-   gui.riskExposure.label.totalLots.FontSize(gui.GetMainFont_S());
+   //Label - totalLotsLABEL 
+   CLabel *totalLotsLABEL = gui.riskExposure.label.totalLots;
+   totalLotsLABEL.Create(0,"totalLotsLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(totalLotsLABEL);
+   totalLotsLABEL.Text("Total Lots");
+   totalLotsLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(242));
+   totalLotsLABEL.FontSize(gui.GetMainFont_S());
    
-   //Edit - gui.riskExposure.edit.totalLots 
-   gui.riskExposure.edit.totalLots.Create(0,"gui.riskExposure.edit.totalLots",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.totalLots);
-   gui.riskExposure.edit.totalLots.Shift(gui.ScaledPixel(255),gui.ScaledPixel(240));
-   gui.riskExposure.edit.totalLots.ReadOnly(true);
-   gui.riskExposure.edit.totalLots.FontSize(gui.GetMainFont_S());
+   //Edit - totalLotsEDIT 
+   CEdit *totalLotsEDIT = gui.riskExposure.edit.totalLots;
+   totalLotsEDIT.Create(0,"totalLotsEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(totalLotsEDIT);
+   totalLotsEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(240));
+   totalLotsEDIT.ReadOnly(true);
+   totalLotsEDIT.FontSize(gui.GetMainFont_S());
    
    if (sumTrades.GetTotalLots() > riskOptions.GetMaxLots() && 
        riskOptions.GetMaxLots() != -1) {
-      gui.riskExposure.edit.totalLots.ColorBackground(clrTomato);
+      totalLotsEDIT.ColorBackground(clrTomato);
    }
-   else gui.riskExposure.edit.totalLots.ColorBackground(clrWhiteSmoke);
+   else totalLotsEDIT.ColorBackground(clrWhiteSmoke);
    
    //-------------------------
    //Total Exp Currency or Account %
@@ -254,83 +279,89 @@ void CRiskExposureInitializer::create(CGuiControl            &gui,
    
    //Choose Currency or Account Percentage for Total Exposure
    //Account percentage
-   gui.riskExposure.button.percentageTotalExposure.Create(0,"gui.riskExposure.button.percentageTotalExposure",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.button.percentageTotalExposure);
-   gui.riskExposure.button.percentageTotalExposure.Shift(gui.ScaledPixel(125),gui.ScaledPixel(275));
-   gui.riskExposure.button.percentageTotalExposure.Text("Acc%");
-   gui.riskExposure.button.percentageTotalExposure.FontSize(gui.GetsubFont_S());
-   //gui.riskExposure.button.percentageTotalExposure.ColorBackground(clrLightBlue);
+   CButton *percentageTotalExposureBUTTON = gui.riskExposure.button.percentageTotalExposure;
+   percentageTotalExposureBUTTON.Create(0,"percentageTotalExposureBUTTON",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
+   window.Add(percentageTotalExposureBUTTON);
+   percentageTotalExposureBUTTON.Shift(gui.ScaledPixel(125),gui.ScaledPixel(275));
+   percentageTotalExposureBUTTON.Text("Acc%");
+   percentageTotalExposureBUTTON.FontSize(gui.GetsubFont_S());
+   //percentageTotalExposureBUTTON.ColorBackground(clrLightBlue);
    //Currency 
-   gui.riskExposure.button.currencyTotalExposure.Create(0,"gui.riskExposure.button.currencyTotalExposure",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.button.currencyTotalExposure);
-   gui.riskExposure.button.currencyTotalExposure.Shift(gui.ScaledPixel(175),gui.ScaledPixel(275));
-   gui.riskExposure.button.currencyTotalExposure.Text(AccountCurrency());
-   gui.riskExposure.button.currencyTotalExposure.FontSize(gui.GetsubFont_S());
-   //gui.riskExposure.button.currencyTotalExposure.ColorBackground(clrLightBlue);
+   CButton *currencyTotalExposureBUTTON = gui.riskExposure.button.currencyTotalExposure;
+   currencyTotalExposureBUTTON.Create(0,"currencyTotalExposureBUTTON",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
+   window.Add(currencyTotalExposureBUTTON);
+   currencyTotalExposureBUTTON.Shift(gui.ScaledPixel(175),gui.ScaledPixel(275));
+   currencyTotalExposureBUTTON.Text(AccountCurrency());
+   currencyTotalExposureBUTTON.FontSize(gui.GetsubFont_S());
+   //currencyTotalExposureBUTTON.ColorBackground(clrLightBlue);
    //Button Clr OnInit
    if(gui.riskExposure.TE ==1) {
-      gui.riskExposure.button.percentageTotalExposure.ColorBackground(clrLightBlue);
-      gui.riskExposure.button.currencyTotalExposure.ColorBackground(C'0xF0,0xF0,0xF0');
+      percentageTotalExposureBUTTON.ColorBackground(clrLightBlue);
+      currencyTotalExposureBUTTON.ColorBackground(C'0xF0,0xF0,0xF0');
    }
    if(gui.riskExposure.TE==2) {
-      gui.riskExposure.button.percentageTotalExposure.ColorBackground(C'0xF0,0xF0,0xF0');
-      gui.riskExposure.button.currencyTotalExposure.ColorBackground(clrLightBlue);
+      percentageTotalExposureBUTTON.ColorBackground(C'0xF0,0xF0,0xF0');
+      currencyTotalExposureBUTTON.ColorBackground(clrLightBlue);
    }
    
-   //Label - gui.riskExposure.label.totalExposure 
-   gui.riskExposure.label.totalExposure.Create(0,"gui.riskExposure.label.totalExposure",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.totalExposure);
-   gui.riskExposure.label.totalExposure.Text("Total Risk");
-   gui.riskExposure.label.totalExposure.Shift(gui.ScaledPixel(5),gui.ScaledPixel(272));
-   gui.riskExposure.label.totalExposure.FontSize(gui.GetMainFont_S());
+   //Label - totalExposureLABEL 
+   CLabel *totalExposureLABEL = gui.riskExposure.label.totalExposure;
+   totalExposureLABEL.Create(0,"totalExposureLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(totalExposureLABEL);
+   totalExposureLABEL.Text("Total Risk");
+   totalExposureLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(272));
+   totalExposureLABEL.FontSize(gui.GetMainFont_S());
    
-   //Edit - gui.riskExposure.edit.totalExposure 
-   gui.riskExposure.edit.totalExposure.Create(0,"gui.riskExposure.edit.totalExposure",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.totalExposure);
-   gui.riskExposure.edit.totalExposure.Shift(gui.ScaledPixel(255),gui.ScaledPixel(270));
-   gui.riskExposure.edit.totalExposure.ReadOnly(true);
-   gui.riskExposure.edit.totalExposure.FontSize(gui.GetMainFont_S());
+   //Edit - totalExposureEDIT 
+   CEdit *totalExposureEDIT = gui.riskExposure.edit.totalExposure;
+   totalExposureEDIT.Create(0,"totalExposureEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(totalExposureEDIT);
+   totalExposureEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(270));
+   totalExposureEDIT.ReadOnly(true);
+   totalExposureEDIT.FontSize(gui.GetMainFont_S());
    
    if(gui.riskExposure.TE == 1) {
       if ((sumTrades.GetTotalExpAcc() > riskOptions.GetMaxExpPer() && 
           riskOptions.GetMaxExpPer() != -1) ||
           ((riskOptions.GetMaxExpPer() != -1) && (sumTrades.GetTotalExpAcc() == -10))) {
-         gui.riskExposure.edit.totalExposure.ColorBackground(clrTomato);
+         totalExposureEDIT.ColorBackground(clrTomato);
       }
-      else gui.riskExposure.edit.totalExposure.ColorBackground(clrWhiteSmoke);
+      else totalExposureEDIT.ColorBackground(clrWhiteSmoke);
    }
    
    if(gui.riskExposure.TE == 2) {
       if ((sumTrades.GetTotalExpCur() > riskOptions.GetMaxExpCur() && 
           riskOptions.GetMaxExpCur() != -1) ||
           ((riskOptions.GetMaxExpCur() != -1) && (sumTrades.GetTotalExpAcc() == -10))) {
-         gui.riskExposure.edit.totalExposure.ColorBackground(clrTomato);
+         totalExposureEDIT.ColorBackground(clrTomato);
       }
-      else gui.riskExposure.edit.totalExposure.ColorBackground(clrWhiteSmoke);
+      else totalExposureEDIT.ColorBackground(clrWhiteSmoke);
    }
    
    //-------------------------
    //Total Currency Value of PositionSize
    //-------------------------
-   //Label - gui.riskExposure.label.totalPositionValue
-   gui.riskExposure.label.totalPositionValue.Create(0,"gui.riskExposure.label.totalPositionValue",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.totalPositionValue);
-   gui.riskExposure.label.totalPositionValue.Text("Total " + AccountCurrency() + " Exposure");
-   gui.riskExposure.label.totalPositionValue.Shift(gui.ScaledPixel(5),gui.ScaledPixel(302));
-   gui.riskExposure.label.totalPositionValue.FontSize(gui.GetMainFont_S());
+   //Label - totalPositionValueLABEL
+   CLabel *totalPositionValueLABEL = gui.riskExposure.label.totalPositionValue;
+   totalPositionValueLABEL.Create(0,"totalPositionValueLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(totalPositionValueLABEL);
+   totalPositionValueLABEL.Text("Total " + AccountCurrency() + " Exposure");
+   totalPositionValueLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(302));
+   totalPositionValueLABEL.FontSize(gui.GetMainFont_S());
    
-   //Edit - gui.riskExposure.edit.totalPositionValue
-   gui.riskExposure.edit.totalPositionValue.Create(0,"gui.riskExposure.edit.totalPositionValue",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.totalPositionValue);
-   gui.riskExposure.edit.totalPositionValue.Shift(gui.ScaledPixel(255),gui.ScaledPixel(300));
-   gui.riskExposure.edit.totalPositionValue.ReadOnly(true);
-   gui.riskExposure.edit.totalPositionValue.FontSize(gui.GetMainFont_S());
+   //Edit - totalPositionValueEDIT
+   CEdit *totalPositionValueEDIT = gui.riskExposure.edit.totalPositionValue;
+   totalPositionValueEDIT.Create(0,"totalPositionValueEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(totalPositionValueEDIT);
+   totalPositionValueEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(300));
+   totalPositionValueEDIT.ReadOnly(true);
+   totalPositionValueEDIT.FontSize(gui.GetMainFont_S());
    
    if (sumTrades.GetTotalPosVal() > riskOptions.GetMaxPosVal() && 
        riskOptions.GetMaxPosVal() != -1) {
-      gui.riskExposure.edit.totalPositionValue.ColorBackground(clrTomato);
+      totalPositionValueEDIT.ColorBackground(clrTomato);
    }
-   else gui.riskExposure.edit.totalPositionValue.ColorBackground(clrWhiteSmoke);
+   else totalPositionValueEDIT.ColorBackground(clrWhiteSmoke);
    
    //--------------------------------------------------------
    // Individual Trade Exposure
@@ -339,86 +370,95 @@ void CRiskExposureInitializer::create(CGuiControl            &gui,
    //-------------------------
    //Introduction Label 
    //-------------------------
-   gui.riskExposure.label.tradeSelect_int.Create(0,"gui.riskExposure.label.tradeSelect_int",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.tradeSelect_int);
-   gui.riskExposure.label.tradeSelect_int.Text("Individual Trade Exposure");
-   gui.riskExposure.label.tradeSelect_int.Shift(gui.ScaledPixel(100),gui.ScaledPixel(340));
-   gui.riskExposure.label.tradeSelect_int.Color(clrMediumBlue);
-   gui.riskExposure.label.tradeSelect_int.FontSize(gui.GetMainFont_S());
+   CLabel *tradeSelect_intLABEL = gui.riskExposure.label.tradeSelect_int;
+   tradeSelect_intLABEL.Create(0,"tradeSelect_intLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(tradeSelect_intLABEL);
+   tradeSelect_intLABEL.Text("Individual Trade Exposure");
+   tradeSelect_intLABEL.Shift(gui.ScaledPixel(100),gui.ScaledPixel(340));
+   tradeSelect_intLABEL.Color(clrMediumBlue);
+   tradeSelect_intLABEL.FontSize(gui.GetMainFont_S());
 
    //-------------------------
    //Choose Trade
    //-------------------------
-   //Label gui.riskExposure.label.tradeSelect
-   gui.riskExposure.label.tradeSelect.Create(0,"gui.riskExposure.label.tradeSelect",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.tradeSelect);
-   gui.riskExposure.label.tradeSelect.Text("Select Trade");
-   gui.riskExposure.label.tradeSelect.Shift(gui.ScaledPixel(5),gui.ScaledPixel(372));
-   gui.riskExposure.label.tradeSelect.FontSize(gui.GetMainFont_S());
+   //Label tradeSelectLABEL
+   CLabel *tradeSelectLABEL = gui.riskExposure.label.tradeSelect;
+   tradeSelectLABEL.Create(0,"tradeSelectLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(tradeSelectLABEL);
+   tradeSelectLABEL.Text("Select Trade");
+   tradeSelectLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(372));
+   tradeSelectLABEL.FontSize(gui.GetMainFont_S());
    
-   //ComboBox - gui.riskExposure.comboBox.tradeExposure
-   gui.riskExposure.comboBox.tradeExposure.Create(0,"gui.riskExposure.comboBox.tradeExposure",0,0,0,gui.ScaledPixel(145),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.comboBox.tradeExposure);
-   gui.riskExposure.comboBox.tradeExposure.Shift(gui.ScaledPixel(215),gui.ScaledPixel(370));
+   //ComboBox - tradeExposureComboBox
+   CComboBox *tradeExposureComboBox = gui.riskExposure.comboBox.tradeExposure;
+   tradeExposureComboBox.Create(0,"tradeExposureComboBox",0,0,0,gui.ScaledPixel(145),gui.ScaledPixel(25));
+   window.Add(tradeExposureComboBox);
+   tradeExposureComboBox.Shift(gui.ScaledPixel(215),gui.ScaledPixel(370));
    //Add trades to CB
    individualTrade.AddToCB_Singular_Trades(gui);
    
    //-------------------------
    //Singular Trade EXP in Currency or Account%
    //-------------------------
-   //Label gui.riskExposure.label.tradeSelect
-   gui.riskExposure.label.tradeExposure.Create(0,"gui.riskExposure.label.tradeExposure",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.tradeExposure);
-   gui.riskExposure.label.tradeExposure.Text("Trade Risk");
-   gui.riskExposure.label.tradeExposure.Shift(gui.ScaledPixel(5),gui.ScaledPixel(402));
-   gui.riskExposure.label.tradeExposure.FontSize(gui.GetMainFont_S());
+   //Label tradeSelectLABEL
+   CLabel *tradeExposureLABEL = gui.riskExposure.label.tradeExposure;
+   tradeExposureLABEL.Create(0,"tradeExposureLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(tradeExposureLABEL);
+   tradeExposureLABEL.Text("Trade Risk");
+   tradeExposureLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(402));
+   tradeExposureLABEL.FontSize(gui.GetMainFont_S());
    
-   //Edit gui.riskExposure.edit.tradeExposure
-   gui.riskExposure.edit.tradeExposure.Create(0,"gui.riskExposure.edit.tradeExposure",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.tradeExposure);
-   gui.riskExposure.edit.tradeExposure.Shift(gui.ScaledPixel(255),gui.ScaledPixel(400));
-   gui.riskExposure.edit.tradeExposure.ReadOnly(true);
-   gui.riskExposure.edit.tradeExposure.ColorBackground(clrWhiteSmoke);
-   gui.riskExposure.edit.tradeExposure.FontSize(gui.GetMainFont_S());
+   //Edit tradeExposureEDIT
+   CEdit *tradeExposureEDIT = gui.riskExposure.edit.tradeExposure;
+   tradeExposureEDIT.Create(0,"tradeExposureEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(tradeExposureEDIT);
+   tradeExposureEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(400));
+   tradeExposureEDIT.ReadOnly(true);
+   tradeExposureEDIT.ColorBackground(clrWhiteSmoke);
+   tradeExposureEDIT.FontSize(gui.GetMainFont_S());
    
-   //Edit gui.riskExposure.edit.tradePositionValue
-   gui.riskExposure.edit.tradePositionValue.Create(0,"gui.riskExposure.edit.tradePositionValue",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.edit.tradePositionValue);
-   gui.riskExposure.edit.tradePositionValue.Shift(gui.ScaledPixel(255),gui.ScaledPixel(430));
-   gui.riskExposure.edit.tradePositionValue.ReadOnly(true);
-   gui.riskExposure.edit.tradePositionValue.ColorBackground(clrWhiteSmoke);
-   gui.riskExposure.edit.tradePositionValue.FontSize(gui.GetMainFont_S());
+   //Edit tradePositionValueEDIT
+   CEdit *tradePositionValueEDIT = gui.riskExposure.edit.tradePositionValue;
+   tradePositionValueEDIT.Create(0,"tradePositionValueEDIT",0,0,0,gui.ScaledPixel(105),gui.ScaledPixel(25));
+   window.Add(tradePositionValueEDIT);
+   tradePositionValueEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(430));
+   tradePositionValueEDIT.ReadOnly(true);
+   tradePositionValueEDIT.ColorBackground(clrWhiteSmoke);
+   tradePositionValueEDIT.FontSize(gui.GetMainFont_S());
    
    //Choose Currency or Account Percentage for Individual Trade Exposure
    //Currency 
-   gui.riskExposure.button.currencyIndivualTradeExposure.Create(0,"gui.riskExposure.button.currencyIndivualTradeExposure",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.button.currencyIndivualTradeExposure);
-   gui.riskExposure.button.currencyIndivualTradeExposure.Shift(gui.ScaledPixel(175),gui.ScaledPixel(405));
-   gui.riskExposure.button.currencyIndivualTradeExposure.Text(AccountCurrency());
-   gui.riskExposure.button.currencyIndivualTradeExposure.FontSize(gui.GetsubFont_S());
+   CButton *currencyIndivualTradeExposureBUTTON = gui.riskExposure.button.currencyIndivualTradeExposure;
+   currencyIndivualTradeExposureBUTTON.Create(0,"currencyIndivualTradeExposureBUTTON",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
+   window.Add(currencyIndivualTradeExposureBUTTON);
+   currencyIndivualTradeExposureBUTTON.Shift(gui.ScaledPixel(175),gui.ScaledPixel(405));
+   currencyIndivualTradeExposureBUTTON.Text(AccountCurrency());
+   currencyIndivualTradeExposureBUTTON.FontSize(gui.GetsubFont_S());
    //Account percentage
-   gui.riskExposure.button.percentageIndivualTradeExposure.Create(0,"gui.riskExposure.button.percentageIndivualTradeExposure",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.button.percentageIndivualTradeExposure);
-   gui.riskExposure.button.percentageIndivualTradeExposure.Shift(gui.ScaledPixel(125),gui.ScaledPixel(405));
-   gui.riskExposure.button.percentageIndivualTradeExposure.Text("Acc%");
-   gui.riskExposure.button.percentageIndivualTradeExposure.FontSize(gui.GetsubFont_S());
+   CButton *percentageIndivualTradeExposureBUTTON = gui.riskExposure.button.percentageIndivualTradeExposure;
+   percentageIndivualTradeExposureBUTTON.Create(0,"percentageIndivualTradeExposureBUTTON",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(17));
+   window.Add(percentageIndivualTradeExposureBUTTON);
+   percentageIndivualTradeExposureBUTTON.Shift(gui.ScaledPixel(125),gui.ScaledPixel(405));
+   percentageIndivualTradeExposureBUTTON.Text("Acc%");
+   percentageIndivualTradeExposureBUTTON.FontSize(gui.GetsubFont_S());
    //Button Clr OnInit
    if(gui.riskExposure.ITE ==1) {
-      gui.riskExposure.button.percentageIndivualTradeExposure.ColorBackground(clrLightBlue);
-      gui.riskExposure.button.currencyIndivualTradeExposure.ColorBackground(C'0xF0,0xF0,0xF0');
+      percentageIndivualTradeExposureBUTTON.ColorBackground(clrLightBlue);
+      currencyIndivualTradeExposureBUTTON.ColorBackground(C'0xF0,0xF0,0xF0');
    }
    if(gui.riskExposure.ITE ==2) {
-      gui.riskExposure.button.percentageIndivualTradeExposure.ColorBackground(C'0xF0,0xF0,0xF0');
-      gui.riskExposure.button.currencyIndivualTradeExposure.ColorBackground(clrLightBlue);
+      percentageIndivualTradeExposureBUTTON.ColorBackground(C'0xF0,0xF0,0xF0');
+      currencyIndivualTradeExposureBUTTON.ColorBackground(clrLightBlue);
    }
    
    //-------------------------
    //Singular Currency Value of PositionSize
    //-------------------------
-   //Label gui.riskExposure.label.tradePositionValue
-   gui.riskExposure.label.tradePositionValue.Create(0,"gui.riskExposure.label.tradePositionValue",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
-   gui.mainWindow.windowDialog.Add(gui.riskExposure.label.tradePositionValue);
-   gui.riskExposure.label.tradePositionValue.Text(AccountCurrency() + " Exposure");
-   gui.riskExposure.label.tradePositionValue.Shift(gui.ScaledPixel(5),gui.ScaledPixel(432));
-   gui.riskExposure.label.tradePositionValue.FontSize(gui.GetMainFont_S());
+   //Label tradePositionValueLABEL
+   CLabel *tradePositionValueLABEL = gui.riskExposure.label.tradePositionValue;
+   tradePositionValueLABEL.Create(0,"tradePositionValueLABEL",0,0,0,gui.ScaledPixel(45),gui.ScaledPixel(5));
+   window.Add(tradePositionValueLABEL);
+   tradePositionValueLABEL.Text(AccountCurrency() + " Exposure");
+   tradePositionValueLABEL.Shift(gui.ScaledPixel(5),gui.ScaledPixel(432));
+   tradePositionValueLABEL.FontSize(gui.GetMainFont_S());
 }
