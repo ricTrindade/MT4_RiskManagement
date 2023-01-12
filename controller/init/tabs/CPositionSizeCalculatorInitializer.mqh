@@ -81,8 +81,8 @@ void CPositionSizeCalculatorInitializer::create(CGuiControl &gui, double contrac
    window.Add(priceBid);
    priceBid.Shift(gui.ScaledPixel(135),gui.ScaledPixel(77));
    priceBid.Text("Bid");
-   gui.positionSizeCalculator.button.priceBid.FontSize(gui.GetsubFont_S());
-   gui.positionSizeCalculator.button.priceBid.ColorBackground(clrTomato);
+   priceBid.FontSize(gui.GetsubFont_S());
+   priceBid.ColorBackground(clrTomato);
    
    //Button - Ask
    CButton *priceAsk = gui.positionSizeCalculator.button.priceAsk;
