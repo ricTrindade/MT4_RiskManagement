@@ -10,13 +10,13 @@ class CPositionSizeCalculatorInitializer {
 
 public:
 
-   void create(CGuiControl &gui, double contractSize);
+   void create(CGuiControl &gui);
 };
 
 //+------------------------------------------------------------------+
 //| create Method Defenition                                         |
 //+------------------------------------------------------------------+
-void CPositionSizeCalculatorInitializer::create(CGuiControl &gui, double contractSize) {
+void CPositionSizeCalculatorInitializer::create(CGuiControl &gui) {
 
    CAppDialog *window =  gui.mainWindow.windowDialog;
    
@@ -179,7 +179,6 @@ void CPositionSizeCalculatorInitializer::create(CGuiControl &gui, double contrac
    contractSizeEDIT.Shift(gui.ScaledPixel(255),gui.ScaledPixel(230));
    contractSizeEDIT.ReadOnly(true);
    contractSizeEDIT.ColorBackground(clrGainsboro);
-   contractSizeEDIT.Text((string)contractSize);
    contractSizeEDIT.FontSize(gui.GetMainFont_S());
    
    //-------------------------

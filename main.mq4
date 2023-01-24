@@ -70,14 +70,11 @@ int OnInit() {
       indivialTradeExposure  = new CIndivialTradeExposure();
       guiControl             = new CGuiControl(SCALE); 
       
-      // Manipulation of Global Variables
-      contractsize = SymbolInfoDouble(Symbol(), SYMBOL_TRADE_CONTRACT_SIZE);
-      
       // Create Main Window
       initialiser.mainWindow.create(guiControl);
       
       // Create Position Size Calculator Window
-      initialiser.positionSizeCalculator.create(guiControl, contractsize);
+      initialiser.positionSizeCalculator.create(guiControl);
       
       // Create Risk Exposure Window
       initialiser.riskExposure.create(guiControl, 
@@ -92,6 +89,11 @@ int OnInit() {
       EventSetTimer(1);
    //---
    }
+   
+   // Manipulation of Global Variables
+   contractsize = SymbolInfoDouble(Symbol(), SYMBOL_TRADE_CONTRACT_SIZE);
+   guiControl.positionSizeCalculator.edit.contractSize.Text(string(contractsize));
+   
    return(INIT_SUCCEEDED);
 }
 
