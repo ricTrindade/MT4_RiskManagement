@@ -38,11 +38,11 @@ void CRiskExposureInitializer::create(CGuiControl            &gui,
    //Button - gui.riskExposure.button.tabRiskExposure
    //-------------------------
    CButton *tabRiskExposure = gui.riskExposure.button.tabRiskExposure;
-   tabRiskExposure.Create(0,"tabRiskExposure",0,0,0,gui.ScaledPixel(175),gui.ScaledPixel(25));
+   tabRiskExposure.Create(0,"tabRiskExposure",0,0,0,gui.ScaledPixel(115),gui.ScaledPixel(25));
    tabRiskExposure.Text("Risk Exposure");
    tabRiskExposure.FontSize(gui.GetMainFont_S());
    window.Add(tabRiskExposure);
-   tabRiskExposure.Shift(gui.ScaledPixel(195),gui.ScaledPixel(5));
+   tabRiskExposure.Shift(gui.ScaledPixel(135),gui.ScaledPixel(5));
    
    //--------------------------------------------------------
    // Risk Settings

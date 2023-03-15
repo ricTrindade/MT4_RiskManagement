@@ -23,10 +23,11 @@ void CPositionSizeCalculatorInitializer::create(CGuiControl &gui) {
    //-------------------------
    //Button - gui.positionSizeCalculator.button.tabPSC 
    CButton *tabPSC = gui.positionSizeCalculator.button.tabPSC;
-   tabPSC.Create(0,"tabPSC",0,gui.ScaledPixel(5),gui.ScaledPixel(5),gui.ScaledPixel(180),gui.ScaledPixel(30));                
-   tabPSC.Text("Position Size Calculator");
-   window.Add(tabPSC);
+   tabPSC.Create(0,"tabPSC",0,0,0,gui.ScaledPixel(115),gui.ScaledPixel(25));                
+   tabPSC.Text("Size Calculator");
    tabPSC.FontSize(gui.GetMainFont_S());
+   window.Add(tabPSC);
+   tabPSC.Shift(gui.ScaledPixel(5),gui.ScaledPixel(5));
    
    //-------------------------
    //Risk per trade
