@@ -36,6 +36,14 @@ CIndivialTradeExposure  *indivialTradeExposure;
 CGuiControl             *guiControl;
 
 //+------------------------------------------------------------------+
+//| Event Handlers Objects                                           |
+//+------------------------------------------------------------------+
+COnInit       initialiser;
+COnTimer      timer;
+COnTick       tick;
+COnChartEvent event;
+
+//+------------------------------------------------------------------+
 //| Input Variables                                                  |
 //+------------------------------------------------------------------+
 input  double SCALE = 1.0; //Scale    
@@ -45,9 +53,8 @@ input  string LicenceKey;
 //+------------------------------------------------------------------+
 //| Global Variables                                                 |
 //+------------------------------------------------------------------+
-double contractsize; 
-bool   firstInit = true;
-int    uninitReason;
+bool firstInit = true;
+int  uninitReason;
 
 //+------------------------------------------------------------------+
 //| Expert initialization function                                   |
@@ -56,9 +63,6 @@ int OnInit() {
    
    // Condition to Run OnInit
    if(uninitReason != REASON_CHARTCHANGE) {
-   
-      // Instantiate COnInit Object
-      COnInit initialiser;
       
       // Licence Validation 
       if(!initialiser.licenceValidation(LicenceKey)) return(INIT_FAILED);
@@ -91,8 +95,7 @@ int OnInit() {
    }
    
    // Manipulation of Global Variables
-   contractsize = SymbolInfoDouble(Symbol(), SYMBOL_TRADE_CONTRACT_SIZE);
-   guiControl.positionSizeCalculator.edit.contractSize.Text(string(contractsize));
+   guiControl.positionSizeCalculator.edit.contractSize.Text(string(SymbolInfoDouble(Symbol(), SYMBOL_TRADE_CONTRACT_SIZE)));
    
    return(INIT_SUCCEEDED);
 }
@@ -102,9 +105,6 @@ int OnInit() {
 //+------------------------------------------------------------------+
 void OnTimer() {
 
-   // Instantiate COnTimer Object
-   COnTimer timer;
-   
    // track Input By User On Risk Exposure       
    timer.trackInputByUserOnRiskExposure(guiControl, riskSettings, sumTradesExposure);                           
    
@@ -122,9 +122,6 @@ void OnTimer() {
 //| Expert tick function                                             |
 //+------------------------------------------------------------------+
 void OnTick() {
-
-   // Instantiate COnTick object
-   COnTick tick;
    
    // Track Price Buttons On Position Size Calculator
    tick.trackPriceButtonsOnPSC(guiControl, positionSizeCalculator);
@@ -136,10 +133,7 @@ void OnTick() {
 void OnChartEvent(const int    id,
                   const long   &lparam,
                   const double &dparam,
-                  const string &sparam) {
-
-   // Instantiate COnChartEvent Object
-   COnChartEvent event;                  
+                  const string &sparam) {                  
    
    // Enable Tracking of Main Window
    event.mainWindow.activate(guiControl,id,lparam,dparam,sparam);
