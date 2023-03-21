@@ -36,9 +36,14 @@ CIndivialTradeExposure  *indivialTradeExposure;
 CGuiControl             *guiControl;
 
 //+------------------------------------------------------------------+
+//| Global Variables                                                 |
+//+------------------------------------------------------------------+
+bool firstInit = true;
+int  uninitReason;
+
+//+------------------------------------------------------------------+
 //| Event Handlers Objects                                           |
 //+------------------------------------------------------------------+
-COnInit       initialiser;
 COnTimer      timer;
 COnTick       tick;
 COnChartEvent event;
@@ -50,11 +55,6 @@ input  double SCALE = 1.0; //Scale
 extern Window FirstWindow = PositionSizeCalculator;
 input  string LicenceKey;
 
-//+------------------------------------------------------------------+
-//| Global Variables                                                 |
-//+------------------------------------------------------------------+
-bool firstInit = true;
-int  uninitReason;
 
 //+------------------------------------------------------------------+
 //| Expert initialization function                                   |
@@ -64,9 +64,11 @@ int OnInit() {
    // Condition to Run OnInit
    if(uninitReason != REASON_CHARTCHANGE) {
       
+      COnInit initialiser(firstInit);
+      
       // Licence Validation 
       if(!initialiser.licenceValidation(LicenceKey)) return(INIT_FAILED);
-   
+      
       // Instantiate Objects
       positionSizeCalculator = new CPositionSizeCalculator();
       riskSettings           = new CRiskSettings();          
@@ -85,6 +87,9 @@ int OnInit() {
                                       riskSettings, 
                                       sumTradesExposure, 
                                       indivialTradeExposure);
+      
+      // Create Test Window
+      initialiser.test.create(guiControl);
       
       // Finalise SetUp
       initialiser.mainWindow.finaliseSetUp(guiControl, FirstWindow);

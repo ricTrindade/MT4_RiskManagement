@@ -1,36 +1,65 @@
 //+------------------------------------------------------------------+
-//|                                                        CTest.mq4 |
-//|                        Copyright 2023, MetaQuotes Software Corp. |
-//|                                             https://www.mql5.com |
+//| Component Files                                                  |
 //+------------------------------------------------------------------+
-#property copyright "Copyright 2023, MetaQuotes Software Corp."
-#property link      "https://www.mql5.com"
-#property version   "1.00"
-#property strict
+#include "components\CButtonTest.mqh"
+#include "components\CLabelTest.mqh"
+
 //+------------------------------------------------------------------+
-//| Expert initialization function                                   |
+//| Test tab class                                                   |
 //+------------------------------------------------------------------+
-int OnInit()
-  {
-//---
+class CTestTab {
+
+public:
+
+   int height;
+   int crShift;
+
+   // Components
+   CButtonTest *button;
+   CLabelTest  *label;
    
-//---
-   return(INIT_SUCCEEDED);
-  }
-//+------------------------------------------------------------------+
-//| Expert deinitialization function                                 |
-//+------------------------------------------------------------------+
-void OnDeinit(const int reason)
-  {
-//---
+   // Constructor
+   CTestTab();
    
-  }
-//+------------------------------------------------------------------+
-//| Expert tick function                                             |
-//+------------------------------------------------------------------+
-void OnTick()
-  {
-//---
+   // Destructor
+   ~CTestTab();
    
-  }
+   // Member Functions
+   void show();
+   void hide();
+};
+
 //+------------------------------------------------------------------+
+//| Constructor                                                      |
+//+------------------------------------------------------------------+
+CTestTab::CTestTab() {
+
+   button = new CButtonTest();
+   label  = new CLabelTest();
+}
+
+//+------------------------------------------------------------------+
+//| Destructor                                                       |
+//+------------------------------------------------------------------+
+CTestTab::~CTestTab() {
+
+   delete button;
+   delete label;
+}
+
+//+------------------------------------------------------------------+
+//| Show                                                             |
+//+------------------------------------------------------------------+
+void CTestTab::show(void) {
+
+   label.test_label.Show();
+}
+
+//+------------------------------------------------------------------+
+//| Hide                                                             |
+//+------------------------------------------------------------------+
+void CTestTab::hide(void) {
+
+   label.test_label.Hide();
+}
+

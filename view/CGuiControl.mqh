@@ -10,6 +10,7 @@
 #include "\window_tabs\main_window\CMainWindow.mqh"
 #include "\window_tabs\position_size_calculator\CPositionSizeCalculator.mqh"
 #include "\window_tabs\risk_exposure\CRiskExposure.mqh"
+#include "\window_tabs\test\CTest.mqh"
 
 //+------------------------------------------------------------------+
 //| Window State Enum                                                |
@@ -18,6 +19,7 @@ enum Window {
 
    PositionSizeCalculator, 
    RiskExposure, 
+   Test,
    Minimised,
 }; 
 
@@ -41,6 +43,7 @@ public:
    CMainWindow                *mainWindow;
    CPositionSizeCalculatorTab *positionSizeCalculator;
    CRiskExposure              *riskExposure;
+   CTestTab                   *test;   
 
    // Constructor
    CGuiControl(double scale);
@@ -78,6 +81,7 @@ CGuiControl::CGuiControl(double scale) {
    mainWindow             = new CMainWindow();
    positionSizeCalculator = new CPositionSizeCalculatorTab();
    riskExposure           = new CRiskExposure();
+   test                   = new CTestTab();
 
    SCALE                          = scale;
    mainWindow.width               = ScaledPixel(383); //Main Window Width
@@ -102,6 +106,7 @@ CGuiControl::~CGuiControl(void) {
    delete mainWindow;
    delete positionSizeCalculator;
    delete riskExposure;
+   delete test;
 }
 
 //+------------------------------------------------------------------+
@@ -130,8 +135,10 @@ void CGuiControl::WindowMin(void) {
    mainWindow.copyRightsLabel.Hide();
    positionSizeCalculator.button.tabPSC.Hide();
    riskExposure.button.tabRiskExposure.Hide();
+   test.button.tabTest.Hide();
    positionSizeCalculator.hide();
    riskExposure.hide();
+   test.hide();
    mainWindow.windowDialog.Height(30);
 }
 
@@ -155,8 +162,12 @@ Window CGuiControl::Check_Tab(void) {
       TAB = PositionSizeCalculator;
       return TAB;
    }
-   else if (riskExposure.label.maxInt.IsVisible() == true) {
+   if (riskExposure.label.maxInt.IsVisible() == true) {
       TAB = RiskExposure;
+      return TAB;
+   }
+   else if (test.label.test_label.IsVisible() == true) {
+      TAB = Test;
       return TAB;
    }
    return TAB;
@@ -172,6 +183,7 @@ void CGuiControl::WindowMax(void) {
       mainWindow.windowDialog.Height(positionSizeCalculator.height);
       positionSizeCalculator.show();
       mainWindow.copyRightsLabel.Show(); 
+      test.button.tabTest.Show();
       positionSizeCalculator.button.tabPSC.Show();
       riskExposure.button.tabRiskExposure.Show();
    }
@@ -181,7 +193,17 @@ void CGuiControl::WindowMax(void) {
       mainWindow.windowDialog.Height(riskExposure.height);
       riskExposure.show();
       mainWindow.copyRightsLabel.Show();
-      mainWindow.copyRightsLabel.Show(); 
+      test.button.tabTest.Show(); 
+      positionSizeCalculator.button.tabPSC.Show();
+      riskExposure.button.tabRiskExposure.Show();
+   }
+   
+   if(OPEN_TAB == Test) {
+      
+      mainWindow.windowDialog.Height(test.height);
+      test.show();
+      mainWindow.copyRightsLabel.Show();
+      test.button.tabTest.Show(); 
       positionSizeCalculator.button.tabPSC.Show();
       riskExposure.button.tabRiskExposure.Show();
    }
